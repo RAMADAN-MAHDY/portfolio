@@ -1,0 +1,24 @@
+@keyframes spiderWeb {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .spiderWebs {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background-color: #333;
+    transform-origin: bottom center;
+    animation: spiderWeb 3s infinite;
+  }
+   
