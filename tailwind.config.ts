@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import plugin from 'tailwindcss/plugin';
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -47,7 +47,24 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities }) {
+        addUtilities({
+            '.preserve-3d': {
+                'transform-style': 'preserve-3d',
+            },
+            '.rotate-y-100': {
+                'transform': 'rotateY(-100deg)',
+              },
+              '.rotate-y-101': {
+                'transform': 'rotateY(-99deg)',
+              },
+              '.rotate-y-102': {
+                'transform': 'rotateY(-98deg)',
+              },
+        });
+    }),
+],
 };
 
 export default config;

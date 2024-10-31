@@ -41,20 +41,20 @@ const Navbar = () => {
 
         {/* Menu Items */}
         <div className="hidden md:flex space-x-6 z-20">
-          <Link href="/" className='hover:text-[13px] px-2 hover:text-yellow-400'>
-            <p className="hover:text-yellow-400 hover:text-[13px]">Home</p>
+          <Link href="/" className='px-2 hover:text-yellow-400'>
+            <p className="hover:text-yellow-400 ">Home</p>
           </Link>
-          <Link href="#projects" className='hover:text-[13px] px-2 hover:text-yellow-400'>
-            <p className="hover:text-yellow-400 hover:text-[13px]">Projects</p>
+          <Link href="/projects" className='px-2 hover:text-yellow-400'>
+            <p className="hover:text-yellow-400 ">Projects</p>
           </Link>
-          <Link href="#services" className='hover:text-[13px] px-2 hover:text-yellow-400'>
-            <p className="hover:text-yellow-400 hover:text-[13px]">Services</p>
+          <Link href="#services" className=' px-2 hover:text-yellow-400'>
+            <p className="hover:text-yellow-400 ">Services</p>
           </Link>
           {/* <Link href="#about" className='hover:text-[13px] px-2 hover:text-yellow-400'>
             <p className="hover:text-yellow-400 hover:text-[13px]">About Me</p>
           </Link> */}
-          <Link href="#contact" className='hover:text-[13px] px-2 hover:text-yellow-400'>
-            <p className="hover:text-yellow-400 hover:text-[13px]">Contact</p>
+          <Link href="#contact" className=' px-2 hover:text-yellow-400'>
+            <p className="hover:text-yellow-400">Contact</p>
           </Link>
         </div>
 
@@ -81,7 +81,7 @@ const Navbar = () => {
     <Link href="/">
       <p className="block py-5 px-5 hover:text-yellow-400">Home</p>
     </Link>
-    <Link href="#projects">
+    <Link href="/projects">
       <p className="block py-5 px-5 hover:text-yellow-400">Projects</p>
     </Link>
     <Link href="#services">
