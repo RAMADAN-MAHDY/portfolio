@@ -2,46 +2,96 @@
 import { useEffect, useState } from "react";
 import style from "./style/aboutMyselfStyle.module.css";
 
-const AboutMyself = () => {
-  const text = "My name is Ramadan, and I am a web developer.";
+const AnimatedText = ({ letters, style }) => (
+  <>
+    {letters.map((letter, index) => (
+      <span
+        key={index}
+        style={{
+          animationDelay: `${index * 0.1}s`,
+          ...style(letter, index),
+        }}
+      >
+        {letter === " " ? "\u00A0" : letter}
+      </span>
+    ))}
+  </>
+);
 
-  const [letters, setLetters] = useState([]);
+const AboutMyself = () => {
+  const texts = [
+    " - Hello I'm Ramadan.",
+    " - Web Developer.",
+    " - Full Stack (MERN).",
+    " - Web Developer , Full Stack (MERN).",
+  ];
+
+  const [screenSize, setscreenSize] = useState({
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
-    const textArray = text.split("");
-    setLetters(textArray);
+    const updateSize = () => {
+      setscreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", updateSize);
+    updateSize();
+
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
+  const isSmallScreen = screenSize.width < 570;
+
   return (
-    <div className={style['char-by-char']}>
-      {letters.map((letter, index) => {
-        const isRamadan = index >= 11 && index < 18; // كلمة "Ramadan"
-        const isDeveloper = index >= 35 && index < 44; // كلمة "developer"
-
-        return (
-          <span
-            key={index}
-            style={{
-              animationDelay: `${index * 0.1}s`,
-              color: isRamadan || isDeveloper ? '#D4AC0D' : 'inherit',
-              fontSize: isRamadan ? '1.5em' : 'inherit',
-              lineHeight: isRamadan ? '1.79em' : 'inherit',
-            //   display: isDeveloper ? 'inline-block' : 'inline', 
-            //   writingMode: isDeveloper ? 'vertical-rl' : 'inherit', 
-            //   marginLeft: isDeveloper ? '10px' : 'inherit',
-              transform: isDeveloper ? 'rotate(280deg)' : 'none' 
-            }}
-          >
-            {letter === " " ? "\u00A0" : letter}
-          </span>
-          
-        
-        );
-      })}
-<br></br>
-<span className="absulote">
-
-</span>
+    <div className={style["char-by-char"]}>
+      <AnimatedText
+        letters={texts[0].split("")}
+        style={(letter, index) => ({
+          color: index >= 13 && index < 20 ? "#D4AC0D" : "inherit",
+          fontSize: index >= 13 && index < 20 ? "1.5em" : "inherit",
+          lineHeight: index ?  '1.79em' : 'inherit',
+        })}
+      />
+      <br />
+      {isSmallScreen && (
+        <AnimatedText
+          letters={texts[1].split("")}
+          style={(letter, index) => ({
+            color: index >= 3 && index < 16 ? "#D4AC0D" : "inherit",
+            fontSize: index >= 3 && index < 16 ? "1.5em" : "inherit",
+          })}
+        />
+      )}
+      <br />
+      {isSmallScreen && (
+        <AnimatedText
+          letters={texts[2].split("")}
+          style={(letter, index) => ({
+            color: index >= 15 && index < 19 ? "#D4AC0D" : "inherit",
+            fontSize: index >= 15 && index < 19 ? "2em" : "inherit",
+          })}
+        />
+      )}
+      {!isSmallScreen && (
+        <AnimatedText
+          letters={texts[3].split("")}
+          style={(letter, index) => ({
+            color:
+              (index >= 0 && index < 16) || (index >= 31 && index < 35)
+                ? "#D4AC0D"
+                : "inherit",
+            fontSize:
+              (index >= 0 && index < 16) || (index >= 31 && index < 35)
+                ? "1em"
+                : "inherit",
+          })}
+        />
+      )}
     </div>
   );
 };

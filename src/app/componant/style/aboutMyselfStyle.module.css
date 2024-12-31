@@ -1,63 +1,81 @@
 .char-by-char {
-    padding-inline: 13px;
-    border-radius: 50px;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 1.8em;
+    font-weight: 400;
+    color: #e2e4e6; 
+    line-height: 1.6em;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
     position: relative;
-    font-size: 2em; /* تصحيح هنا */
-    font-weight: 200;
-    color: #1c86a3;
-    line-height: 0.79em; 
-    outline: none;
     display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid black;
-    font-family: monospace;
-    width: 0ch; 
-    animation: typing 5s steps(52, end) forwards, blink 1.75s step-end infinite, animate 5s linear infinite;
-}
-
-.char-by-char::after {
-    display: flex;
-    flex-wrap: wrap;
-    content: attr(data-text);
+    white-space: nowrap; 
+    overflow: hidden; 
+    width: max-content; /* التأكد من أن العرض يتناسب مع النص */
+  }
+  
+  .char-by-char span {
+    display: inline-block;
+    margin: 0 2px;
+    color: inherit;
+    opacity: 0;
+    animation: reveal 1.5s forwards, typing 5s steps(52, end) forwards, blink 1.75s step-end infinite, animate 5s linear infinite; 
+    animation-delay: calc(0.1s * var(--index)); /* التأخير بين كل حرف */
+    position: relative;
+  }
+  
+  .char-by-char span::before {
+    content: '';
     position: absolute;
-    left: 0;
-    top: 100%; /* وضعه أسفل النص */
-    transform: translateY(-10px); /* تحريك الانعكاس لأعلى */
-    color: rgba(0, 0, 0, 0.5); /* لون الانعكاس */
-    -webkit-transform: scaleY(-1); /* عكس الانعكاس */
-    z-index: -1; /* لجعل الانعكاس خلف النص */
-}
-
-@keyframes typing {
-    from { width: 0ch; }
-    to { width: 52ch; }
-}
-
-@keyframes blink {
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #16a085;
+    transition: width 0.3s ease;
+  }
+  
+  @keyframes reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: max-content; } 
+  }
+  
+  @keyframes blink {
     from, to { border-color: transparent; }
     50% { border-color: rgb(0, 0, 255); }
-}
-
-@keyframes animate {
+  }
+  
+  @keyframes animate {
     0%, 12%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
-        text-shadow: none;
+      text-shadow: none;
     }
     12.1%, 18.1%, 20.1%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
-        color: #fff;
-        text-shadow: 0 0 10px #02d5fa,
-                     0 0 20px #03bcf4,
-                     0 0 40px #03bcf4,
-                     0 0 80px #03bcf4,
-                     0 0 160px #03bcf4;
+      color: #fff;
+      text-shadow: 0 0 10px #02d5fa,
+                   0 0 20px #03bcf4,
+                   0 0 40px #03bcf4,
+                   0 0 80px #03bcf4,
+                   0 0 160px #03bcf4;
     }
-}
-
-@media (max-width: 600px) {
+  }
+  
+  @media (max-width: 600px) {
     .char-by-char {
-        margin-left: 300px;
-        font-size: 1.6em; /* تصغير الحجم على الشاشات الصغيرة */
-        width: 100%; /* السماح للنص بأن يتناسب مع العرض */
-        line-height: 1.79em; 
+      font-size: 1.5em;
+      line-height: 1.4em;
+      padding: 15px;
     }
-}
+  }
+  
