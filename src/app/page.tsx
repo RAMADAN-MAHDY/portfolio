@@ -52,7 +52,7 @@ export default function Home() {
                             <SpiderWeb height="100%" />
                         </div>
                         </main>
-                     <main className="relative mt-[0px] h-[20%] sm:h-[30%]  w-[190%] sm:w-[100%] sm-mt-3 bg-[#121431] z-10">
+                     <main className="relative mt-[0px] h-[20%] sm:h-[30%]  w-[100%] sm:w-[100%] sm-mt-3 bg-[#121431] z-10">
                         {/* SpiderWeb as background */}
                          <div className="absolute top-0 left-0 w-full h-full -z-10">
                             <SpiderWeb height="100%" />
@@ -65,13 +65,13 @@ export default function Home() {
 
                     
       <hr className="border-solid border-indigo-700 border-[2px] w-full"></hr>
-                    <div className="container ml-0 mr-0 sm:ml-[9%] sm:mr-[10%] pt-[-100] mt-[0px]  w-[100%]">
+                    <div className="container mt-[-350px] mr-0 sm:ml-[0%] sm:mr-[10%] pt-[-100] w-[100%]">
                         <main data-aos="fade-left" className={`flex  items-center justify-center min-h-screen z-100 overflow-hidden pl-6  ml-[-70px]`}>
                             <AboutMyself />
                             
                         </main>
                     </div>
-                    <section>
+                    <section className='mt-[-350px]'>
                         <SkillsSection/>
                         </section>
                         <hr className="border-solid border-indigo-700 border-[2px] w-full"></hr>
