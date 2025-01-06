@@ -1,6 +1,30 @@
-import React, { useState } from "react";
+"use client"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect, useState } from 'react';
 
 const BookFlip = () => {
+    
+    const [isClient, setIsClient] = useState(false);
+
+
+    useEffect(() => {
+        setIsClient(typeof window !== 'undefined');
+    }, []);
+
+    useEffect(() => {       
+            if (isClient) {
+                AOS.init({
+                    duration: 3000,
+                });
+            }
+        }, [isClient]);
+
+
+
+
+
+
   const totalPages = 4;
 
   // الحالات الخاصة بكل div
@@ -77,16 +101,20 @@ const BookFlip = () => {
           }
         `}
       </style>
-
-      <div>
-        <h2 className="text-[#fafafa] text-[24px] p-8 text-center font-bold">My Projects</h2>
-        <div className="container flex-wrap flex justify-around h-screen bg-[#0c3541] m-6 w-[190%]">
-          {/* Flip books */}
-          {renderFlipBook("div1")}
-          {renderFlipBook("div2")}
-          {renderFlipBook("div3")}
-        </div>
-      </div>
+      {isClient &&(
+  <section data-aos="fade-left" className=' w-[50%]'>
+  <div>
+    <h2 className="text-[#fafafa] text-[24px] p-8 text-center font-bold">My Projects</h2>
+    <div className="container flex-wrap flex justify-around h-screen bg-[#0c3541] m-6 w-[190%]">
+      {/* Flip books */}
+      {renderFlipBook("div1")}
+      {renderFlipBook("div2")}
+      {renderFlipBook("div3")}
+    </div>
+  </div>
+  </section>
+      )}
+    
     </>
   );
 };
