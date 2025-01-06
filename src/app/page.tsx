@@ -10,7 +10,7 @@ export default function Home() {
     return (
         <>
                     <Navbar />
-                     <main className="relative mt-[0px] h-[20%] sm:h-[30%]  w-[100%] sm:w-[100%] sm-mt-3 bg-[#121431] z-10">
+                     <main className="relative mt-[0px] h-[15%] sm:h-[30%]  w-[100%] sm:w-[100%] sm-mt-3 bg-[#121431] z-10">
                      
                         <Vismeforms />
                     </main> 
@@ -23,7 +23,7 @@ export default function Home() {
                         </main>
 
                      </div>
-                      <section className='mt-[-350px]'>
+                      <section className='sm:mt-[-350px] mt-[-100]'>
                         <SkillsSection/>
                         </section>
                         <hr className="border-solid border-indigo-700 border-[2px] w-full"></hr>
