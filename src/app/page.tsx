@@ -17,7 +17,7 @@ export default function Home() {
 
                     <hr className="border-solid border-indigo-700 border-[2px] w-full"></hr>
 
-                    <div className="container mt-[-250px] sm:mt-[-350px]  mr-0 sm:ml-[0%] sm:mr-[10%] pt-[-100] w-[100%]">
+                    <div className="container mt-[0px] sm:mt-[-350px]  mr-0 sm:ml-[0%] sm:mr-[10%] pt-[-100] w-[100%]">
                         <main data-aos="fade-left" className={`flex  items-center justify-center min-h-screen z-100 overflow-hidden pl-6  ml-[-70px]`}>
                             <AboutMyself />         
                         </main>
