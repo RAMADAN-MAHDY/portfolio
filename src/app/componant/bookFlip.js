@@ -34,13 +34,18 @@ const BookFlip = () => {
     div3: 0,
   });
 
-  const flipPage = (divKey) => {
+  const flipNext = (divKey) => {
     setPages((prevPages) => {
       const newPage = prevPages[divKey] < totalPages ? prevPages[divKey] + 1 : 0;
       return { ...prevPages, [divKey]: newPage };
     });
   };
-
+  const flipPrev = (divKey) => {
+    setPages((prevPages) => {
+      const newPage = prevPages[divKey] > 0 ? prevPages[divKey] - 1 : 0;
+      return { ...prevPages, [divKey]: newPage };
+    });
+  };
   const getPageBackground = (index) => {
     switch (index) {
       case 0:
@@ -70,10 +75,16 @@ const BookFlip = () => {
         </div>
       ))}
       <button
-        onClick={() => flipPage(divKey)}
-        className="fixed bottom-[-40px] right-[30%] mt-3 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition z-40"
+        onClick={() => flipNext(divKey)}
+        className="fixed bottom-[-40px] right-[10%] mt-3 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition z-40"
       >
-        Flip Page
+        Flip next
+      </button>
+      <button
+        onClick={() => flipPrev(divKey)}
+        className="fixed bottom-[-40px] left-[10%] mt-3 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition z-40"
+      >
+        Flip prev
       </button>
     </div>
   );
@@ -102,10 +113,10 @@ const BookFlip = () => {
         `}
       </style>
       {isClient &&(
-  <section data-aos="fade-left" className=' w-[50%]'>
-  <div>
-    <h2 className="text-[#fafafa] text-[24px] p-8 text-center font-bold">My Projects</h2>
-    <div className="container flex-wrap flex justify-around h-screen bg-[#0c3541] m-6 w-[190%]">
+  <section data-aos="fade-top" className=' w-[100%] py-10 bg-gradient-to-r from-[#0c3541] to-[#0e40e6] text-white'>
+  <div className="container">
+    <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] ml-[25%] w-[150px]">My Projects</h2>
+    <div className="container flex-wrap flex justify-around h-screen w-[100%]">
       {/* Flip books */}
       {renderFlipBook("div1")}
       {renderFlipBook("div2")}
