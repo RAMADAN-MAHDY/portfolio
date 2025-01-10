@@ -18,13 +18,17 @@
 
 body {
   /* color: rgb(var(--foreground-rgb)); */
-  background:#0c3541;
-  width:100%;
+  /* background:#154250; */
+  /* width:100%; */
   margin: 0;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
 }
+.bg-animation {
+  will-change: transform, opacity;
+}
+}
+  

@@ -7,7 +7,13 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
+    extend: { 
+        transitionDuration: {
+        '500':'500ms'
+      },
+      transitionTimingFunction: {
+        'in-out': 'ease-in-out'
+    },
       keyframes: {
         slideIn: {
           '0%': { transform: 'translateX(-100%)', borderRadius: '500px' },  
