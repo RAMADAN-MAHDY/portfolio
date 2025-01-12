@@ -30,7 +30,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="bg-gray-800 text-white shadow-lg sm:mt-0 pt-11 z-20 ">
+    <nav className="bg-gray-800 text-white shadow-lg sm:mt-0 pt-11 z-20 fixed top-0 right-0 left-0">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="text-2xl font-bold">
@@ -53,7 +53,7 @@ const Navbar = () => {
           {/* <Link href="#about" className='hover:text-[13px] px-2 hover:text-yellow-400'>
             <p className="hover:text-yellow-400 hover:text-[13px]">About Me</p>
           </Link> */}
-          <Link href="#contact" className=' px-2 hover:text-yellow-400'>
+          <Link href="/ContactMe" className=' px-2 hover:text-yellow-400'>
             <p className="hover:text-yellow-400">Contact</p>
           </Link>
         </div>
@@ -87,10 +87,10 @@ const Navbar = () => {
     <Link href="#services">
       <p className="block py-5 px-5 hover:text-yellow-400">Services</p>
     </Link>
-    <Link href="#about">
+    {/* <Link href="#about">
       <p className="block py-5 px-5 hover:text-yellow-400">About Me</p>
-    </Link>
-    <Link href="#contact">
+    </Link> */}
+    <Link href="/ContactMe">
       <p className="block py-5 px-5 hover:text-yellow-400">Contact</p>
     </Link>
   </div>

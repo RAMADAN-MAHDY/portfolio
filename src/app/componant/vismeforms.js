@@ -9,7 +9,7 @@ const Vismeforms = () => {
             <img src='451548470_3829658120605216_1402526888296984978_n.jpg' className='w-[110px] mt-[-48px] ] h-[130px] z-20 ' style={{clipPath: 'polygon(34% 0, 100% 31%, 100% 100%, 34% 66%)'}} />
         </div>
         <DotLottieReact
-            className='absolute w-[800px] h-[200px]'
+            className='absolute h-[200px]'
             src="https://lottie.host/66cb797a-5652-4998-8b9b-42542b1d8b17/z49M1iCPo5.lottie"
             autoplay
         />

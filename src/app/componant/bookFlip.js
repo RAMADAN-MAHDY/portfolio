@@ -56,11 +56,11 @@ const BookFlip = () => {
   };
 
   const renderFlipBook = (divKey) => (
-    <div className="perspective relative w-[90%] sm:w-[40%] sm:h-[600px] preserve-3d z-10 mb-11 sm:ml-[10%]">
+    <div className="perspective relative w-[90%] sm:w-[40%] h-[450px] preserve-3d z-10 mb-[60px] sm:ml-[10%]">
       {[7, 9, 3, 4].map((page, index) => (
         <div
           key={index}
-          className={`page bg-[#e4ebe4] border border-gray-800 flex items-center justify-center text-2xl font-bold w-[100%] h-[100%] ${
+          className={`page bg-[#e4ebe4] border border-gray-800 flex items-center justify-center text-2xl font-bold w-[100%] h-[100%]  ${
             pages[divKey] > index && `${index === 1 && pages[divKey] < 4 && "rotate-y-101"} rotate-y-100`
           }`}
           style={{ zIndex: totalPages - index }}
@@ -113,10 +113,10 @@ const BookFlip = () => {
         `}
       </style>
       {isClient &&(
-  <section data-aos="fade-top" className=' w-[100%] py-10 bg-gradient-to-r from-[#0c3541] to-[#0e40e6] text-white'>
+  <section data-aos="fade-top" className=' w-[100%] h-full py-10 bg-gradient-to-r from-[#0c3541] to-[#0e2ee6] text-white mt-[110px]'>
   <div className="container">
     <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] ml-[25%] w-[150px]">My Projects</h2>
-    <div className="container flex-wrap flex justify-around h-screen w-[100%]">
+    <div className="container flex-wrap flex justify-around w-[100%]">
       {/* Flip books */}
       {renderFlipBook("div1")}
       {renderFlipBook("div2")}

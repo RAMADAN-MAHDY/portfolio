@@ -6,7 +6,7 @@
 // import SpiderWeb from '@/app/componant/SpiderWeb';
 // import AboutMyself from '@/app/componant/AboutMyself';
 // import TechCube from '@/app/componant/techCube';
-import Navbar from '@/app/componant/navbar';
+// import Navbar from '@/app/componant/navbar';
 // import styles from '@/app/componant/style/spiderWeb.module.css';
 
 
@@ -16,8 +16,6 @@ const project =()=>{
 
 
         <>     
-        
-                <Navbar/>
         
                 <section id="projects" class="bg-gray-100 py-12 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
