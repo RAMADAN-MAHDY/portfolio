@@ -1,0 +1,73 @@
+{
+    "Navpar":{
+        "Description" : "Ramadan | Web Developer" ,
+        "Home" : "Home",
+        "Projects" : "Projects",
+        "Contact" : "Contact"
+    },
+    
+    "AboutMyself": {
+        "Text": "- Hello, I'm Ramadan./-  Web Developer./-  Full Stack (MERN)./,- Web Developer, Full Stack (MERN)./"
+          
+        },
+
+    "Footer": {
+            "Copyright": " Ramadan. All rights reserved."
+          },
+    "SkillsSection" : {
+        "Skills" : " My Skills",
+        "Frontend" : "Frontend Development",
+        "Backend" : "Backend Development",
+        "Other" : "Other Skills"
+
+          },
+    "ContactMy" : {
+         "Contact" : "Contact me",
+         "FullName" : "full name",
+         "Email" : "Email",
+         "Message" : "Message",
+         "Send" : "send"
+        },
+    "Projects" : {
+        "Projects" : "My Projects",
+        "FlipNext" : "Flip Next",
+        "FlipPrev" :"Flip Prev"
+    },
+    "SiteDefinition": {
+        "Title": "Site Definition",
+        "Description": "It is an affiliate marketing website that showcases home products, clothing, outdoor products, and electrical appliances."
+      },
+      "ImportantPoints": {
+        "Title": "Important Points",
+          "ControlPanel": "Control Panel: Displays statistics and reports on orders and commissions.",
+          "ProductManagement": "Product Management: Add, edit, and view products with details like name, price, images, and description.",
+          "OrderManagement": "Order Management: View order details such as customer name, address, quantity, and price, along with tracking the order status.",
+          "ShoppingCart": "Shopping Cart: View products added to the cart with options to edit or remove them.",
+          "Support": "Support: Provide means of communication with the support team via WhatsApp and Facebook.",
+          "OrderForm": "Order Form: Enter order details such as customer name, phone number, address, quantity, and shipping price.",
+          "DetailsPage": "Details Page: Display product details such as name, images, price, commission, shipping, and description."
+        
+      },
+      
+
+        "ProjectDetails": {
+          "Title": "Technologies Used",
+          "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.",
+        "Technologies": {
+            "1": "Next.js for building the frontend.",
+            "2": "Tailwind CSS for styling and design.",
+            "3": "Redux Toolkit for state management.",
+            "4": "Express for providing backend APIs.",
+            "5": "MongoDB for data storage."
+        },
+        "ProjectImages": {
+          "Title1": "Some pictures from the control panel (admin)",
+          "Link1": "Visit the site",
+          "Link2": "Source code on GitHub"  
+        }
+          }
+    
+      
+      
+      
+}

@@ -1,14 +1,18 @@
-import SkillsSection from '@/app/componant/SkillsSection';
-import dynamic from 'next/dynamic';
-// import Footer from '@/app/componant/footer';
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
-// import ContactMe from '@/app/componant/ContactMeForm';
-const Vismeforms = dynamic(()=>import('@/app/componant/vismeforms'), {ssr:false} )
-const AboutMyself = dynamic(()=>import('@/app/componant/AboutMyself'), {ssr:false} )
+"use client"
+// import { useState, useEffect } from 'react'
+import SkillsSection from '@/app/[locale]/componant/SkillsSection';
+// import dynamic from 'next/dynamic';
+import Vismeforms from '@/app/[locale]/componant/vismeforms';
+import AboutMyself from '@/app/[locale]/componant/AboutMyself';
+   
 
-export default function Home() {
+// const Vismeforms = dynamic(()=>import('@/app/[locale]/componant/vismeforms'), {ssr:false} )
+// const AboutMyself = dynamic(()=>import('@/app/[locale]/componant/AboutMyself'), {ssr:false} )
 
+
+ function Home() {
+
+   
 
     return (
         <>
@@ -32,3 +36,4 @@ export default function Home() {
 
     );
 }
+export default Home;
