@@ -18,23 +18,23 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: { locale: string }; // هنا يجب تصحيح النوع إلى string
 }) {
-  // Ensure that the incoming `locale` is valid
+    
+    const { locale } = await params;
+  // التأكد من أن `params` يحتوي على `locale` بشكل صحيح
   if (!routing.locales.includes(locale as "en" | "ar")) {
-    notFound();
-  }
-
-  const localeTyped = await locale as "en" | "ar";
+      notFound();
+    }
 
   // Pass locale as an object if required
-  const messages = await getMessages({ locale: localeTyped });
+  const messages = await getMessages({ locale: locale });
 
   return (
-    <html lang={localeTyped}>
+    <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
