@@ -21,7 +21,7 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string }; // هنا يجب تصحيح النوع إلى string
+  params: { locale: any }; // هنا يجب تصحيح النوع إلى string
 }) {
     
     const { locale } = await params;
