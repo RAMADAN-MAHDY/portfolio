@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,22 +18,20 @@ export const metadata: Metadata = {
     "Explore Ramadan's portfolio, showcasing expertise in full-stack web development, modern technologies, and innovative web solutions.",
 };
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: any }; // هنا يجب تصحيح النوع إلى string
-}) {
-    
-    const { locale } = await params;
-  // التأكد من أن `params` يحتوي على `locale` بشكل صحيح
-  if (!routing.locales.includes(locale as "en" | "ar")) {
-      notFound();
-    }
+interface LocaleLayoutProps {
+    children: React.ReactNode;
+    params: Promise<{ locale: string }>;
+  }
+  
 
-  // Pass locale as an object if required
-  const messages = await getMessages({ locale: locale });
+export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+    const locale = (params as any).locale; // استخدامه بشكل مباشر
+
+  if (!routing.locales.includes(locale as "en" | "ar")) {
+    notFound();
+  }
+
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
