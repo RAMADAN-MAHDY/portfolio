@@ -1,10 +1,10 @@
-import ContactMe from '@/app/[locale]/componant/ContactMeForm';
-import Navbar from '../componant/navbar';
+import ContactMe from '@/app/componant/ContactMeForm';
+// import Navbar from '@/app/componant/navbar';
 
 const ContactMee = () => {
   return (
     <>
-<Navbar/>
+{/* <Navbar/> */}
 <ContactMe />
     </>
   );

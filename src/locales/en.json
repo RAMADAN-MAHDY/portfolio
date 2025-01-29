@@ -12,7 +12,7 @@
         },
 
     "Footer": {
-            "Copyright": " Ramadan. All rights reserved."
+            "Copyright": ". All rights reserved."
           },
     "SkillsSection" : {
         "Skills" : " My Skills",
@@ -54,11 +54,11 @@
           "Title": "Technologies Used",
           "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.",
         "Technologies": {
-            "1": "Next.js for building the frontend.",
-            "2": "Tailwind CSS for styling and design.",
-            "3": "Redux Toolkit for state management.",
-            "4": "Express for providing backend APIs.",
-            "5": "MongoDB for data storage."
+            "_1": "Next.js for building the frontend.",
+            "_2": "Tailwind CSS for styling and design.",
+            "_3": "Redux Toolkit for state management.",
+            "_4": "Express for providing backend APIs.",
+            "_5": "MongoDB for data storage."
         },
         "ProjectImages": {
           "Title1": "Some pictures from the control panel (admin)",

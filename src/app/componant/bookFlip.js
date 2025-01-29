@@ -1,20 +1,26 @@
 "use client"
-import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const BookFlip = () => {
+    const currentLanguage = useSelector((state) => state.language.currentLanguage);
+    const { translations } = useSelector((state) => state.language);
+
     const [isClient, setIsClient] = useState(false);
     const [pages, setPages] = useState({
         div1: 0,
         div2: 0,
         div3: 0,
     });
-    const t = useTranslations();
-    const pathname = usePathname();
-    const isRTL = pathname.slice(1, 3) !== 'en';
+
+
+    
+    const pathname = currentLanguage;
+    const isRTL = currentLanguage !== 'en';
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -82,73 +88,73 @@ const BookFlip = () => {
         {
             id: "div1",
             SiteDefinition: {
-                Title: t('SiteDefinition.Title'),
-                Description: t('SiteDefinition.Description')
+                Title: translations.SiteDefinition.Title,
+                Description: translations.SiteDefinition.Description
             },
             ImportantPoints: {
-                Title: t('ImportantPoints.Title'),
-                ControlPanel: t('ImportantPoints.ControlPanel'),
-                ProductManagement: t('ImportantPoints.ProductManagement'),
-                OrderManagement: t('ImportantPoints.OrderManagement'),
-                ShoppingCart: t('ImportantPoints.ShoppingCart'),
-                Support: t('ImportantPoints.Support'),
-                OrderForm: t('ImportantPoints.OrderForm'),
-                DetailsPage: t('ImportantPoints.DetailsPage')
+                Title: translations.ImportantPoints.Title,
+                ControlPanel: translations.ImportantPoints.ControlPanel,
+                ProductManagement: translations.ImportantPoints.ProductManagement,
+                OrderManagement: translations.ImportantPoints.OrderManagement,
+                ShoppingCart: translations.ImportantPoints.ShoppingCart,
+                Support: translations.ImportantPoints.Support,
+                OrderForm: translations.ImportantPoints.OrderForm,
+                DetailsPage: translations.ImportantPoints.DetailsPage
             },
             ProjectDetails: {
-                Title: t('ProjectDetails.Title'),
-                Description: t('ProjectDetails.Description'),
+                Title: translations.ProjectDetails.Title,
+                Description: translations.ProjectDetails.Description,
                 Technologies: {
-                    _1: t('ProjectDetails.Technologies.1'),
-                    _2: t('ProjectDetails.Technologies.2'),
-                    _3: t('ProjectDetails.Technologies.3'),
-                    _4: t('ProjectDetails.Technologies.4'),
-                    _5: t('ProjectDetails.Technologies.5')
+                    _1: translations.ProjectDetails.Technologies._1,
+                    _2: translations.ProjectDetails.Technologies._2,
+                    _3: translations.ProjectDetails.Technologies._3,
+                    _4: translations.ProjectDetails.Technologies._4,
+                    _5: translations.ProjectDetails.Technologies._5
                 },
                 ProjectImages: {
-                    Title1: t('ProjectDetails.ProjectImages.Title1'),
-                    Link1: t('ProjectDetails.ProjectImages.Link1'),
-                    Link2: t('ProjectDetails.ProjectImages.Link2')
+                    Title1: translations.ProjectDetails.ProjectImages.Title1,
+                    Link1: translations.ProjectDetails.ProjectImages.Link1,
+                    Link2: translations.ProjectDetails.ProjectImages.Link2
                 }
             }
         },
         {
             id: "div2",
             SiteDefinition: {
-                Title: "t('SiteDefinition.Title')",
-                Description: t('SiteDefinition.Description')
+                Title: "translations.SiteDefinition.Title')",
+                Description: translations.SiteDefinition.Description
             },
             ImportantPoints: {
-                Title: "t('ImportantPoints.Title')",
-                ControlPanel: t('ImportantPoints.ControlPanel'),
-                ProductManagement: t('ImportantPoints.ProductManagement'),
-                OrderManagement: t('ImportantPoints.OrderManagement'),
-                ShoppingCart: t('ImportantPoints.ShoppingCart'),
-                Support: t('ImportantPoints.Support'),
-                OrderForm: t('ImportantPoints.OrderForm'),
-                DetailsPage: t('ImportantPoints.DetailsPage')
+                Title: "translations.ImportantPoints.Title')",
+                ControlPanel: translations.ImportantPoints.ControlPanel,
+                ProductManagement: translations.ImportantPoints.ProductManagement,
+                OrderManagement: translations.ImportantPoints.OrderManagement,
+                ShoppingCart: translations.ImportantPoints.ShoppingCart,
+                Support: translations.ImportantPoints.Support,
+                OrderForm: translations.ImportantPoints.OrderForm,
+                DetailsPage: translations.ImportantPoints.DetailsPage
             },
             ProjectDetails: {
-                Title: "t('ProjectDetails.Title')",
-                Description: t('ProjectDetails.Description'),
+                Title: "translations.ProjectDetails.Title')",
+                Description: translations.ProjectDetails.Description,
                 Technologies: {
-                    _1: t('ProjectDetails.Technologies.1'),
-                    _2: t('ProjectDetails.Technologies.2'),
-                    _3: t('ProjectDetails.Technologies.3'),
-                    _4: t('ProjectDetails.Technologies.4'),
-                    _5: t('ProjectDetails.Technologies.5')
+                    _1: translations.ProjectDetails.Technologies._1,
+                    _2: translations.ProjectDetails.Technologies._2,
+                    _3: translations.ProjectDetails.Technologies._3,
+                    _4: translations.ProjectDetails.Technologies._4,
+                    _5: translations.ProjectDetails.Technologies._5
                 },
                 ProjectImages: {
-                    Title1: "t('ProjectDetails.ProjectImages.Title1')",
-                    Link1: t('ProjectDetails.ProjectImages.Link1'),
-                    Link2: t('ProjectDetails.ProjectImages.Link2')
+                    Title1: "translations.ProjectDetails.ProjectImages.Title1')",
+                    Link1: translations.ProjectDetails.ProjectImages.Link1,
+                    Link2: translations.ProjectDetails.ProjectImages.Link2
                 }
             }
         }
     ];
 
     if (!projectContent || !Array.isArray(projectContent) || projectContent.length === 0) {
-        return <div>{t('Errors.NoContent')}</div>;
+        return <div>{translations.Errors.NoContent}</div>;
     }
 
     const renderFlipBook = (content, index) => {
@@ -236,13 +242,13 @@ const BookFlip = () => {
                     onClick={() => flipNext(content.id)}
                     className="fixed bottom-[-40px] right-[10%] mt-3 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition z-40"
                 >
-                    {t('Projects.FlipNext')}
+                    {translations.Projects.FlipNext}
                 </button>
                 <button
                     onClick={() => flipPrev(content.id)}
                     className="fixed bottom-[-40px] left-[10%] mt-3 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition z-40"
                 >
-                    {t('Projects.FlipPrev')}
+                    {translations.Projects.FlipPrev}
                 </button>
             </div>
         );
@@ -275,7 +281,7 @@ const BookFlip = () => {
                 <section data-aos="fade-top" className=' w-[100%] h-full py-10 bg-gradient-to-r from-[#0c3541] to-[#0e2ee6] text-white mt-[110px]'>
                     <div className="container">
                         <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] ml-[25%] w-[150px]">
-                            {t('Projects.Projects')}
+                            {translations.Projects.Projects}
                         </h2>
                         <div className="container flex-wrap flex justify-around w-[100%]">
                             {projectContent.map((content, index) => renderFlipBook(content, index))}
