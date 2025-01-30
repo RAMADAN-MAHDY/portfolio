@@ -53,7 +53,7 @@ const BookFlip = () => {
     }, [isClient]);
 
 
-    const totalPages = 4;
+    const totalPages = 5;
     
     const flipNext = (id) => {
         setPages((prevPages) => {
@@ -179,11 +179,11 @@ const BookFlip = () => {
         return (
             <div
                 key={content.id}
-                className="perspective relative w-[574px] h-[550px] sm:h-[450px] preserve-3d z-10 mb-[60px] sm:ml-[10%]">
-                {[7, 9, 3, 4].map((page, pageIndex) => (
+                className="perspective relative w-[294px] sm:w-[374px] h-[500px] preserve-3d z-10 mb-[60px] sm:ml-[10%]">
+                {[1, 2, 3, 4 , 5].map((page, pageIndex) => (
                     <div
                         key={pageIndex}
-                        className={`page ${pages[content.id] == 0 ? getPageBackground(index) : "bg-[#e4ebe4]"} bg-cover bg-center border border-gray-800 flex items-center justify-center text-2xl font-bold w-[100%] h-[100%]  ${pages[content.id] > pageIndex && `${pages[content.id] == 1 && "rotate-y-101"} rotate-y-100`
+                        className={`page ${pages[content.id] == 0 ? getPageBackground(index) : "bg-[#e4ebe4]"} ${pages[content.id] == 4 ? "bg-[rgba(0,0,0,0.43)]" : "bg-[#000000]"} bg-cover bg-center border border-gray-800 flex items-center justify-center text-[#fff] text-2xl font-bold w-[100%] h-[100%]  ${pages[content.id] > pageIndex && `${pages[content.id] == 1 && "rotate-y-101"} rotate-y-100`
                             }`}
                         style={{ zIndex: totalPages - pages[content.id] }}
                     >
@@ -192,28 +192,38 @@ const BookFlip = () => {
                         <div className={`absolute ${pages[content.id] > pageIndex ? "hidden-text" : "visible-text"}`}>
                      
                             {pages[content.id] == 1  ?
-                                <div className=" text-gray-800 text-[4px] whitespace-break-spaces " data-aos="fade-top" dir={isRTL ? "rtl" : "ltr"}>
-                                    <h3 className="text-xl font-bold mb-2 pl-3 text-[24px]">
+                                <div className="  text-[4px] whitespace-break-spaces " data-aos="fade-top" dir={isRTL ? "rtl" : "ltr"}>
+                                    <h3 className="text-xl font-bold mb-2 mr-6 pl-3 text-[24px]">
                                         {content?.SiteDefinition?.Title}
                                     </h3>
-                                    <p className='text-[14px] pl-5'>
+                                    <p className='text-[14px] mr-6 pl-5'>
                                         {content?.SiteDefinition?.Description}
                                     </p>
-                                    <h3 className="text-xl font-bold mt-2 pl-3 mb-0 text-[24px]">
+                                    <h3 className="text-xl font-bold mr-6 mt-2 pl-3 mb-0 text-[24px]">
                                         {content?.ImportantPoints?.Title}
                                     </h3>
-                                    <ul className="list-disc ml-6 text-[10px]">
+                                    <ul className="list-disc mr-6 ml-6 text-[10px]">
                                         <li>{content?.ImportantPoints?.ControlPanel}</li>
                                         <li>{content?.ImportantPoints?.ProductManagement}</li>
                                         <li>{content?.ImportantPoints?.OrderManagement}</li>
-                                        <li>{content?.ImportantPoints?.ShoppingCart}</li>
-                                        <li>{content?.ImportantPoints?.Support}</li>
-                                        <li>{content?.ImportantPoints?.OrderForm}</li>
-                                        <li>{content?.ImportantPoints?.DetailsPage}</li>
+                                      
+                                     
+                                     
+                                       
                                     </ul>
                                 </div>
-                                : pages[content.id] === 2 ?
-                                    <div className=" text-gray-800 text-[4px] whitespace-break-spaces " data-aos="fade-top" dir={isRTL ? "rtl" : "ltr"}>
+                                 : pages[content.id] === 2 ?
+                                 <ul className="list-disc mr-3 ml-6 mt-[-200px] text-[10px]" dir={isRTL ? "rtl" : "ltr"}>
+                                 <li>{content?.ImportantPoints?.ShoppingCart}</li>
+                                 <li>{content?.ImportantPoints?.Support}</li>
+                                 <li>{content?.ImportantPoints?.OrderForm}</li>
+                                 <li>{content?.ImportantPoints?.DetailsPage}</li>
+                             </ul>
+   
+
+
+                                : pages[content.id] === 3 ?
+                                    <div className="text-[4px] whitespace-break-spaces " data-aos="fade-top" dir={isRTL ? "rtl" : "ltr"}>
                                         <h3 className="text-xl font-bold p-5 mb-2 text-[24px]">
                                             {content?.ProjectDetails?.Title}
                                         </h3>
@@ -228,26 +238,26 @@ const BookFlip = () => {
                                             <li>{content?.ProjectDetails?.Technologies._5}</li>
                                         </ul>
                                     </div>
-                                    : pages[content.id] === 3 ?
-                                        <section className="grid grid-cols-3 bg-[rgba(24,0,255,0.25)] gap-2 w-[570px] h-[450px] overflow-hidden" data-aos="fade-top" dir={isRTL ? "rtl" : "ltr"}>
-                                            <h1 className='text-[#000] col-span-3 text-center pt-3' >{content?.ProjectDetails?.ProjectImages?.Title1}</h1>
+                                    : pages[content.id] === 4 ?
+                                        <section className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden" data-aos="fade-top" dir={isRTL ? "rtl" : "ltr"}>
+                                            <h1 className=' col-span-3 text-center pt-4' >{content?.ProjectDetails?.ProjectImages?.Title1}</h1>
                                             <div className="relative w-full col-span-2 h-[100%] mt-0 drop-shadow-[0_35px_35px_rgba(24,0,255,0.25)]">
                                                 <img className="w-full h-full" src={getProjectsImage(index)[0]} alt="Nature" />
                                             </div>
                                             <div className="relative w-full h-full">
                                                 <img src={getProjectsImage(index)[1]} alt="City Skyline" className="w-full h-full object-cover" />
                                             </div>
-                                            <div className="relative w-full h-full col-span-2">
+                                            <div className="relative w-full h-full col-span-3">
                                                 <img src={getProjectsImage(index)[2]} alt="Forest Mountain" className="object-cover w-full h-full " />
                                             </div>
-                                            <div className="relative w-full h-full">
-                                                <div className='w-full h-full text-[#000000] text-center mt-10'>
-                                                    <a href={getProjectsLinkes(index)[1]} target='-plank' className='underline decoration-sky-500'>{content?.ProjectDetails?.ProjectImages?.Link1}</a>
-                                                    <br />
-                                                    <br />
-                                                    <a href={getProjectsLinkes(index)[0]} target='-plank' className='underline decoration-sky-500'>{content?.ProjectDetails?.ProjectImages?.Link2}</a>
+                                            
+                                                <div className='w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3'>
+                                                    <a href={getProjectsLinkes(index)[1]} target='-plank' className='bg-[#26458a] p-3 mx-3 rounded-lg  hover:bg-[#2669f8] rounded-tl-[4px] rounded-tr-[50px] rounded-bl-[60px] rounded-br-[9px]' >{content?.ProjectDetails?.ProjectImages?.Link1}</a>
+                                                
+                                                    
+                                                    <a href={getProjectsLinkes(index)[0]} target='-plank' className='bg-[#26458a] p-3 rounded-tl-[50px] rounded-tr-[4px] rounded-bl-[9px] rounded-br-[60px]  hover:bg-[#2669f8]'>{content?.ProjectDetails?.ProjectImages?.Link2}</a>
                                                 </div>
-                                            </div>
+                                          
                                         </section>
                                         :
                                         <>
