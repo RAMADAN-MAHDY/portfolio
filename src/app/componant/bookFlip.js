@@ -183,7 +183,7 @@ const BookFlip = () => {
                 {[1, 2, 3, 4 , 5].map((page, pageIndex) => (
                     <div
                         key={pageIndex}
-                        className={`page ${pages[content.id] == 0 ? getPageBackground(index) : "bg-[#e4ebe4]"} ${pages[content.id] == 4 ? "bg-[rgba(0,0,0,0.43)]" : "bg-[#000000]"} bg-cover bg-center border border-gray-800 flex items-center justify-center text-[#fff] text-2xl font-bold w-[100%] h-[100%]  ${pages[content.id] > pageIndex && `${pages[content.id] == 1 && "rotate-y-101"} rotate-y-100`
+                        className={`page ${pages[content.id] == 0 ? getPageBackground(index) : "bg-[#000000]"} ${pages[content.id] == 4 ? "bg-[rgba(0,0,0,0.43)]" : "bg-[#000000]"} bg-cover bg-center border border-gray-800 flex items-center justify-center text-[#fff] text-2xl font-bold w-[100%] h-[100%]  ${pages[content.id] > pageIndex && `${pages[content.id] == 1 && "rotate-y-101"} rotate-y-100`
                             }`}
                         style={{ zIndex: totalPages - pages[content.id] }}
                     >
