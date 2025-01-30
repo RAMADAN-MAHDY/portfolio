@@ -50,7 +50,7 @@ const AboutMyself = () => {
         localStorage.setItem("language", "en");
       }
     }
-  }, []);
+  }, [translations]);
 
   // استخدام useEffect لمراقبة تغييرات حجم الشاشة
   useEffect(() => {
