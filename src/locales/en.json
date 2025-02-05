@@ -14,6 +14,7 @@
     "Footer": {
             "Copyright": ". All rights reserved."
           },
+
     "SkillsSection" : {
         "Skills" : " My Skills",
         "Frontend" : "Frontend Development",
@@ -48,8 +49,6 @@
           "DetailsPage": "Details Page: Display product details such as name, images, price, commission, shipping, and description."
         
       },
-      
-
         "ProjectDetails": {
           "Title": "Technologies Used",
           "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.",
@@ -65,9 +64,34 @@
           "Link1": "Visit the site",
           "Link2": "Source code on GitHub"  
         }
-          }
-    
-      
-      
-      
-}
+          },
+
+          "SiteDefinition_2": {
+            "Title": "Site Definition",
+            "Description": "It is a story management system that tracks the status of stories through various production stages such as cutting, back, chest, assembly, storage, washing, packing, and final storage."
+          },
+
+
+          "ImportantPoints_2": {
+            "Title": "Important Points",
+            "AdminPage": "Allows the admin to add the cuts (work) to the site and monitor their status. The admin can enter details such as work order, model number, quantity, name, status, received settings, notes, last update time, and supervisor name.",
+            "SupervisorPage": "Allows supervisors to update the status of the cuts and add notes. The status includes stages such as cutting, back, front, assembly, storage, laundry, packing, and final storage. The supervisor's name and update time are recorded.",
+            "SearchFunctionality": "Allows users to search for cuts by name, quantity, work order, or model number."
+          },
+          "Project_2_Details": { 
+            "Title": "Technologies Used", 
+            "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.", 
+          "Technologies": {
+             "_1": "Next.js for building the frontend.",
+             "_2": "Tailwind CSS for styling and design.", 
+             "_3": "Redux Toolkit for state management.", 
+             "_4": "Express for providing backend APIs.", 
+             "_5": "MongoDB for data storage."
+             }, 
+             "ProjectImages": { 
+                "Title1": "Some pictures from the control panel (admin)", 
+                "Link1": "Visit the site", 
+                "Link2": "Source code on GitHub" 
+            }      
+             }
+               }

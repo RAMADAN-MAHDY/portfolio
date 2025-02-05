@@ -35,9 +35,9 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-4 text-center">
       <div className="mb-4 flex flex-wrap justify-center">
-        <a href="/en" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Home}</a>
-        <a href="/en/projects" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Projects}</a>
-        <a href="/en/ContactMe" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Contact}</a>
+        <a href="/" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Home}</a>
+        <a href="/projects" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Projects}</a>
+        <a href="/ContactMe" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Contact}</a>
         {/* <a href="#press" className="mx-2 hover:text-gray-400"></a> */}
       </div>
       <div className="mb-4 flex justify-center">

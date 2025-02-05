@@ -73,6 +73,8 @@ const BookFlip = () => {
         switch (index) {
             case 0:
                 return "bg-[url('https://i.postimg.cc/FzWZxWJy/Screenshot-2024-11-01-210001.png')]";
+                case 1:
+                return "bg-[url('https://i.postimg.cc/wvT730Ct/Screenshot-2025-02-05-201211.png')]";
             default:
                 return "bg-[#222322]";
         }
@@ -97,6 +99,11 @@ const BookFlip = () => {
                     'https://github.com/RAMADAN-MAHDY/affiliate-app',
                      'https://elmahdy.vercel.app/',
                         ];
+            case 1:
+                return [
+                    'https://github.com/RAMADAN-MAHDY/affiliate-app',
+                      'https://elmahdy.vercel.app/',
+                                    ];
             default:
                 return "bg-[#222322]";
         }
@@ -135,40 +142,39 @@ const BookFlip = () => {
                     Link2: translations?.ProjectDetails?.ProjectImages?.Link2 || "Default Link2"
                 }
             }
-        }
-        // {
-        //     id: "div2",
-        //     SiteDefinition: {
-        //         Title: "translations.SiteDefinition.Title')",
-        //         Description: translations.SiteDefinition.Description
-        //     },
-        //     ImportantPoints: {
-        //         Title: "translations.ImportantPoints.Title')",
-        //         ControlPanel: translations.ImportantPoints.ControlPanel,
-        //         ProductManagement: translations.ImportantPoints.ProductManagement,
-        //         OrderManagement: translations.ImportantPoints.OrderManagement,
-        //         ShoppingCart: translations.ImportantPoints.ShoppingCart,
-        //         Support: translations.ImportantPoints.Support,
-        //         OrderForm: translations.ImportantPoints.OrderForm,
-        //         DetailsPage: translations.ImportantPoints.DetailsPage
-        //     },
-        //     ProjectDetails: {
-        //         Title: "translations.ProjectDetails.Title')",
-        //         Description: translations.ProjectDetails.Description,
-        //         Technologies: {
-        //             _1: translations.ProjectDetails.Technologies._1,
-        //             _2: translations.ProjectDetails.Technologies._2,
-        //             _3: translations.ProjectDetails.Technologies._3,
-        //             _4: translations.ProjectDetails.Technologies._4,
-        //             _5: translations.ProjectDetails.Technologies._5
-        //         },
-        //         ProjectImages: {
-        //             Title1: "translations.ProjectDetails.ProjectImages.Title1')",
-        //             Link1: translations.ProjectDetails.ProjectImages.Link1,
-        //             Link2: translations.ProjectDetails.ProjectImages.Link2
-        //         }
-        //     }
-        // }
+        },
+        {
+            id: "div2",
+            SiteDefinition: {
+              Title: translations?.SiteDefinition_2?.Title || "Default Title",
+              Description: translations?.SiteDefinition_2?.Description || "Default Description",
+            },
+            ImportantPoints: {
+              Title: translations?.ImportantPoints_2?.Title || "Default Title",
+              ControlPanel: translations?.ImportantPoints_2?.AdminPage || "Default Control Panel",
+              ProductManagement: translations?.ImportantPoints_2?.SupervisorPage || "Default Product Management",
+              OrderManagement: translations?.ImportantPoints_2?.SearchFunctionality || "Default Order Management",
+            },
+            ProjectDetails: {
+              Title: translations?.Project_2_Details?.Title || "Default Title",
+              Description: translations?.Project_2_Details?.Description || "Default Description",
+              Technologies: {
+                      _1: translations?.Project_2_Details?.Technologies._1,
+                      _2: translations?.Project_2_Details?.Technologies._2,
+                      _3: translations?.Project_2_Details?.Technologies._3,
+                      _4: translations?.Project_2_Details?.Technologies._4,
+                      _5: translations?.Project_2_Details?.Technologies._5
+                  },
+                  ProjectImages: {
+                      Title1: translations?.Project_2_Details?.ProjectImages?.Title1  || "Default Title",
+                      Link1: translations?.Project_2_Details?.ProjectImages?.Link1 || "Default Link1",
+                      Link2: translations?.Project_2_Details?.ProjectImages?.Link2 || "Default Link2"
+                  }
+              }
+          }
+
+
+
     ];
 
     if (!translations) {
@@ -205,19 +211,23 @@ const BookFlip = () => {
                                     <ul className="list-disc mr-6 ml-6 text-[10px]">
                                         <li>{content?.ImportantPoints?.ControlPanel}</li>
                                         <li>{content?.ImportantPoints?.ProductManagement}</li>
-                                        <li>{content?.ImportantPoints?.OrderManagement}</li>
-                                      
-                                     
-                                     
-                                       
+                                        
+                                       {content.id == "div1" && <li> {content?.ImportantPoints?.OrderManagement} </li> }
                                     </ul>
                                 </div>
-                                 : pages[content.id] === 2 ?
+                                 : pages[content.id] === 2?
+
                                  <ul className="list-disc mr-3 ml-6 mt-[-200px] text-[10px]" dir={isRTL ? "rtl" : "ltr"}>
+                                 {content.id == "div2" &&  <li> { content?.ImportantPoints?.OrderManagement} </li> }
+                                 {content.id == "div1" &&
+                                 <ul dir={isRTL ? "rtl" : "ltr"}>
                                  <li>{content?.ImportantPoints?.ShoppingCart}</li>
                                  <li>{content?.ImportantPoints?.Support}</li>
                                  <li>{content?.ImportantPoints?.OrderForm}</li>
                                  <li>{content?.ImportantPoints?.DetailsPage}</li>
+                                 </ul>
+
+                                 }
                              </ul>
    
 
@@ -240,23 +250,52 @@ const BookFlip = () => {
                                     </div>
                                     : pages[content.id] === 4 ?
                                         <section className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden" data-aos="fade-top" dir={isRTL ? "rtl" : "ltr"}>
-                                            <h1 className=' col-span-3 text-center pt-4' >{content?.ProjectDetails?.ProjectImages?.Title1}</h1>
-                                            <div className="relative w-full col-span-2 h-[100%] mt-0 drop-shadow-[0_35px_35px_rgba(24,0,255,0.25)]">
-                                                <img className="w-full h-full" src={getProjectsImage(index)[0]} alt="Nature" />
-                                            </div>
-                                            <div className="relative w-full h-full">
-                                                <img src={getProjectsImage(index)[1]} alt="City Skyline" className="w-full h-full object-cover" />
-                                            </div>
-                                            <div className="relative w-full h-full col-span-3">
-                                                <img src={getProjectsImage(index)[2]} alt="Forest Mountain" className="object-cover w-full h-full " />
+                                            <h1 className=' col-span-3 text-center pt-4' >{content.id == "div1" ? content?.ProjectDetails?.ProjectImages?.Title1 : isRTL ? "فديو سريع عن الموقع " : "Quick video about the site"}</h1>
+                                         {content.id == "div1" &&
+                                         <div className="relative w-full col-span-2 h-[100%] mt-0 drop-shadow-[0_35px_35px_rgba(24,0,255,0.25)]">
+                                         <img className="w-full h-full" src={getProjectsImage(index)[0]} alt="Nature" />
+                                      </div>
+                                         }
+                                         {content.id == "div1" &&
+                                         <div className="relative w-full h-full">
+                                         <img src={getProjectsImage(index)[1]} alt="City Skyline" className="w-full h-full object-cover" />
+                                     </div>
+                                        }
+                                        {content.id == "div1" &&
+                                         <div className="relative w-full h-full col-span-3">
+                                         <img src={getProjectsImage(index)[2]} alt="Forest Mountain" className="object-cover w-full h-full " />
+                                     </div>
+                                        }
+                                            
+                                            
+                                            {content.id == "div2" &&  
+                                            <div className="relative w-full h-full col-span-3 row-span-3">
+                                                  <script src="https://fast.wistia.com/player.js" async></script>
+                                                  <script src="https://fast.wistia.com/embed/59je9q3snh.js" async type="module"></script>
+                                                  <style>
+                                                    {`
+                                                      wistia-player[media-id='59je9q3snh']:not(:defined) {
+                                                        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/59je9q3snh/swatch');
+                                                        display: block;
+                                                        filter: blur(5px);
+                                                        padding-top: 56.25%;
+                                                      }
+                                                    `}
+                                                  </style>
+                                                  <wistia-player media-id="59je9q3snh" aspect="1.7777777777777777"></wistia-player>
                                             </div>
                                             
+                                            
+                                            }
+                                             {content.id == "div1" &&  
                                                 <div className='w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3'>
                                                     <a href={getProjectsLinkes(index)[1]} target='-plank' className='bg-[#26458a] p-3 mx-3 rounded-lg  hover:bg-[#2669f8] rounded-tl-[4px] rounded-tr-[50px] rounded-bl-[60px] rounded-br-[9px]' >{content?.ProjectDetails?.ProjectImages?.Link1}</a>
                                                 
                                                     
                                                     <a href={getProjectsLinkes(index)[0]} target='-plank' className='bg-[#26458a] p-3 rounded-tl-[50px] rounded-tr-[4px] rounded-bl-[9px] rounded-br-[60px]  hover:bg-[#2669f8]'>{content?.ProjectDetails?.ProjectImages?.Link2}</a>
                                                 </div>
+                                             
+                                             }
                                           
                                         </section>
                                         :
