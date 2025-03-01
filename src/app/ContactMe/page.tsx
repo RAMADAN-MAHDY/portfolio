@@ -18,7 +18,7 @@ const ContactMee = () => {
       try {
         const registration = await navigator.serviceWorker.ready;
         const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
-  
+        
         if (!vapidKey) {
           throw new Error("❌ VAPID key is missing!");
         }
@@ -31,7 +31,7 @@ const ContactMee = () => {
         console.log("🔔 Push Subscription:", JSON.stringify(subscription));
         console.log("📩 Push Subscription Payload:", JSON.stringify({ UserId , subscription }));
 
-        const res = await fetch("http://localhost:4000/subscription", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/subscription`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ UserId , subscription }),
@@ -86,11 +86,11 @@ return new Uint8Array([...rawData].map((char) => char.charCodeAt(0)));
     <>
           {/* ✅ زر طلب الإذن */}
           {UserId && 
-            <div className="flex justify-center mt-[25%]">
+            <div className="flex justify-center mt-[140px]">
             {!isSubscribed ? (
               <button
                 onClick={requestNotificationPermission}
-                className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
+                className=" bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
               >
                 🔔 تفعيل الإشعارات
               </button>
@@ -102,7 +102,7 @@ return new Uint8Array([...rawData].map((char) => char.charCodeAt(0)));
         
       {!showChat ? <ContactMe /> :
       <>
-    <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[15%] m-3">{translations?.ChatUser?.Chat_User}</h1>
+    <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[50px] m-3">{translations?.ChatUser?.Chat_User}</h1>
 
        <Chat />
       

@@ -1,21 +1,13 @@
 'use client'
 import { useState,useEffect } from 'react'
-// import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
-import { useDispatch, useSelector } from 'react-redux';
-// import Pusher from "pusher-js";
+import { useSelector } from 'react-redux';
 
-// import {loadTranslations} from '../../utils/loadTranslations';
 
 export default function ContactMe() {
-    // const dispatch = useDispatch();
-    // const NEXT_PUBLIC_PUSHER_KEY = process.env.NEXT_PUBLIC_PUSHER_KEY;
-    // const adminId = process.env.NEXT_PUBLIC_adminId;
 
     const { translations } = useSelector((state) => state.language);
     const [getReq, setGetReq] = useState(false);
-    // const [currentConversation, setCurrentConversation] = useState(null);
-//  console.log(currentConversation);
-//   const [agreed, setAgreed] = useState(false)
+
   const [data , setData] = useState({
     full_name : "",
     email : "" ,
@@ -33,7 +25,7 @@ const requestOptions = {
     body: JSON.stringify(data)
 };
 try {
-    fetch('http://localhost:4000/contact', requestOptions)
+    fetch(`${process.env.NEXT_PUBLIC_URL}/contact`, requestOptions)
     .then(response => response.json())
     .then(data => {
         setGetReq(data?.message === "تم إرسال الرسالة بنجاح")
@@ -44,7 +36,6 @@ try {
                 messageText : ""
               }) ;
             localStorage.setItem("Success", data.Success);
-            // setCurrentConversation(data.conversationId)
         }
     )
           
@@ -55,34 +46,9 @@ try {
 
 
 } 
- // ✅ إعداد Pusher للاستقبال الفوري للرسائل
-//   useEffect(() => {
-//     if (!currentConversation) return;
-  
-//     // ✅ تأكد من استخدام مفتاح Pusher الصحيح
-//     const pusher = new Pusher(NEXT_PUBLIC_PUSHER_KEY, {
-//       cluster: "eu",
-//       forceTLS: true // 🔹 تأكد من استخدام TLS لتشفير الاتصال
-//     });
-  
-//     const channel = pusher.subscribe(`chat-${currentConversation}`);
-//     // ✅ استقبال الرسائل الجديدة
-//     channel.bind("new-message", (newMessage) => {
-//       setMessages((prev) => [...prev, newMessage]);
-//       showNotification(newMessage)
-//     });
-  
-//     return () => {      
-//       channel.unbind_all(); 
-//       pusher.unsubscribe(`chat-${currentConversation}`);
-//     };
-//   }, [currentConversation]);
-
-
-    
 
 if (!translations) {
-    return <div>Loading...</div>; // يمكنك عرض شاشة تحميل أو رسالة مؤقتة هنا
+    return <div>Loading...</div>; 
   }
 
 

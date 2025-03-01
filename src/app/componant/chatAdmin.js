@@ -14,21 +14,6 @@ const ChatAdmin = () => {
   const { translations } = useSelector((state) => state.language);
   const { participants } = useSelector((state) => state.chat);
 
-//   console.log("==============participants==============");
-// console.log([...participants.values()]);
-// console.log(participants);
-
-// console.log(participants.size > 0 && participants.has("67a80751df95ccf54851effe"));
-// console.log(participants.size > 0 && participants.get("67a80751df95ccf54851effe"));
-// console.log(participants.size > 0 && participants.delete("67a80751df95ccf54851effe"));
-// console.log(participants.get("67a80751df95ccf54851effe"));
-//   const [Getparticipants, setparticipants] = useState([...participants.values()]);
-
-//   console.log("---------------------Getparticipants-----------------");
-//   console.log(Getparticipants);
-
-
-
   const [I_am_Admin, setI_am_Admin] = useState(true);
   const [userName, setUserName] = useState("");
   const [showMessageToAdmin, setshowMessageToAdmin] = useState(null);
@@ -51,7 +36,6 @@ const ChatAdmin = () => {
       }
       
       const data = await res.json();
-    //    setparticipants(data.conversations);
        dispatch(setParticipants(data.conversations))
     } catch (error) {
       console.error("Error fetching conversations:", error);
@@ -67,7 +51,7 @@ const showNotification = (message) => {
 
   const fetchMessages = async (conversations_ID) => {
     try {
-      const res = await fetch(`http://localhost:4000/getMessageAdmin/${conversations_ID}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/getMessageAdmin/${conversations_ID}`, {
         method: "GET",
       });
       if (!res.ok) {
@@ -87,7 +71,7 @@ const showNotification = (message) => {
     setshowMessageToAdmin(conversationsID);
     fetchMessages(conversationsID);
     setUserName(userName);
-    // setSendrId(null);
+
 
   };
 
@@ -99,7 +83,7 @@ const showNotification = (message) => {
 
 
   useEffect(() => {
-    fetch_ALL_Conversations(`http://localhost:4000/conversations/${adminId}`);
+    fetch_ALL_Conversations(`${process.env.NEXT_PUBLIC_URL}/conversations/${adminId}`);
 
   }, [currentConversation]);
 

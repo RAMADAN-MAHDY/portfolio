@@ -23,6 +23,6 @@ self.addEventListener("notificationclick", function (event) {
     if (event.action === "open_url" && event.notification.data.url) {
         event.waitUntil(clients.openWindow(event.notification.data.url));
     } else {
-        event.waitUntil(clients.openWindow("https://ramadan-three.vercel.app/"));
+        event.waitUntil(clients.openWindow("https://ramadan-three.vercel.app/ContactMe"));
     }
 });

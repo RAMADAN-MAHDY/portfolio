@@ -76,7 +76,7 @@ if(message.sender !== UserId){
 
   useEffect(() => {
 
-    fetchConversations(`http://localhost:4000/message`);
+    fetchConversations(`${process.env.NEXT_PUBLIC_URL}/message`);
   }, []);
 
 
