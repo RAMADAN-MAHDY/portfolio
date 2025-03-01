@@ -140,7 +140,7 @@ const formatMessageDate = (dateString) => {
 
     if (!messageText.trim()) return;
     try {
-        const res = await fetch( "http://localhost:4000/chat" , {
+        const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/chat` , {
             method: "POST",
             credentials: "include" ,
             headers: { "Content-Type": "application/json" },
