@@ -2,7 +2,7 @@
 import ContactMe from '@/app/componant/ContactMeForm';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Chat from '@/app/componant/Chat.js';
+import Chat from '@/app/componant/chat';
 
 const ContactMee = () => {
 
