@@ -62,7 +62,7 @@ const showAdminChatWithUser = ({  currentConversation ,userId , GetMessages}) =>
   const sendMessage = async () => {
     if (!messageText.trim()) return;
     try {
-        const res = await fetch( "http://localhost:4000/admin-reply" , {
+        const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/admin-reply` , {
             method: "POST",
             credentials: "include" ,
             headers: { "Content-Type": "application/json" },
