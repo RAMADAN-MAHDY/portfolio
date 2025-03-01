@@ -2,8 +2,7 @@
 import ContactMe from '@/app/componant/ContactMeForm';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
-import Chat from '@/app/componant/Chat';
+import Chat from '@/app/componant/Chat.js';
 
 const ContactMee = () => {
 
@@ -103,7 +102,6 @@ return new Uint8Array([...rawData].map((char) => char.charCodeAt(0)));
       {!showChat ? <ContactMe /> :
       <>
     <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[50px] m-3">{translations?.ChatUser?.Chat_User}</h1>
-
        <Chat />
       
 </>
