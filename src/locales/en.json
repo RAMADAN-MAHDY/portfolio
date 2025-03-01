@@ -10,7 +10,12 @@
         "Text": "- Hello, I'm Ramadan./-  Web Developer./-  Full Stack (MERN)./,- Web Developer, Full Stack (MERN)./"
           
         },
-
+    "ChatAdmin":{
+       "Chat_Admin" : "Chat Admin"
+    },
+    "ChatUser":{
+        "Chat_User" : "Chat"
+     },
     "Footer": {
             "Copyright": ". All rights reserved."
           },
@@ -26,11 +31,13 @@
          "Contact" : "Contact me",
          "FullName" : "full name",
          "Email" : "Email",
+         "phone" : "Phone",
          "Message" : "Message",
-         "Send" : "send"
+         "Send" : "send",
+         "follow" : "Follow Chat"
         },
     "Projects" : {
-        "Projects" : "My Projects",
+        "Projects" : "Some works",
         "FlipNext" : "Flip Next",
         "FlipPrev" :"Flip Prev"
     },

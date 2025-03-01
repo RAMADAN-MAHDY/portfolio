@@ -1,10 +1,10 @@
-import type { Metadata } from "next"; 
-import { Inter } from "next/font/google"; 
-import "./globals.css"; 
-import Footer from "@/app/componant/footer"; 
-import Navbar from "@/app/componant/navbar"; 
-import ClientProvider from '../lib/ClientProvider';
 
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Footer from "@/app/componant/footer";
+import Navbar from "@/app/componant/navbar";
+import ClientProvider from '../lib/ClientProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,19 +18,24 @@ interface LocaleLayoutProps {
   children: React.ReactNode;
 }
 
-async function RootLayout({ children }: LocaleLayoutProps) {
+function RootLayout({ children }: LocaleLayoutProps) {
+  
 
-  return (
-    <html>
-      <body className={inter.className}>
-      <ClientProvider>
-        <Navbar />
-        {children}
-        <Footer />
-        </ClientProvider>
-      </body>
-    </html>
-  );
+    return (
+        <html>
+            <head>
+                <meta name="google" content="notranslate"/>
+                <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"/>
+            </head>
+            <body className={inter.className}>
+                <ClientProvider>
+                    <Navbar />
+                    {children}
+                    <Footer />
+                </ClientProvider>
+            </body>
+        </html>
+    );
 }
 
 export default RootLayout;

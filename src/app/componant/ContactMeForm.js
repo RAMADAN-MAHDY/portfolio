@@ -1,40 +1,85 @@
 'use client'
 import { useState,useEffect } from 'react'
-import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
+// import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import {loadTranslations} from '../../utils/loadTranslations';
+// import Pusher from "pusher-js";
+
+// import {loadTranslations} from '../../utils/loadTranslations';
 
 export default function ContactMe() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
+    // const NEXT_PUBLIC_PUSHER_KEY = process.env.NEXT_PUBLIC_PUSHER_KEY;
+    // const adminId = process.env.NEXT_PUBLIC_adminId;
 
     const { translations } = useSelector((state) => state.language);
- 
+    const [getReq, setGetReq] = useState(false);
+    // const [currentConversation, setCurrentConversation] = useState(null);
+//  console.log(currentConversation);
 //   const [agreed, setAgreed] = useState(false)
   const [data , setData] = useState({
-    fullName : "",
+    full_name : "",
     email : "" ,
-    message : ""
+    phone : "",
+    messageText : ""
   })
 
 const handleSupmet = (eo)=>{
 eo.preventDefault();
-// console.log("click");
-// console.log(data);
+
+const requestOptions = {
+    method: 'POST',
+    credentials: "include",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+};
+try {
+    fetch('http://localhost:4000/contact', requestOptions)
+    .then(response => response.json())
+    .then(data => {
+        setGetReq(data?.message === "تم إرسال الرسالة بنجاح")
+            setData({
+                full_name : "",
+                email : "" ,
+                phone : "",
+                messageText : ""
+              }) ;
+            localStorage.setItem("Success", data.Success);
+            // setCurrentConversation(data.conversationId)
+        }
+    )
+          
+} catch (error) {
+    console.error('There was an error!', error);
+}
+
+
+
 } 
+ // ✅ إعداد Pusher للاستقبال الفوري للرسائل
+//   useEffect(() => {
+//     if (!currentConversation) return;
+  
+//     // ✅ تأكد من استخدام مفتاح Pusher الصحيح
+//     const pusher = new Pusher(NEXT_PUBLIC_PUSHER_KEY, {
+//       cluster: "eu",
+//       forceTLS: true // 🔹 تأكد من استخدام TLS لتشفير الاتصال
+//     });
+  
+//     const channel = pusher.subscribe(`chat-${currentConversation}`);
+//     // ✅ استقبال الرسائل الجديدة
+//     channel.bind("new-message", (newMessage) => {
+//       setMessages((prev) => [...prev, newMessage]);
+//       showNotification(newMessage)
+//     });
+  
+//     return () => {      
+//       channel.unbind_all(); 
+//       pusher.unsubscribe(`chat-${currentConversation}`);
+//     };
+//   }, [currentConversation]);
 
 
-    useEffect(() => {
-        const fetchTranslations = async () => {
-            const getLanguageFromLocal = localStorage.getItem('language') || localStorage.setItem('language', 'en');
-            const newLanguage = getLanguageFromLocal === 'en' ? 'en' : 'ar';
-            const translations = await loadTranslations(newLanguage);
-
-            dispatch(setLanguage(newLanguage));
-            dispatch(setTranslations(translations));
-        };
-        fetchTranslations();
-    }, []); // يتم تحميل الترجمات فقط مرة واحدة عند تحميل المكون.
-
+    
 
 if (!translations) {
     return <div>Loading...</div>; // يمكنك عرض شاشة تحميل أو رسالة مؤقتة هنا
@@ -42,7 +87,7 @@ if (!translations) {
 
 
   return (
-    <div className="isolate bg-white px-6 py-24 mt-[150px] sm:py-32 lg:px-8 text-[#fff]">
+    <div className="isolate bg-white px-6 py-24 mt-[150px] sm:py-32 lg:px-8 text-[#fff] ">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
@@ -70,8 +115,9 @@ if (!translations) {
                 id="full-name"
                 name="-full-name"
                 type="text"
+                value={data.full_name}
                 autoComplete="given-name"
-                onChange={(eo)=> setData({ ...data ,fullName : eo.target.value})}
+                onChange={(eo)=> setData({ ...data ,full_name : eo.target.value})}
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
               />
             </div>
@@ -88,8 +134,29 @@ if (!translations) {
                 id="email"
                 name="email"
                 type="email"
+                value={data.email}
                 autoComplete="email"
                 onChange={(eo)=> setData({ ...data ,email : eo.target.value})}
+
+                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+              />
+            </div>
+          </div>
+          
+
+          <div className="sm:col-span-2">
+            <label htmlFor="phone" className="block text-sm/6 font-semibold text-gray-900">
+            {translations?.ContactMy?.phone}
+            </label>
+            <div className="mt-2.5">
+              <input
+                required
+                id="phone"
+                name="phone"
+                type="phone"
+                value={data.phone}
+                autoComplete="phone"
+                onChange={(eo)=> setData({ ...data ,phone : eo.target.value})}
 
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
               />
@@ -105,20 +172,26 @@ if (!translations) {
                 required
                 id="message"
                 name="message"
+                value={data.messageText}
                 rows={4}
-                onChange={(eo)=> setData({ ...data ,message : eo.target.value})}
+                onChange={(eo)=> setData({ ...data ,messageText : eo.target.value})}
 
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-                defaultValue={''}
               />
             </div>
           </div>
           
         </div>
         <div className="mt-10">
-          <button
+         {getReq && <button
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            {translations?.ContactMy?.follow}
+          </button>}
+          <button
+            type="submit"
+            className="block w-full mt-3 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             {translations?.ContactMy?.Send}
           </button>
