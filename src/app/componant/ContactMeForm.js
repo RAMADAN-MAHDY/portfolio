@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux';
 
 
-export default function ContactMe() {
+export default function ContactMe({getStatusfromContactMe}) {
 
     const { translations } = useSelector((state) => state.language);
     const [getReq, setGetReq] = useState(false);
@@ -36,6 +36,7 @@ try {
                 messageText : ""
               }) ;
             localStorage.setItem("Success", data.Success);
+            getStatusfromContactMe(data.Success);
         }
     )
           
@@ -149,12 +150,12 @@ if (!translations) {
           
         </div>
         <div className="mt-10">
-         {getReq && <button
+         {/* {getReq && <button
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             {translations?.ContactMy?.follow}
-          </button>}
+          </button>} */}
           <button
             type="submit"
             className="block w-full mt-3 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

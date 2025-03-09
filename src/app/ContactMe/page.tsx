@@ -6,7 +6,7 @@ import Chat from '@/app/componant/chat';
 
 const ContactMee = () => {
 
-
+    
     const { UserId } = useSelector((state: { chat: { UserId: string } }) => state.chat);
     const { translations } = useSelector((state: { language: { translations: any } }) => state.language);
   const [showChat, setShowChat] = useState(false);
@@ -72,6 +72,11 @@ return new Uint8Array([...rawData].map((char) => char.charCodeAt(0)));
   };
 
 
+const getStatusfromContactMe = (state : boolean) => {
+  setShowChat(state);        
+
+}
+
 
 
   useEffect(() => {
@@ -99,7 +104,7 @@ return new Uint8Array([...rawData].map((char) => char.charCodeAt(0)));
           </div>
           }
         
-      {!showChat ? <ContactMe /> :
+      {!showChat ? <ContactMe getStatusfromContactMe={getStatusfromContactMe} /> :
       <>
     <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[50px] m-3">{translations?.ChatUser?.Chat_User}</h1>
        <Chat />
