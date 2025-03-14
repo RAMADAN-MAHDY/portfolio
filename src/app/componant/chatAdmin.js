@@ -42,13 +42,26 @@ const ChatAdmin = () => {
     }
   };
 // ارسال شعار بان في رساله جديد
-const showNotification = (message) => {
-    if (document.hidden && Notification.permission === "granted") {
-      new Notification("New Message!", { body: message.text });
-    }
-  };
+// const showNotification = (message) => {
+//     if (document.hidden && Notification.permission === "granted") {
+//       new Notification("New Message!", { body: message.text });
+//     }
+//   };
   
-
+  const showNotification = (message) => {
+    if(message.sender === userId){
+        if (Notification.permission === "granted") {
+          new Notification("New Message from Ramadan !", { body: message.text });
+        } else if (Notification.permission !== "denied") {
+          Notification.requestPermission().then((permission) => {
+            if (permission === "granted") {
+              new Notification("New Message from Ramadan !", { body: message.text });
+            }
+          });
+        }
+    }
+    
+      };
   const fetchMessages = async (conversations_ID) => {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/getMessageAdmin/${conversations_ID}`, {

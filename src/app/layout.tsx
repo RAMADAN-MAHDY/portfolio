@@ -25,7 +25,7 @@ function RootLayout({ children }: LocaleLayoutProps) {
         <html>
             <head>
                 <meta name="google" content="notranslate"/>
-                <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"/>
+                {/* <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"/> */}
             </head>
             <body className={inter.className}>
                 <ClientProvider>
