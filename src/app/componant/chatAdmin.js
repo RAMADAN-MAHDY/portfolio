@@ -51,11 +51,11 @@ const ChatAdmin = () => {
   const showNotification = (message) => {
     if(message.sender === userId){
         if (Notification.permission === "granted") {
-          new Notification("New Message from Ramadan !", { body: message.text });
+          new Notification("New Message from user !", { body: message.text });
         } else if (Notification.permission !== "denied") {
           Notification.requestPermission().then((permission) => {
             if (permission === "granted") {
-              new Notification("New Message from Ramadan !", { body: message.text });
+              new Notification("New Message from user !", { body: message.text });
             }
           });
         }
@@ -106,17 +106,26 @@ const ChatAdmin = () => {
     const channel = pusher.subscribe(`admin-chat-${adminId}`);
   
     const handleNewMessage = (newMessage) => {
-        console.log(newMessage)
+        // console.log(newMessage)
       if (currentConversation === newMessage.conversationId) {
+
+          setMessages((prev) => [...prev, newMessage]);
+
+            setNewMessages(newMessage);
+            // showNotification(newMessage);
+            updateConversation(newMessage);
+            // setLastMessages(newMessage)
+          };
+          setLastMessages(newMessage)
+          setNewMessages(newMessage);
+          setSendrId(newMessage.conversationId);
+          showNotification(newMessage);
+          updateConversation(newMessage);
+
     }
-    setMessages((prev) => [...prev, newMessage]);
-      setSendrId(newMessage.conversationId);
-      setNewMessages(newMessage);
-      showNotification(newMessage);
-      updateConversation(newMessage);
-      setLastMessages(newMessage)
-    };
+
   
+
     channel.bind("new-message", handleNewMessage);
   
     return () => {

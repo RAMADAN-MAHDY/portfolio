@@ -75,7 +75,6 @@ if(message.sender !== UserId){
 
 
   useEffect(() => {
-
     fetchConversations(`${process.env.NEXT_PUBLIC_URL}/message`);
   }, []);
 
@@ -153,7 +152,7 @@ const formatMessageDate = (dateString) => {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
         
-        const data = await res.json();
+        // const data = await res.json();
         // console.log(data);
         setLoading(false);
         setMessageText(""); 
