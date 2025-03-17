@@ -15,6 +15,14 @@ const config: Config = {
         'in-out': 'ease-in-out'
     },
       keyframes: {
+        orbit: {
+            '0%': { transform: 'rotate(0deg) translateX(30px)' },
+            '25%': { transform: 'rotate(90deg) translateX(30px)' },
+            '50%': { transform: 'rotate(180deg) translateX(30px)' },
+            '75%': { transform: 'rotate(270deg) translateX(30px)' },
+            '100%': { transform: 'rotate(360deg) translateX(30px)' },
+          }
+        ,
         slideIn: {
           '0%': { transform: 'translateX(-100%)', borderRadius: '500px' },  
           '20%': { borderRadius: '400px' },
@@ -46,6 +54,7 @@ const config: Config = {
         float: 'float 3s ease-in-out infinite',
         'slide-in': 'slideIn 0.7s ease-in-out forwards',
         'slide-out': 'slideOut 0.9s ease-in-out forwards',
+        'spin-custom': 'orbit 1.5s linear infinite',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

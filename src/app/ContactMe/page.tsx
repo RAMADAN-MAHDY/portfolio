@@ -89,7 +89,7 @@ const getStatusfromContactMe = (state : boolean) => {
   return (
     <>
           {/* ✅ زر طلب الإذن */}
-          {UserId && 
+          {/* {UserId && 
             <div className="flex justify-center mt-[140px]">
             {!isSubscribed ? (
               <button
@@ -102,7 +102,7 @@ const getStatusfromContactMe = (state : boolean) => {
               <p className="text-green-500">✅ الإشعارات مفعلة</p>
             )}
           </div>
-          }
+          } */}
         
       {!showChat ? <ContactMe getStatusfromContactMe={getStatusfromContactMe} /> :
       <>

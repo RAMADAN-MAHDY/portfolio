@@ -2,7 +2,7 @@
 import { useState, useEffect , useRef } from "react";
 import { useSelector ,useDispatch } from 'react-redux';
 import {setUserId} from '../../lib/slices/chatSlice'
-
+import Loading from '@/app/componant/loading';
 import moment from "moment-timezone";
 
 import Pusher from "pusher-js";
@@ -19,6 +19,7 @@ const { UserId } = useSelector((state) => state.chat);
   const [GetMessages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [fetching, setFetching] = useState(true);
 //  console.log("currentConversation");
 //  console.log(currentConversation);
 
@@ -66,9 +67,11 @@ if(message.sender !== UserId){
        setMessages(data.messages);
        setCurrentConversation(data.messages[0].conversationId);
        dispatch(setUserId(data.messages[0].sender));
+       setFetching(false);
 
     } catch (error) {
       console.error("Error fetching conversations:", error);
+      setFetching(false);
     }
   };
 
@@ -150,7 +153,7 @@ const formatMessageDate = (dateString) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
-        
+
         setMessages([...GetMessages, { text: messageText, timestamp: new Date().toISOString() }]);
 
 //   console.log(GetMessages);
@@ -164,12 +167,20 @@ const formatMessageDate = (dateString) => {
         console.error("Error fetching conversations:", error);
       }
     };
- 
+
+
+
 return (
      <div className="isolate bg-[#0000009c] px-6 py-24 sm:py-32 lg:px-8 ">
 
     <div className="w-full h-[500px] sm:ml-[20%] lg:ml-[30%] flex flex-col sm:w-[60%] lg:w-[40%]  porder border-[#f1f3f5] rounded-lg">
       <div className="flex-1 overflow-y-auto bg-[url('https://img.freepik.com/premium-photo/fingerprint-interface-blue-wallpaper-3d-rendering_670147-42823.jpg?w=2000')] bg-no-repeat bg-cover">
+
+         {fetching && <div className="text-[#fff] fixed left-[45%] top-[50%]">
+            <div class="flex gap-2">
+              <Loading/>
+                </div>
+            </div>}
         {GetMessages.map((message, index) => (
             <div key={index}> 
                 
@@ -184,7 +195,7 @@ return (
         </div>
         </div>
 
-        ))}
+        )) }
           {/* عنصر خفي لتحريك السكرول إلى أسفل */}
           <div ref={messagesEndRef} />
       </div>
