@@ -98,7 +98,7 @@ const ChatAdmin = () => {
   useEffect(() => {
     fetch_ALL_Conversations(`${process.env.NEXT_PUBLIC_URL}/conversations/${adminId}`);
 
-  }, [currentConversation]);
+  }, []);
 
   useEffect(() => {
     if (!adminId) return;
@@ -130,8 +130,9 @@ const ChatAdmin = () => {
   
     return () => {
       channel.unbind("new-message", handleNewMessage);
+      pusher.unsubscribe(`admin-chat-${adminId}`);
     };
-  }, [adminId, currentConversation]);
+  }, [adminId]);
   
 
 

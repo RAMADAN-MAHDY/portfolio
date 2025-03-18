@@ -64,6 +64,7 @@ if(message.sender !== UserId){
       }
       
       const data = await res.json();
+      
        setMessages(data.messages);
        setCurrentConversation(data.messages[0].conversationId);
        dispatch(setUserId(data.messages[0].sender));
@@ -85,16 +86,15 @@ if(message.sender !== UserId){
   useEffect(() => {
     if (!currentConversation) return;
   
-    // ✅ تأكد من استخدام مفتاح Pusher الصحيح
     const pusher = new Pusher(NEXT_PUBLIC_PUSHER_KEY, {
       cluster: "eu",
-      forceTLS: true // 🔹 تأكد من استخدام TLS لتشفير الاتصال
+      forceTLS: true
     });
   
     const channel = pusher.subscribe(`chat-${currentConversation}`);
-    // ✅ استقبال الرسائل الجديدة
+
     channel.bind("new-message", (newMessage) => {
-    //   setMessages((prev) => [...prev, newMessage]);
+      setMessages((prev) => [...prev, newMessage]);
       showNotification(newMessage);
     });
   
@@ -102,7 +102,7 @@ if(message.sender !== UserId){
       channel.unbind_all(); 
       pusher.unsubscribe(`chat-${currentConversation}`);
     };
-  }, [currentConversation]);
+  }, [currentConversation]); 
   
 const HandleTimeOfMessage = (time) =>{
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -137,9 +137,10 @@ const formatMessageDate = (dateString) => {
 //   ✅ إرسال رسالة جديدة
   const sendMessage = async () => {
 
+    if (!messageText.trim()) return;
+
     setLoading(true);
 
-    if (!messageText.trim()) return;
     try {
         const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/chat` , {
             method: "POST",
@@ -154,8 +155,10 @@ const formatMessageDate = (dateString) => {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
 
-        setMessages([...GetMessages, { text: messageText, timestamp: new Date().toISOString() }]);
-
+        if (!Pusher.instances.length) { 
+            setMessages((prev) => [...prev, { text: messageText, sender: UserId, timestamp: new Date().toISOString() }]);
+          }
+          
 //   console.log(GetMessages);
         
         // const data = await res.json();
