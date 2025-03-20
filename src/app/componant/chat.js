@@ -142,6 +142,27 @@ const formatMessageDate = (dateString) => {
     setLoading(true);
 
     try {
+
+      // تحقق من حالة القناة
+      const pusher = Pusher.instances[0];
+      let pusherChannel = pusher?.channel(`chat-${currentConversation}`);
+
+      if (!pusherChannel || !pusherChannel.subscribed) {
+          console.warn("Channel not subscribed. Re-subscribing...");
+          pusherChannel = pusher.subscribe(`chat-${currentConversation}`);
+
+          // انتظر حتى يتم الاشتراك في القناة
+          await new Promise((resolve) => {
+              pusherChannel.bind("pusher:subscription_succeeded", () => {
+                  console.log("Channel subscribed successfully.");
+                  resolve();
+              });
+          });
+      }
+
+
+
+
         const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/chat` , {
             method: "POST",
             credentials: "include" ,
@@ -155,7 +176,6 @@ const formatMessageDate = (dateString) => {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
 
-        const pusherChannel = Pusher.instances[0]?.channel(`chat-${currentConversation}`);
         if (!pusherChannel || !pusherChannel.subscribed) {
             // إذا لم تكن القناة متصلة، أضف الرسالة يدويًا
             setMessages((prev) => [...prev, { text: messageText, timestamp: new Date().toISOString()}]);
