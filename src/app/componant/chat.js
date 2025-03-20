@@ -155,9 +155,11 @@ const formatMessageDate = (dateString) => {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
 
-        if (!Pusher.instances.length) { 
-            setMessages((prev) => [...prev, { text: messageText, sender: UserId, timestamp: new Date().toISOString() }]);
-          }
+        const pusherChannel = Pusher.instances[0]?.channel(`chat-${currentConversation}`);
+        if (!pusherChannel || !pusherChannel.subscribed) {
+            // إذا لم تكن القناة متصلة، أضف الرسالة يدويًا
+            setMessages((prev) => [...prev, { text: messageText, timestamp: new Date().toISOString()}]);
+        }
           
 //   console.log(GetMessages);
         
