@@ -7,6 +7,8 @@ import moment from "moment-timezone";
 
 import Pusher from "pusher-js";
 
+
+
 const Chat = () => {
     const dispatch = useDispatch();
 
@@ -17,7 +19,7 @@ const { UserId } = useSelector((state) => state.chat);
 
   const [currentConversation, setCurrentConversation] = useState(null);
   const [GetMessages, setMessages] = useState([]);
-  const [messageText, setMessageText] = useState("");
+  const [messageText, setMessageText] = useState({});
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
 //  console.log("currentConversation");
@@ -94,7 +96,12 @@ if(message.sender !== UserId){
     const channel = pusher.subscribe(`chat-${currentConversation}`);
 
     channel.bind("new-message", (newMessage) => {
-      setMessages((prev) => [...prev, newMessage]);
+
+        // console.log(newMessage.sender);
+        if( newMessage.sender === "65a123456789abcd12345678"){
+         setMessages((prev) => [...prev, newMessage]);
+        }
+
       showNotification(newMessage);
     });
   
@@ -135,63 +142,63 @@ const formatMessageDate = (dateString) => {
   }, [GetMessages]);
 
 //   ✅ إرسال رسالة جديدة
-  const sendMessage = async () => {
-
-    if (!messageText.trim()) return;
+const sendMessage = async () => {
+    if (!messageText.text.trim()) return; // تأكد من أن النص ليس فارغًا
 
     setLoading(true);
 
     try {
-
-      // تحقق من حالة القناة
-      const pusher = Pusher.instances[0];
-      let pusherChannel = pusher?.channel(`chat-${currentConversation}`);
-
-      if (!pusherChannel || !pusherChannel.subscribed) {
-          console.warn("Channel not subscribed. Re-subscribing...");
-          pusherChannel = pusher.subscribe(`chat-${currentConversation}`);
-
-          // انتظر حتى يتم الاشتراك في القناة
-          await new Promise((resolve) => {
-              pusherChannel.bind("pusher:subscription_succeeded", () => {
-                  console.log("Channel subscribed successfully.");
-                  resolve();
-              });
-          });
-      }
-
-
-
-
-        const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/chat` , {
-            method: "POST",
-            credentials: "include" ,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              messageText
-            }),
-        }
-        );
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
+        // تحقق من حالة القناة
+        const pusher = Pusher.instances[0];
+        let pusherChannel = pusher?.channel(`chat-${currentConversation}`);
 
         if (!pusherChannel || !pusherChannel.subscribed) {
-            // إذا لم تكن القناة متصلة، أضف الرسالة يدويًا
-            setMessages((prev) => [...prev, { text: messageText, timestamp: new Date().toISOString()}]);
+            console.warn("Channel not subscribed. Re-subscribing...");
+            pusherChannel = pusher.subscribe(`chat-${currentConversation}`);
+
+            // انتظر حتى يتم الاشتراك في القناة
+            await new Promise((resolve) => {
+                pusherChannel.bind("pusher:subscription_succeeded", () => {
+                    console.log("Channel subscribed successfully.");
+                    resolve();
+                });
+            });
         }
-          
-//   console.log(GetMessages);
-        
-        // const data = await res.json();
-        // console.log(data);
+
+        // إرسال الرسالة إلى الخادم
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/chat`, {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                messageText: messageText.text
+            }),
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        setMessages((prev) => [
+            ...prev,
+            { text: messageText.text, timestamp: new Date().toISOString() , id: messageText.id }
+        ]);
+
+        // console.log(GetMessages.map(
+        //     (message) => message.id 
+        // ));
+
+        // console.log(messageText.id);
+        // أضف الرسالة يدويًا إلى الحالة بعد التأكد من النص
+
         setLoading(false);
-        setMessageText(""); 
-  
-      } catch (error) {
-        console.error("Error fetching conversations:", error);
-      }
-    };
+        setMessageText({ text: "", id: "" }); // إعادة تعيين النص بعد الإضافة
+
+    } catch (error) {
+        console.error("Error sending message:", error);
+        setLoading(false);
+    }
+};
 
 
 
@@ -202,7 +209,7 @@ return (
       <div className="flex-1 overflow-y-auto bg-[url('https://img.freepik.com/premium-photo/fingerprint-interface-blue-wallpaper-3d-rendering_670147-42823.jpg?w=2000')] bg-no-repeat bg-cover">
 
          {fetching && <div className="text-[#fff] fixed left-[45%] top-[50%]">
-            <div class="flex gap-2">
+            <div className="flex gap-2">
               <Loading/>
                 </div>
             </div>}
@@ -227,8 +234,8 @@ return (
       <div className="p-2 border-t border-gray-300">
         <input
         type="text"
-        value={messageText}
-        onChange={(e) => setMessageText(e.target.value)}
+        value={messageText.text}
+        onChange={(e) => setMessageText({id:Math.random() , text :  e.target.value} )}
         onKeyDown={handleKeyDown}
         className="w-full p-2 border rounded"
         placeholder="Type your message..."
