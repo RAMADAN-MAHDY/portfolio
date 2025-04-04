@@ -4,7 +4,7 @@ import SkillsSection from "@/app/componant/SkillsSection";
 import Vismeforms from "@/app/componant/vismeforms";
 import { loadTranslations } from "@/utils/loadTranslations";
 import { setLanguage, setTranslations } from "@/lib/slices/languageSlice";
-import AboutMyself from "@/app/componant/AboutMyself";
+// import AboutMyself from "@/app/componant/AboutMyself";
 import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
@@ -110,13 +110,13 @@ const Home = () => {
         <Vismeforms />
       </main>
 
-      <div className="container mt-[-250px] sm:mt-[-350px] mr-0 sm:ml-[0%] sm:mr-[10%] pt-[0px] w-[100%]">
+      {/* <div className="container mt-[-250px] sm:mt-[-350px] mr-0 sm:ml-[0%] sm:mr-[10%] pt-[0px] w-[100%]">
         <main className="flex items-center justify-center min-h-screen z-100 overflow-hidden pl-6 ml-[-70px]">
           <AboutMyself />
         </main>
-      </div>
-
-      <section className="sm:mt-[-350px] mt-[-200px]">
+      </div> */}
+{/* sm:mt-[-350px] mt-[-200px] */}
+      <section className="mt-[50px]">
         <SkillsSection />
       </section>
 

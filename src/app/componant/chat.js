@@ -12,11 +12,13 @@ import Pusher from "pusher-js";
 const Chat = () => {
     const dispatch = useDispatch();
 
+
 const NEXT_PUBLIC_PUSHER_KEY = process.env.NEXT_PUBLIC_PUSHER_KEY;
 const adminId = process.env.NEXT_PUBLIC_adminId;
 const messagesEndRef = useRef(null);
 const { UserId } = useSelector((state) => state.chat);
 
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const [currentConversation, setCurrentConversation] = useState(null);
   const [GetMessages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState({});
@@ -95,8 +97,12 @@ if(message.sender !== UserId){
   
     const channel = pusher.subscribe(`chat-${currentConversation}`);
 
-    channel.bind("new-message", (newMessage) => {
+    channel.bind("pusher:subscription_succeeded", () => {
+        console.log("Channel subscribed successfully.");
+        setIsSubscribed(true); // تحديث حالة الاشتراك
+    });
 
+    channel.bind("new-message", (newMessage) => {
         // console.log(newMessage.sender);
         if( newMessage.sender === "65a123456789abcd12345678"){
          setMessages((prev) => [...prev, newMessage]);
@@ -108,6 +114,7 @@ if(message.sender !== UserId){
     return () => {      
       channel.unbind_all(); 
       pusher.unsubscribe(`chat-${currentConversation}`);
+      setIsSubscribed(false); // إعادة تعيين حالة الاشتراك عند إلغاء الاشتراك
     };
   }, [currentConversation]); 
   
@@ -144,7 +151,12 @@ const formatMessageDate = (dateString) => {
 //   ✅ إرسال رسالة جديدة
 const sendMessage = async () => {
     if (!messageText.text.trim()) return; // تأكد من أن النص ليس فارغًا
-
+   
+    if (!isSubscribed) {
+        console.warn("Channel not subscribed yet. Please wait.");
+        return; // منع إرسال الرسالة إذا لم يتم الاشتراك بعد
+    }
+    
     setLoading(true);
 
     try {
