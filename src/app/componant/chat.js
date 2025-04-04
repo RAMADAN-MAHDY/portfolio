@@ -25,6 +25,8 @@ const { translations } = useSelector((state) => state.language);
   const [messageText, setMessageText] = useState({});
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
+  const [showChat, setShowChat] = useState(false);
+  
   const [isChatOpen, setIsChatOpen] = useState(false); // حالة لتتبع ما إذا كان الشات مفتوحًا
 //  console.log("currentConversation");
 //  console.log(currentConversation);
@@ -83,10 +85,16 @@ if(message.sender !== UserId){
   };
 
 
+
   useEffect(() => {
     fetchConversations(`${process.env.NEXT_PUBLIC_URL}/message`);
   }, []);
 
+  useEffect(() => {
+    const success = localStorage.getItem('Success') === 'true';
+    setShowChat(success);
+
+  }, []);
 
   // ✅ إعداد Pusher عند فتح الشات
   useEffect(() => {
@@ -218,7 +226,7 @@ const sendMessage = async () => {
 return (
     <>
      {/* زر فتح الشات */}
-       {!isChatOpen && (
+       {(showChat)&& (
         <button
             onClick={() => {
                 setIsChatOpen(true)
