@@ -239,7 +239,7 @@ return (
     {/* واجهة الشات */}
     {isChatOpen && (
    <div className="fixed right-0 top-0  w-full h-screen bg-[#0000009c] z-50">
-        <div className={`w-full fixed right-0 h-[500px] sm:ml-[20%] lg:ml-[30%] mt-[30%] flex flex-col sm:w-[60%] lg:w-[40%]  porder border-[#f1f3f5] bg-[#070b20] rounded-3xl ${!isChatOpen && "hidden"} `}>
+        <div className={`w-full fixed right-0 h-[500px] sm:ml-[20%] lg:ml-[30%] mt-[30%] lg:mt-[10%] md:mr-[20%] lg:mr-[30%] flex flex-col sm:w-[60%] lg:w-[40%]  porder border-[#f1f3f5] bg-[#070b20] rounded-3xl ${!isChatOpen && "hidden"} `}>
             <div className="flex-1 overflow-y-auto bg-[url('https://img.freepik.com/premium-photo/fingerprint-interface-blue-wallpaper-3d-rendering_670147-42823.jpg?w=2000')] bg-no-repeat bg-cover">
 
                 {fetching && <div className="text-[#fff] fixed left-[45%] top-[50%]">
