@@ -287,9 +287,9 @@ return (
                 </button>
                 <button
                     onClick={() => setIsChatOpen(false)}
-                    className="fixed right-4 top-[80%] bg-red-500 text-white p-4 rounded-full shadow-lg"
+                    className="fixed right-4 top-[90%] bg-red-500 text-white p-4 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110"
                 >
-                    Close Chat
+                  {translations?.ChatUser?.close_chat}
                 </button>
             </div>
         </div>

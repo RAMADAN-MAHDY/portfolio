@@ -15,7 +15,8 @@
          },
          "ChatUser":{
             "Chat_User" : "المحادثه",
-               "open_chat" : "فتح الدردشه"
+               "open_chat" : "فتح الدردشه",
+               "close_chat" : "اغلاق الدردشه"
          },
         "Footer": {
           "Copyright": ".جميع الحقوق محفوظة."

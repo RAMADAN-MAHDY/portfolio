@@ -15,7 +15,9 @@
     },
     "ChatUser":{
         "Chat_User" : "Chat",
-        "open_chat" : "Open Chat"
+        "open_chat" : "Open Chat",
+        "close_chat" : "Close Chat"
+
      },
     "Footer": {
             "Copyright": ". All rights reserved."
