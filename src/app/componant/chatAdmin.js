@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ShowAdminChatWithUser from "./showMessageToAdmin";
 import { useSelector, useDispatch } from 'react-redux';
 import { setParticipants, setNewMessages } from '../../lib/slices/chatSlice';
+
 import Pusher from "pusher-js";
 
 const ChatAdmin = () => {
@@ -97,6 +98,7 @@ const ChatAdmin = () => {
     fetchMessages(conversationsID);
     setUserName(userName);
   };
+
 
   // Display message if user is not an admin
   if (!I_am_Admin) {

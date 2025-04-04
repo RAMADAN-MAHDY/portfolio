@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 // import Pusher from "pusher-js";
+import moment from "moment-timezone";
 
 
 const showAdminChatWithUser = ({  currentConversation ,userId , GetMessages}) => {
@@ -57,6 +58,31 @@ const showAdminChatWithUser = ({  currentConversation ,userId , GetMessages}) =>
     scrollToBottom();
   }, [GetMessages]); // لما تتغير الرسائل، انزل تحت تلقائيًا
 
+  //   ✅ تنسيق التاريخ
+  const formatMessageDate = (dateString) => {
+    const date = moment(dateString);
+    const today = moment().startOf('day');
+    const yesterday = moment().subtract(1, 'days').startOf('day');
+  
+    if (date.isSame(today, 'day')) {
+      return "اليوم";
+    } else if (date.isSame(yesterday, 'day')) {
+      return "أمس";
+    } else {
+      return date.format('YYYY-MM-DD'); // إعادة التاريخ بصيغته الأصلية إذا لم يكن اليوم أو الأمس
+    }
+};
+
+// ✅ تحويل الوقت إلى التوقيت المحلي
+const HandleTimeOfMessage = (time) =>{
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const localTime = moment.utc(time).tz(userTimeZone);
+    const localHours = localTime.format("hh");
+    const localMinutes = localTime.format("mm");
+    const amPm = localTime.format("A");
+    
+   return ` ${amPm} ${localHours}:${localMinutes} ` ;
+}
 
   //   ✅ إرسال رسالة جديدة
   const sendMessage = async () => {
@@ -93,11 +119,24 @@ const showAdminChatWithUser = ({  currentConversation ,userId , GetMessages}) =>
         <div className=" w-[50%] lg:w-[30%] bg-[#345] h-[90%]">
       <div className="flex-1 overflow-y-auto h-[84%] ">
         {GetMessages?.map((message, index) => (
-        <div key={index} className={`p-2 ${message.sender !== adminId ? "text-right" : "text-left"}`}>
-          <span className={`inline-block p-2  ${message.sender !== adminId ? "bg-gray-300 text-black rounded-br-[55px] rounded-bl-[55px] rounded-tl-[55px] pr-6 " : "bg-blue-500 text-white  rounded-br-[55px] rounded-bl-[55px] rounded-tr-[55px] pl-6 "}`}>
+
+<div key={index}> 
+             <p className="bg-[#fff] inline-block p-1 rounded-2xl ">{formatMessageDate(message.timestamp)}</p>
+
+
+        <div className={`p-2 ${message.sender !== adminId ? "text-right" : "text-left"}`}>
+ 
+
+
+
+          <p className={`flex flex-col  p-2  ${message.sender !== adminId ? "bg-gray-300 text-black rounded-br-[55px] rounded-bl-[55px] rounded-tl-[55px] pr-6 " : "bg-blue-500 text-white  rounded-br-[55px] rounded-bl-[55px] rounded-tr-[55px] pl-6 "}`}>
             {message.text}
-          </span>
+
+            <span className={`text-[12px]   ${message.sender === adminId ? "text-[#dfff28]": "text-[#3633d6]"} `}>{HandleTimeOfMessage(message.timestamp)}</span>
+
+          </p>
         </div>
+</div>
         ))}
           {/* عنصر خفي لتحريك السكرول إلى أسفل */}
           <div ref={messagesEndRef} />

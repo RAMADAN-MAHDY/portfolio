@@ -24,6 +24,7 @@ const { UserId } = useSelector((state) => state.chat);
   const [messageText, setMessageText] = useState({});
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
+  const [isChatOpen, setIsChatOpen] = useState(false); // حالة لتتبع ما إذا كان الشات مفتوحًا
 //  console.log("currentConversation");
 //  console.log(currentConversation);
 
@@ -86,15 +87,15 @@ if(message.sender !== UserId){
   }, []);
 
 
-  // ✅ إعداد Pusher للاستقبال الفوري للرسائل
+  // ✅ إعداد Pusher عند فتح الشات
   useEffect(() => {
-    if (!currentConversation) return;
-  
+    if (!isChatOpen || !currentConversation) return;
+
     const pusher = new Pusher(NEXT_PUBLIC_PUSHER_KEY, {
-      cluster: "eu",
-      forceTLS: true
+        cluster: "eu",
+        forceTLS: true,
     });
-  
+
     const channel = pusher.subscribe(`chat-${currentConversation}`);
 
     channel.bind("pusher:subscription_succeeded", () => {
@@ -103,20 +104,19 @@ if(message.sender !== UserId){
     });
 
     channel.bind("new-message", (newMessage) => {
-        // console.log(newMessage.sender);
-        if( newMessage.sender === "65a123456789abcd12345678"){
-         setMessages((prev) => [...prev, newMessage]);
+        if (newMessage.sender === "65a123456789abcd12345678") {
+            setMessages((prev) => [...prev, newMessage]);
         }
 
-      showNotification(newMessage);
+        showNotification(newMessage);
     });
-  
-    return () => {      
-      channel.unbind_all(); 
-      pusher.unsubscribe(`chat-${currentConversation}`);
-      setIsSubscribed(false); // إعادة تعيين حالة الاشتراك عند إلغاء الاشتراك
+
+    return () => {
+        channel.unbind_all();
+        pusher.unsubscribe(`chat-${currentConversation}`);
+        setIsSubscribed(false); // إعادة تعيين حالة الاشتراك عند إلغاء الاشتراك
     };
-  }, [currentConversation]); 
+}, [isChatOpen, currentConversation]);
   
 const HandleTimeOfMessage = (time) =>{
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -215,56 +215,75 @@ const sendMessage = async () => {
 
 
 return (
-     <div className="isolate bg-[#0000009c] px-6 py-24 sm:py-32 lg:px-8 ">
+     <div className="isolate bg-[#0000009c] px-6 py-24 sm:py-32 lg:px-8 h-screen  ">
 
-    <div className="w-full h-[500px] sm:ml-[20%] lg:ml-[30%] flex flex-col sm:w-[60%] lg:w-[40%]  porder border-[#f1f3f5] rounded-lg">
-      <div className="flex-1 overflow-y-auto bg-[url('https://img.freepik.com/premium-photo/fingerprint-interface-blue-wallpaper-3d-rendering_670147-42823.jpg?w=2000')] bg-no-repeat bg-cover">
-
-         {fetching && <div className="text-[#fff] fixed left-[45%] top-[50%]">
-            <div className="flex gap-2">
-              <Loading/>
-                </div>
-            </div>}
-        {GetMessages.map((message, index) => (
-            <div key={index}> 
-                
-        <p className="bg-[#fff] inline-block p-1 rounded-2xl ml-[43%] ">{formatMessageDate(message.timestamp)}</p>
-
-        <div  className={`p-2 ${message.sender === adminId ? "text-right" : "text-left"}`}>
-          <p className={`flex flex-col p-2  ${message.sender === adminId ? "bg-gray-300 text-black rounded-br-[55px] rounded-bl-[55px] rounded-tl-[55px] pr-6 " : "bg-blue-500 text-white  rounded-br-[55px] rounded-bl-[55px] rounded-tr-[55px] pl-6 "}`}>
-            {message.text}
-            <span className={`text-[12px]   ${message.sender === adminId ? "text-[#ffffff]": "text-[#eaff31]"} `}>{HandleTimeOfMessage(message.timestamp)}</span>
-
-          </p>
-        </div>
-        </div>
-
-        )) }
-          {/* عنصر خفي لتحريك السكرول إلى أسفل */}
-          <div ref={messagesEndRef} />
-      </div>
-      <div className="p-2 border-t border-gray-300">
-        <input
-        type="text"
-        value={messageText.text}
-        onChange={(e) => setMessageText({id:Math.random() , text :  e.target.value} )}
-        onKeyDown={handleKeyDown}
-        className="w-full p-2 border rounded"
-        placeholder="Type your message..."
-        />
+    {/* زر فتح الشات */}
+    {!isChatOpen && (
         <button
-        onClick={sendMessage}
-        className="mt-2 p-2 relative w-[40px] h-[40px] bg-[#20fa74]  rounded-2xl"
+            onClick={() => setIsChatOpen(true)}
+            className="fixed right-4 top-[50%] bg-blue-500 text-white p-4 rounded-full shadow-lg"
         >
-            {!loading ?
-               <svg className="w-[20px] h-[20px]"  xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" role="img" aria-labelledby="sendIconTitle" stroke="#000000" strokeWidth="1" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#000000"> <title id="sendIconTitle">Send</title> <polygon points="21.368 12.001 3 21.609 3 14 11 12 3 9.794 3 2.394"/> </svg>
-              :
-           <span> ...  </span>   
-              }
-     
+            Open Chat
         </button>
-      </div>
-    </div>
+    )}
+
+    {/* واجهة الشات */}
+    {isChatOpen && (
+        <div className="w-full h-[500px] sm:ml-[20%] lg:ml-[30%] flex flex-col sm:w-[60%] lg:w-[40%]  porder border-[#f1f3f5] rounded-lg">
+            <div className="flex-1 overflow-y-auto bg-[url('https://img.freepik.com/premium-photo/fingerprint-interface-blue-wallpaper-3d-rendering_670147-42823.jpg?w=2000')] bg-no-repeat bg-cover">
+
+                {fetching && <div className="text-[#fff] fixed left-[45%] top-[50%]">
+                    <div className="flex gap-2">
+                    <Loading/>
+                        </div>
+                    </div>}
+                {GetMessages.map((message, index) => (
+                    <div key={index}> 
+                        
+                <p className="bg-[#fff] inline-block p-1 rounded-2xl ml-[43%] ">{formatMessageDate(message.timestamp)}</p>
+
+                <div  className={`p-2 ${message.sender === adminId ? "text-right" : "text-left"}`}>
+                <p className={`flex flex-col p-2  ${message.sender === adminId ? "bg-gray-300 text-black rounded-br-[55px] rounded-bl-[55px] rounded-tl-[55px] pr-6 " : "bg-blue-500 text-white  rounded-br-[55px] rounded-bl-[55px] rounded-tr-[55px] pl-6 "}`}>
+                    {message.text}
+                    <span className={`text-[12px]   ${message.sender === adminId ? "text-[#ffffff]": "text-[#eaff31]"} `}>{HandleTimeOfMessage(message.timestamp)}</span>
+
+                </p>
+                </div>
+                </div>
+
+                )) }
+                {/* عنصر خفي لتحريك السكرول إلى أسفل */}
+                <div ref={messagesEndRef} />
+            </div>
+            <div className="p-2 border-t border-gray-300">
+                <input
+                type="text"
+                value={messageText.text}
+                onChange={(e) => setMessageText({id:Math.random() , text :  e.target.value} )}
+                onKeyDown={handleKeyDown}
+                className="w-full p-2 border rounded"
+                placeholder="Type your message..."
+                />
+                <button
+                onClick={sendMessage}
+                className="mt-2 p-2 relative w-[40px] h-[40px] bg-[#20fa74]  rounded-2xl"
+                >
+                    {!loading ?
+                    <svg className="w-[20px] h-[20px]"  xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" role="img" aria-labelledby="sendIconTitle" stroke="#000000" strokeWidth="1" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#000000"> <title id="sendIconTitle">Send</title> <polygon points="21.368 12.001 3 21.609 3 14 11 12 3 9.794 3 2.394"/> </svg>
+                :
+            <span> ...  </span>   
+                }
+        
+                </button>
+                <button
+                    onClick={() => setIsChatOpen(false)}
+                    className="fixed right-4 top-[80%] bg-red-500 text-white p-4 rounded-full shadow-lg"
+                >
+                    Close Chat
+                </button>
+            </div>
+        </div>
+    )}
    </div>
 
 )
