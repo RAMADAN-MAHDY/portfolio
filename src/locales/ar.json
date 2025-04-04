@@ -14,7 +14,8 @@
             "Chat_Admin" : "الدردشه"
          },
          "ChatUser":{
-            "Chat_User" : "المحادثه"
+            "Chat_User" : "المحادثه",
+               "open_chat" : "فتح الدردشه"
          },
         "Footer": {
           "Copyright": ".جميع الحقوق محفوظة."

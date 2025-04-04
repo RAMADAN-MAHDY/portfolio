@@ -6,10 +6,12 @@ import { loadTranslations } from "@/utils/loadTranslations";
 import { setLanguage, setTranslations } from "@/lib/slices/languageSlice";
 // import AboutMyself from "@/app/componant/AboutMyself";
 import { useSelector, useDispatch } from "react-redux";
-
+import Chat from "@/app/componant/chat";
 const Home = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const { translations } = useSelector((state: { language: { translations: any } }) => state.language);
+
 //   const [isSubscribed, setIsSubscribed] = useState(false); // حالة الاشتراك
 
 //   const { UserId } = useSelector((state: any) => state.chat);
@@ -109,6 +111,10 @@ const Home = () => {
       <main className="relative mt-[150px] h-[10%] sm:h-[30%] w-[100%] sm:w-[50%] sm:ml-[20%] bg-[#3544c738] z-10 rounded-full">
         <Vismeforms />
       </main>
+    
+    {/* <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[140px] m-3">{translations?.ChatUser?.Chat_User}</h1> */}
+       <Chat />
+      
 
       {/* <div className="container mt-[-250px] sm:mt-[-350px] mr-0 sm:ml-[0%] sm:mr-[10%] pt-[0px] w-[100%]">
         <main className="flex items-center justify-center min-h-screen z-100 overflow-hidden pl-6 ml-[-70px]">

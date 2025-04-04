@@ -106,7 +106,7 @@ const getStatusfromContactMe = (state : boolean) => {
         
       {!showChat ? <ContactMe getStatusfromContactMe={getStatusfromContactMe} /> :
       <>
-    <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[140px] m-3">{translations?.ChatUser?.Chat_User}</h1>
+    {/* <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[140px] m-3">{translations?.ChatUser?.Chat_User}</h1> */}
        <Chat />
       
 </>

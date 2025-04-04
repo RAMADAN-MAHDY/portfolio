@@ -14,7 +14,8 @@
        "Chat_Admin" : "Chat Admin"
     },
     "ChatUser":{
-        "Chat_User" : "Chat"
+        "Chat_User" : "Chat",
+        "open_chat" : "Open Chat"
      },
     "Footer": {
             "Copyright": ". All rights reserved."

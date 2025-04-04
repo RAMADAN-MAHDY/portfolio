@@ -17,6 +17,7 @@ const NEXT_PUBLIC_PUSHER_KEY = process.env.NEXT_PUBLIC_PUSHER_KEY;
 const adminId = process.env.NEXT_PUBLIC_adminId;
 const messagesEndRef = useRef(null);
 const { UserId } = useSelector((state) => state.chat);
+const { translations } = useSelector((state) => state.language);
 
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [currentConversation, setCurrentConversation] = useState(null);
@@ -215,21 +216,30 @@ const sendMessage = async () => {
 
 
 return (
-     <div className="isolate bg-[#0000009c] px-6 py-24 sm:py-32 lg:px-8 h-screen  ">
-
-    {/* زر فتح الشات */}
-    {!isChatOpen && (
+    <>
+     {/* زر فتح الشات */}
+       {!isChatOpen && (
         <button
-            onClick={() => setIsChatOpen(true)}
-            className="fixed right-4 top-[50%] bg-blue-500 text-white p-4 rounded-full shadow-lg"
+            onClick={() => {
+                setIsChatOpen(true)
+                setTimeout(() => {
+                    scrollToBottom(); // استدعاء دالة تحريك السكرول بعد فتح الشات
+                }, 0);
+            }}
+           className="fixed right-4 top-[90%] z-50 bg-blue-500 text-white p-4 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110"
         >
-            Open Chat
+            {translations?.ChatUser?.open_chat}
         </button>
     )}
+     {/* <div className={`isolate bg-[#0000009c] px-6 py-24 sm:py-32 lg:px-8 h-screen `}> */}
+
+   
+ 
 
     {/* واجهة الشات */}
     {isChatOpen && (
-        <div className="w-full h-[500px] sm:ml-[20%] lg:ml-[30%] flex flex-col sm:w-[60%] lg:w-[40%]  porder border-[#f1f3f5] rounded-lg">
+   <div className="fixed right-0 top-0  w-full h-screen bg-[#0000009c] z-50">
+        <div className={`w-full fixed right-0 h-[500px] sm:ml-[20%] lg:ml-[30%] mt-[30%] flex flex-col sm:w-[60%] lg:w-[40%]  porder border-[#f1f3f5] bg-[#070b20] rounded-3xl ${!isChatOpen && "hidden"} `}>
             <div className="flex-1 overflow-y-auto bg-[url('https://img.freepik.com/premium-photo/fingerprint-interface-blue-wallpaper-3d-rendering_670147-42823.jpg?w=2000')] bg-no-repeat bg-cover">
 
                 {fetching && <div className="text-[#fff] fixed left-[45%] top-[50%]">
@@ -283,8 +293,11 @@ return (
                 </button>
             </div>
         </div>
+        </div>
+      
     )}
-   </div>
+   {/* </div> */}
+   </>
 
 )
 
