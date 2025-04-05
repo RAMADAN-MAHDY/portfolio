@@ -88,7 +88,7 @@ if(message.sender !== UserId){
 
   useEffect(() => {
     fetchConversations(`${process.env.NEXT_PUBLIC_URL}/message`);
-  }, []);
+  }, [isChatOpen]);
 
   useEffect(() => {
     const success = localStorage.getItem('Success') === 'true';
