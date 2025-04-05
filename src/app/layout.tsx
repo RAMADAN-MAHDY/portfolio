@@ -5,6 +5,7 @@ import "./globals.css";
 import Footer from "@/app/componant/footer";
 import Navbar from "@/app/componant/navbar";
 import ClientProvider from '../lib/ClientProvider';
+import GoogleAnalytics from '@/app/componant/googleAnalytics';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ interface LocaleLayoutProps {
 }
 
 function RootLayout({ children }: LocaleLayoutProps) {
-  
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID ;
 
     return (
         <html>
@@ -27,10 +28,22 @@ function RootLayout({ children }: LocaleLayoutProps) {
                 <meta name="google" content="notranslate"/>
 
                 <link rel="icon" href="/451548470_3829658120605216_14025268882969849787_n.JPG" sizes="32x32" />
+                {/* <!-- Google tag (gtag.js) --> */}
+               {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-5925EB49R4"></script>
+              <script>
+  window.dataLayer = window.dataLayer || [];
+  const dataLayer = window.dataLayer; // Declare dataLayer
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-5925EB49R4');
+              </script> */}
                 {/* <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"/> */}
             </head>
             <body className={inter.className}>
+
+            <GoogleAnalytics trackingId={GA_TRACKING_ID} />
+
                 <ClientProvider>
                     <Navbar />
                     {children}
