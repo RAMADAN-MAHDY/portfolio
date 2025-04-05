@@ -26,8 +26,13 @@ function RootLayout({ children }: LocaleLayoutProps) {
         <html>
             <head>
                 <meta name="google" content="notranslate"/>
+                <meta name="google-site-verification" content="a7cDoFaMs8fod9LHeAd1nKF-VxhOaEkjOBRvHriEzzU" />
 
                 <link rel="icon" href="/451548470_3829658120605216_14025268882969849787_n.JPG" sizes="32x32" />
+
+
+
+
                 {/* <!-- Google tag (gtag.js) --> */}
                {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-5925EB49R4"></script>
               <script>
@@ -39,6 +44,8 @@ function RootLayout({ children }: LocaleLayoutProps) {
   gtag('config', 'G-5925EB49R4');
               </script> */}
                 {/* <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"/> */}
+
+                
             </head>
             <body className={inter.className}>
 
