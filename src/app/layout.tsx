@@ -10,10 +10,10 @@ import GoogleAnalytics from '@/app/componant/googleAnalytics';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ramadan | Full-Stack Web Developer Portfolio",
-  description:
-    "Explore Ramadan's portfolio, showcasing expertise in full-stack web development, modern technologies, and innovative web solutions.",
-};
+    title: "Ramadan | Full-Stack Web Developer Portfolio",
+    description:
+      "Explore Ramadan's portfolio, showcasing expertise in full-stack web development, modern technologies, and innovative web solutions. | استكشف بورتفوليو رمضان، الذي يعرض خبرته في تطوير الويب باستخدام أحدث التقنيات وحلول الويب المبتكرة.",
+  };
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -26,11 +26,11 @@ function RootLayout({ children }: LocaleLayoutProps) {
         <html>
             <head>
                 <meta name="google" content="notranslate"/>
-                <meta name="google-site-verification" content="a7cDoFaMs8fod9LHeAd1nKF-VxhOaEkjOBRvHr" />
+                <meta name="google-site-verification" content="a7cDoFaMs8fod9LHeAd1nKF-VxhOaEkjOBRvHriEzzU" />
 
                 <link rel="icon" href="/451548470_3829658120605216_14025268882969849787_n.JPG" sizes="32x32" />
 
-
+                {/* google-site-verification=a7cDoFaMs8fod9LHeAd1nKF-VxhOaEkjOBRvHriEzzU */}
 
 
                 {/* <!-- Google tag (gtag.js) --> */}
