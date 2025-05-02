@@ -104,4 +104,56 @@
                 "Link2": "Source code on GitHub" 
             }      
              }
+,
+"Project_3_Attendance": {
+  "Title": "Attendance Log School",
+  "Description": "Attendance Log School is a comprehensive system for managing student attendance in primary schools. It aims to improve efficiency and simplify administrative processes related to attendance and student promotion. The application features a responsive, Arabic-supported user interface, making it suitable for use across various devices.",
+  "MainFeatures": {
+    "AttendanceManagement": "Record student check-in and check-out times accurately and easily.",
+    "AttendanceReports": "Generate detailed attendance reports categorized by month and year.",
+    "StudentPromotion": "Promote successful students to the new academic year while excluding those who failed.",
+    "AdminPanel": "Manage student data, control attendance records, and promote students.",
+    "SecureAuthentication": "Confirm sensitive operations with administrative passwords.",
+    "ResponsiveDesign": "Works smoothly on both desktop and mobile devices."
+  },
+  "TechnologiesUsed": {
+    "Title": "Technologies Used",
+    "Frontend": {
+      "_1": "React and Next.js for building the user interface.",
+      "_2": "Tailwind CSS for responsive and user-friendly design.",
+      "_3": "React Hooks for state management."
+    },
+    "Backend": {
+      "_1": "Node.js with Express.js for developing a robust API.",
+      "_2": "MongoDB for data management using NoSQL database.",
+      "_3": "Mongoose for data modeling.",
+      "_4": "cors for secure communication between server and frontend.",
+      "_5": "date-fns for date formatting."
+    }
+  },
+  "PromotionFeature": {
+    "Title": "Student Promotion Feature",
+    "Description": "This feature allows the admin to select students who failed (via their codes) and promote only the successful students to the new academic year. The operation is confirmed through a popup requiring the admin password for security."
+  },
+  "ProjectGoal": {
+    "Title": "Project Goal",
+    "Description": "To provide an integrated digital solution for managing student attendance and promotion, helping schools enhance efficiency, reduce manual errors, and ensure a smooth and secure user experience."
+  },
+  "Integration": {
+    "Title": "Frontend & Backend Integration",
+    "Description": "Attendance is recorded via a fully integrated API connected to the frontend. The server supports operations like user registration, login, attendance management, exporting attendance reports to Excel files, and checking students’ daily attendance status. The backend is designed with a modular architecture that makes it easy to maintain and extend with new features."
+  },
+  "ProjectImages": { 
+    "Title1": "Some pictures from the control panel (admin)", 
+    "Link1": "Visit the site", 
+    "Link2": "Source code on GitHub" 
+}   
+}
+
+
+
+
+
+
                }
+               
