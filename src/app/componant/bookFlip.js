@@ -99,6 +99,7 @@ const BookFlip = () => {
             case 0:
                 return [
                     "https://github.com/RAMADAN-MAHDY/affiliate-app",
+                    "https://github.com/RAMADAN-MAHDY/affiliate-app",
                     "https://elmahdy.vercel.app/",
                 ];
             case 1:
@@ -109,6 +110,7 @@ const BookFlip = () => {
                 case 2:
                     return [
                         "https://github.com/RAMADAN-MAHDY/Attendance-Log-school-api",
+                        "https://github.com/RAMADAN-MAHDY/Attendance-Log-school",
                         "https://attendance-log-school.vercel.app",
                     ];
             default:
@@ -148,6 +150,7 @@ const BookFlip = () => {
                     Title1: translations?.ProjectDetails?.ProjectImages?.Title1 || "Default Title",
                     Link1: translations?.ProjectDetails?.ProjectImages?.Link1 || "Default Link1",
                     Link2: translations?.ProjectDetails?.ProjectImages?.Link2 || "Default Link2",
+                    Link3: translations?.ProjectDetails?.ProjectImages?.Link3 || "Default Link2",
                 },
             },
         },
@@ -178,6 +181,7 @@ const BookFlip = () => {
                     Title1: translations?.Project_2_Details?.ProjectImages?.Title1 || "Default Title",
                     Link1: translations?.Project_2_Details?.ProjectImages?.Link1 || "Default Link1",
                     Link2: translations?.Project_2_Details?.ProjectImages?.Link2 || "Default Link2",
+                    Link3: translations?.Project_2_Details?.ProjectImages?.Link3 || "Default Link2",
                 },
             },
         },
@@ -230,6 +234,7 @@ const BookFlip = () => {
                 Title1: translations?.Project_2_Details?.ProjectImages?.Title1 || "Default Title",
                 Link1: translations?.Project_2_Details?.ProjectImages?.Link1 || "Default Link1",
                 Link2: translations?.Project_2_Details?.ProjectImages?.Link2 || "Default Link2",
+                Link3: translations?.Project_2_Details?.ProjectImages?.Link3 || "Default Link3",
             },
             },
         },
@@ -528,18 +533,19 @@ const BookFlip = () => {
                                     {content.id === "div1" && (
                                         <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
                                             <a
-                                                href={getProjectsLinkes(index)[1]}
+                                                href={getProjectsLinkes(index)[2]} // زيارة الموقع
                                                 target="-plank"
                                                 className="bg-[#26458a] p-3 mx-3 rounded-lg  hover:bg-[#2669f8] rounded-tl-[4px] rounded-tr-[50px] rounded-bl-[60px] rounded-br-[9px]"
                                             >
                                                 {content?.ProjectDetails?.ProjectImages?.Link1}
                                             </a>
+                                         
                                             <a
-                                                href={getProjectsLinkes(index)[0]}
+                                                href={getProjectsLinkes(index)[0]} // front end   surce code
                                                 target="-plank"
                                                 className="bg-[#26458a] p-3 rounded-tl-[50px] rounded-tr-[4px] rounded-bl-[9px] rounded-br-[60px]  hover:bg-[#2669f8]"
                                             >
-                                                {content?.ProjectDetails?.ProjectImages?.Link2}
+                                                {content?.ProjectDetails?.ProjectImages?.Link3}
                                             </a>
                                         </div>
                                     )}
@@ -570,14 +576,21 @@ const BookFlip = () => {
                                         </div>
                                         <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
                                             <a
-                                                href={getProjectsLinkes(index)[1]}
+                                                href={getProjectsLinkes(index)[2]} // back end   surce code 
                                                 target="-plank"
                                                 className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
                                             >
                                                 {content?.ProjectDetails?.ProjectImages?.Link1}
                                             </a>
                                             <a
-                                                href={getProjectsLinkes(index)[0]}
+                                                href={getProjectsLinkes(index)[1]} // front end   surce code
+                                                target="-plank"
+                                                className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
+                                            >
+                                                {content?.ProjectDetails?.ProjectImages?.Link3}
+                                            </a>
+                                            <a
+                                                href={getProjectsLinkes(index)[0]}  // زيارة الموقع
                                                 target="-plank"
                                                 className="bg-[#26458a] p-3  hover:bg-[#2669f8]"
                                             >

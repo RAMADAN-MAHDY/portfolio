@@ -71,8 +71,9 @@
         },
         "ProjectImages": {
           "Title1": "Some pictures from the control panel (admin)",
-          "Link1": "Visit the site",
-          "Link2": "Source code on GitHub"  
+          "Link1": "Visit the site", 
+          "Link2": "backend code", 
+          "Link3": "frontend code"  
         }
           },
 
@@ -101,7 +102,8 @@
              "ProjectImages": { 
                 "Title1": "Some pictures from the control panel (admin)", 
                 "Link1": "Visit the site", 
-                "Link2": "Source code on GitHub" 
+                "Link2": "backend code", 
+                "Link3": "frontend code " 
             }      
              }
 ,
@@ -146,7 +148,8 @@
   "ProjectImages": { 
     "Title1": "Some pictures from the control panel (admin)", 
     "Link1": "Visit the site", 
-    "Link2": "Source code on GitHub" 
+    "Link2": "backend code ", 
+    "Link3": "frontend code" 
 }   
 }
 
