@@ -6,6 +6,7 @@ import { loadTranslations } from "@/utils/loadTranslations";
 import { setLanguage, setTranslations } from "@/lib/slices/languageSlice";
 // import AboutMyself from "@/app/componant/AboutMyself";
 import { useSelector, useDispatch } from "react-redux";
+import Footer from "@/app/componant/footer";
 import Chat from "@/app/componant/chat";
 const Home = () => {
   const dispatch = useDispatch();
@@ -141,6 +142,8 @@ const Home = () => {
           <p className="text-green-500">✅ الإشعارات مفعلة</p>
         )}
       </div> */}
+            <Footer />
+
     </>
   );
 };

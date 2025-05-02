@@ -647,10 +647,10 @@ const BookFlip = () => {
                 </style>
                 <section
                     data-aos="fade-top"
-                    className="w-[100%] h-full bg-gradient-to-r from-[#0c3541] to-[#0e2ee6] text-white mt-[110px]"
+                    className="w-[494px] sm:w-full h-full bg-gradient-to-r from-[#0c3541] to-[#0e2ee6] text-white mt-[110px]"
                 >
                     {/* <div className="container sm:w-[140%] ">    */}
-                    <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] ml-[25%] w-[150px]">
+                    <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] ml-[25%] w-[250px] pt-[60px]">
                         {translations?.Projects?.Projects}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">

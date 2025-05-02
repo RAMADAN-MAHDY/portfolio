@@ -10,8 +10,8 @@ const Footer = () => {
   const { translations } = useSelector((state) => state.language);
   const [loading, setLoading] = useState(true);
   const [currentYear, setCurrentYear] = useState(null);  // لحل مشكلة تغيير التاريخ
-
   useEffect(() => {
+    // تحميل الترجمات عند تحميل العميل
     const fetchTranslations = async () => {
       const getLanguageFromLocal = localStorage.getItem('language') || 'en';
       const newLanguage = getLanguageFromLocal === 'en' ? 'en' : 'ar';
@@ -26,6 +26,8 @@ const Footer = () => {
     
     // تعيين السنة الحالية بعد تحميل العميل
     setCurrentYear(new Date().getFullYear());
+
+   
   }, [dispatch]);
 
   if (loading) {
@@ -33,7 +35,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gray-800 text-white py-4 text-center">
+    <footer className={`bg-gray-800 text-white py-4 text-center w-full`}>
       <div className="mb-4 flex flex-wrap justify-center">
         <a href="/" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Home}</a>
         <a href="/projects" className="mx-2 hover:text-gray-400">{translations?.Navpar?.Projects}</a>

@@ -3,7 +3,7 @@ import ContactMe from '@/app/componant/ContactMeForm';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Chat from '@/app/componant/chat';
-
+import Footer from '@/app/componant/footer';
 const ContactMee = () => {
 
     
@@ -111,6 +111,8 @@ const getStatusfromContactMe = (state : boolean) => {
       
 </>
        }
+       <Footer />
+
     </>
   );
 };
