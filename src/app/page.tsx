@@ -118,8 +118,8 @@ const Home = () => {
   <div className="relative bg-gradient-to-t from-[#0c354100] via-[#3d3b9b] to-[#0f47ff00] rounded-xl p-4 sm:p-10 z-20 shadow-[0_8px_40px_0_rgba(0,0,0,0.18)] backdrop-blur-xl">
     {/* Title & Description */}
     <div className="mb-8 text-center" data-aos="fade-up" data-aos-duration="1200">
-      <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-10 mt-6 bg-gradient-to-r from-[#1b474e] via-[#4c3ca8] to-[#3a773a] drop-shadow-xl animate-slide-down animate-delay-[100ms]">
-        <span className="inline-block text-6xl sm:text-7xl md:text-8xl text-[#60e6ff] animate-wiggle mr-2 align-middle">🕸️</span>
+      <h1 className="text-[10px] sm:text-4xl rounded-2xl md:text-5xl font-bold sm:font-extrabold mb-10 mt-6 bg-gradient-to-r from-[#1b474e] via-[#4c3ca8] to-[#3a773a] drop-shadow-xl animate-slide-down animate-delay-[100ms]">
+        <span className="inline-block text-4xl sm:text-7xl md:text-8xl text-[#60e6ff] animate-wiggle mr-2 align-middle">🕸️</span>
         <span className="align-middle">
           {gitLanguage === "en"
             ? "Full-Stack Web Developer"
