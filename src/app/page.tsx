@@ -118,7 +118,7 @@ const Home = () => {
   <div className="relative bg-gradient-to-t from-[#0c354100] via-[#3d3b9b] to-[#0f47ff00] rounded-xl p-4 sm:p-10 z-20 shadow-[0_8px_40px_0_rgba(0,0,0,0.18)] backdrop-blur-xl">
     {/* Title & Description */}
     <div className="mb-8 text-center" data-aos="fade-up" data-aos-duration="1200">
-      <h1 className="text-[10px] sm:text-4xl rounded-2xl md:text-5xl font-bold sm:font-extrabold mb-10 mt-6 bg-gradient-to-r from-[#1b474e] via-[#4c3ca8] to-[#3a773a] drop-shadow-xl animate-slide-down animate-delay-[100ms]">
+      <h1 className="text-[15px] p-1 whitespace-nowrap sm:whitespace-pre-wrap sm:text-4xl rounded-2xl md:text-5xl font-bold sm:font-extrabold mb-10 mt-6 bg-gradient-to-r from-[#1b474e] via-[#4c3ca8] to-[#3a773a] drop-shadow-xl animate-slide-down animate-delay-[100ms]">
         <span className="inline-block text-4xl sm:text-7xl md:text-8xl text-[#60e6ff] animate-wiggle mr-2 align-middle">🕸️</span>
         <span className="align-middle">
           {gitLanguage === "en"
@@ -144,7 +144,7 @@ const Home = () => {
               </span>
               <span className="block mt-6">
                 <span className="font-semibold text-[#60e6ff]">+ AI Integration:</span> I can integrate smart AI chatbots that answer based on your site data, just like in
-                <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2">Live AI Demo</a>.
+                <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">Live AI Demo</a>.
               </span>
             </>
           ) : (
@@ -163,7 +163,7 @@ const Home = () => {
               </span>
               <span className="block mt-6">
                 <span className="font-semibold text-[#60e6ff]">+ دمج الذكاء الاصطناعي:</span> أستطيع دمج شات ذكي يجيب بناءً على بيانات موقعك، كما في
-                <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2">تجربة حية</a>.
+                <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">تجربة حية</a>.
               </span>
             </>
           )}
@@ -226,6 +226,13 @@ const Home = () => {
 }
 .animate-bounce-smooth {
   animation: bounce-smooth 1.8s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 16px 4px #60e6ff, 0 0 32px 8px #4c3ca8; }
+  50% { box-shadow: 0 0 32px 12px #60e6ff, 0 0 48px 16px #4c3ca8; }
+}
+.animate-glow {
+  animation: glow 1.6s ease-in-out infinite alternate;
 }
 `}</style>
     </>
