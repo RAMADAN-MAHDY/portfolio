@@ -102,8 +102,8 @@
              "ProjectImages": { 
                 "Title1": "Some pictures from the control panel (admin)", 
                 "Link1": "Visit the site", 
-                "Link2": "backend code", 
-                "Link3": "frontend code " 
+                "Link3": "backend code", 
+                "Link2": "frontend code " 
             }      
              }
 ,
@@ -148,15 +148,58 @@
   "ProjectImages": { 
     "Title1": "Some pictures from the control panel (admin)", 
     "Link1": "Visit the site", 
-    "Link2": "backend code ", 
-    "Link3": "frontend code" 
+    "Link2": "frontend code" ,
+    "Link3": "backend code"
 }   
 }
+,
+"Project_Olive_Oil_Store": {
+  "Title": "Integrated Olive Oil Store",
+  "Description": "The Olive Oil Store is a fully integrated system for managing and selling olive oil products online with a professional user experience. The system provides a dynamic admin dashboard for managing products, orders, and reviews, with full data protection and a responsive, Arabic-supported interface.",
+  "MainFeatures": {
+    "Title": "Key Features",
+    "DynamicProductManagement": "Dynamic product management with the ability to update settings (prices, quantities, discounts) through the admin dashboard.",
+    "OrderTracking": "Order status tracking with an interactive timeline and instant notifications for users.",
+    "ReviewSystem": "Integrated review system with the ability to add and display reviews dynamically, with control over the number of displayed reviews and a button to add new reviews.",
+    "SecureAuthentication": "Secure login and authentication using JWT, with tokens stored in cookies, and full protection for admin, orders, and reviews interfaces.",
+    "CentralizedAPISettings": "Centralized API links configuration in a single file for easier maintenance and development.",
+    "ResponsiveDesign": "Fully responsive user interface using Tailwind CSS, compatible with all devices for a smooth user experience.",
+    "CodeSeparation": "Separation of JavaScript code into independent files for each logic (products, orders, reviews, authentication) to improve maintainability."
+  },
+  "TechnologiesUsed": {
+    "Title": "Technologies Used",
+    "Frontend": {
+      "_1": "HTML5 and CSS3 with Tailwind CSS for a modern, responsive interface.",
+      "_2": "Vanilla JavaScript for interactive logic and page dynamics.",
+      "_3": "Scripts are separated into independent files for each feature."
+    },
+    "Backend": {
+      "_1": "Node.js with Express.js to build a strong REST API.",
+      "_2": "MongoDB for data management using NoSQL database.",
+      "_3": "Mongoose for data modeling.",
+      "_4": "JWT for user authentication and authorization.",
+      "_5": "cors, helmet, and rate-limit for security and protection."
+    }
+  },
+  "ReviewFeature": {
+    "Title": "Dynamic Reviews Feature",
+    "Description": "Users can easily add their reviews through a dedicated modal, with dynamic display of reviews and a show more/less button. Reviews update instantly after submission without page reload."
+  },
+  "ProjectGoal": {
+    "Title": "Project Goal",
+    "Description": "To provide a complete digital platform for selling and managing olive oil products, ensuring a professional user experience, full protection, and easy management of products, orders, and reviews."
+  },
+  "Integration": {
+    "Title": "Frontend and Backend Integration",
+    "Description": "The frontend integrates with the backend through a unified REST API that supports all operations (login, product management, orders, reviews) with full data protection and flexibility for future expansion."
+  },
+  "ProjectImages": {
+    "Title1": "Images from Admin Panel and Main Interface",
+     "Link1": "Visit the site", 
+    "Link2": "frontend code" ,
+    "Link3": "backend code"
+  }
+}      
 
-
-
-
-
-
-               }
+}
                
