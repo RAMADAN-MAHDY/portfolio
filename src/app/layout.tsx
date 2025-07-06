@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/app/componant/navbar";
 import ClientProvider from '../lib/ClientProvider';
 import GoogleAnalytics from '@/app/componant/googleAnalytics';
+import ChatBotWidget from "@/app/componant/ChatBotWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,12 +39,17 @@ function RootLayout({ children }: LocaleLayoutProps) {
                 <link rel="icon" href="/451548470_3829658120605216_14025268882969849787_n.JPG" sizes="32x32" />
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1900509020605535"
                     crossOrigin="anonymous"></script>
+                <script
+                    src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+                    type="module"
+                ></script>
             </head>
             <body className={inter.className}>
                 <GoogleAnalytics trackingId={GA_TRACKING_ID} />
                 <ClientProvider>
                     <Navbar />
                     {children}
+                    <ChatBotWidget/>
                     <div className={`w-[494px]`}>
                         {/* <Footer /> */}
                     </div>

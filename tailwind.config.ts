@@ -78,6 +78,13 @@ const config: Config = {
           '60%': { opacity: '0.7', transform: 'translateY(-10px) scale(1.03)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
+        wave: {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '20%': { transform: 'rotate(-20deg)' },
+          '40%': { transform: 'rotate(10deg)' },
+          '60%': { transform: 'rotate(-10deg)' },
+          '80%': { transform: 'rotate(20deg)' },
+        },
       },
       animation: {
         float: 'float 3s ease-in-out infinite',
@@ -88,6 +95,7 @@ const config: Config = {
         'wiggle': 'wiggle 1.1s cubic-bezier(.36,.07,.19,.97) infinite',
         'slide-down': 'slideDown 1.1s cubic-bezier(.36,.07,.19,.97) both',
         'slide-up': 'slideUp 1.1s cubic-bezier(.36,.07,.19,.97) both',
+        'wave': 'wave 1.2s ease-in-out infinite',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

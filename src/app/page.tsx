@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Footer from "@/app/componant/footer";
 import Chat from "@/app/componant/chat";
 import SpiderWeb from '@/app/componant/SpiderWeb';
+// import ChatBotWidget from "@/app/componant/ChatBotWidget";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -187,8 +188,6 @@ const Home = () => {
 
     {/* <h1 className="text-[#fcf9f9] text-center text-[34px] mt-[140px] m-3">{translations?.ChatUser?.Chat_User}</h1> */}
        <Chat />
-      
-
       {/* <div className="container mt-[-250px] sm:mt-[-350px] mr-0 sm:ml-[0%] sm:mr-[10%] pt-[0px] w-[100%]">
         <main className="flex items-center justify-center min-h-screen z-100 overflow-hidden pl-6 ml-[-70px]">
           <AboutMyself />
