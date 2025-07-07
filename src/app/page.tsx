@@ -4,7 +4,7 @@ import Footer from "@/app/componant/footer";
 import Chat from "@/app/componant/chat";
 import SpiderWeb from '@/app/componant/SpiderWeb';
 import AboutUs from "@/app/componant/aboutus";
-import GetLanguageFromLocalStor from "@/app/componant/GetLanguageFromLocalStor";
+import GetLanguageFromLocalStor from "@/app/componant/getLanguagefromLocalStor";
 import ClientStyle from "@/app/componant/ClientStyle"; // هننقل الستايلات هنا
 import FancyLoader from "@/app/componant/FancyLoader";
 export default function Home() {
