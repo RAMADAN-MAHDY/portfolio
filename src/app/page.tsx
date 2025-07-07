@@ -7,6 +7,7 @@ import AboutUs from "@/app/componant/aboutus";
 import GetLanguageFromLocalStor from "@/app/componant/getLanguagefromLocalStor";
 import ClientStyle from "@/app/componant/ClientStyle"; // هننقل الستايلات هنا
 import FancyLoader from "@/app/componant/FancyLoader";
+import SocialIcons from "@/app/componant/sociallcons";
 export default function Home() {
   return (
     <>
@@ -20,6 +21,7 @@ export default function Home() {
         </div>
       </main>
 
+      <SocialIcons />
       <Chat />
 
       <section className="mt-[50px]">
