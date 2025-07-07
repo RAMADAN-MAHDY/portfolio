@@ -49,10 +49,8 @@ function RootLayout({ children }: LocaleLayoutProps) {
                 <ClientProvider>
                     <Navbar />
                     {children}
+                    
                     <ChatBotWidget/>
-                    <div className={`w-[494px]`}>
-                        {/* <Footer /> */}
-                    </div>
                 </ClientProvider>
             </body>
         </html>

@@ -81,7 +81,7 @@ export default function ChatBotWidget() {
 
   return (
     <>
-      <div className="fixed bottom-6 sm:right-6 right-0 z-50 flex flex-col items-end">
+      <div className="fixed bottom-[20%] sm:right-6 right-0 z-50 flex flex-col items-end">
         <button
           className="rounded-full shadow-lg w-16 h-16 flex items-center justify-center hover:scale-110 transition relative"
           onClick={() => { setShowChat(v => !v); setShowWelcome(false); }}
