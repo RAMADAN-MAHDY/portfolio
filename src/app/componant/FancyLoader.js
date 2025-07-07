@@ -11,7 +11,7 @@ export default function FancyLoader() {
   const t = (enText, arText) => currentLanguage === "ar" ? arText : enText;
 
   useEffect(() => {
-    const timer = setTimeout(() => setHide(true), 5000);
+    const timer = setTimeout(() => setHide(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
