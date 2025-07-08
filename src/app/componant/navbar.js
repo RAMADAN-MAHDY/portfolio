@@ -77,10 +77,10 @@ const Navbar = () => {
                             {currentLanguage === "en" ? "عربي " : "English"}
                         </button>
                     </div>
-                    <Link href="/ContactMe" className={`px-2 flex items-center ${pathname === '/ContactMe' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`}> 
+                    {/* <Link href="/ContactMe" className={`px-2 flex items-center ${pathname === '/ContactMe' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`}> 
                         <FaEnvelope className="mr-2" />
                         <p>{translations?.Navpar?.Contact || 'Contact'}</p>
-                    </Link>
+                    </Link> */}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -120,10 +120,10 @@ const Navbar = () => {
                             {currentLanguage === "en" ? "ترجمة" : "translate"}
                         </button>
                     </div>
-                    <Link href="/ContactMe" className={`flex items-center py-5 px-5 ${pathname === '/ContactMe' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`} onClick={() => setIsOpen(false)}>
+                    {/* <Link href="/ContactMe" className={`flex items-center py-5 px-5 ${pathname === '/ContactMe' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`} onClick={() => setIsOpen(false)}>
                         <FaEnvelope className="mr-2" />
                         <p>{translations?.Navpar?.Contact || 'Contact'}</p>
-                    </Link>
+                    </Link> */}
                 </div>
             )}
         </nav>

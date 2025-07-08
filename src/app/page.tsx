@@ -1,7 +1,7 @@
 import SkillsSection from "@/app/componant/SkillsSection";
 import Vismeforms from "@/app/componant/vismeforms";
 import Footer from "@/app/componant/footer";
-import Chat from "@/app/componant/chat";
+// import Chat from "@/app/componant/chat";
 import SpiderWeb from '@/app/componant/SpiderWeb';
 import AboutUs from "@/app/componant/aboutus";
 import GetLanguageFromLocalStor from "@/app/componant/getLanguagefromLocalStor";
@@ -22,7 +22,7 @@ export default function Home() {
       </main>
 
       <SocialIcons />
-      <Chat />
+      {/* <Chat /> */}
 
       <section className="mt-[50px]">
         <SkillsSection />

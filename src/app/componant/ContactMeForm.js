@@ -15,8 +15,10 @@ export default function ContactMe({getStatusfromContactMe}) {
     messageText : ""
   })
 
+
 const handleSupmet = (eo)=>{
 eo.preventDefault();
+
 
 const requestOptions = {
     method: 'POST',
