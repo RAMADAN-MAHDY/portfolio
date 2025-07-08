@@ -22,7 +22,7 @@ export default function FancyLoader() {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-gradient-to-br from-[#0c3541] via-[#3d3b9b] to-[#0f47ff] flex flex-col items-center justify-center text-center px-4"
+      className="fixed inset-0 z-[2000] bg-gradient-to-br from-[#0c3541] via-[#3d3b9b] to-[#0f47ff] flex flex-col items-center justify-center text-center px-4"
     >
       <div className="relative w-48 h-48 flex items-center justify-center">
         {/* هالة خارجية بتوهج متغير */}
