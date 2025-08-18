@@ -1,5 +1,5 @@
 "use client";
-import { FaFacebook, FaGithub, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaWhatsapp ,FaLinkedin } from 'react-icons/fa';
 import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadTranslations } from '../../utils/loadTranslations';
@@ -47,6 +47,7 @@ const Footer = () => {
         {/* <a href="https://instagram.com" className="mx-2 hover:text-gray-400"><FaInstagram /></a> */}
         <a href=" https://wa.me/201556299599" target='-blank' className="mx-2 hover:text-gray-400"><FaWhatsapp /></a>
         <a href="https://github.com/RAMADAN-MAHDY?tab=repositories" target='-blank' className="mx-2 hover:text-gray-400"><FaGithub /></a>
+        <a href="https://www.linkedin.com/in/ramadan-mahdy?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target='-blank' className="mx-2 hover:text-gray-400"><FaLinkedin /></a>
         {/* <a href="https://youtube.com" className="mx-2 hover:text-gray-400"><FaYoutube /></a> */}
       </div>
       <div className="text-sm">
