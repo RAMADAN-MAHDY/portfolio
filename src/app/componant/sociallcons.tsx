@@ -1,6 +1,6 @@
 'use client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp, faFacebook} from '@fortawesome/free-brands-svg-icons';
+import { faWhatsapp, faFacebook , faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import styleAnimation from './style/sociallcon.module.css';
 
 const SocialIcons = () => {
@@ -24,6 +24,14 @@ const SocialIcons = () => {
         className="transition-transform duration-300 hover:scale-110 text-gray-600 dark:text-gray-300"
       >
         <FontAwesomeIcon icon={faWhatsapp} className="w-5 h-5 sm:w-8 sm:h-8 text-[#00ff15]" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/ramadan-mahdy?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="transition-transform duration-300 hover:scale-110 text-gray-600 dark:text-gray-300"
+      >
+        <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 sm:w-8 sm:h-8 text-[#001aff]" />
       </a>
       {/* <a
         href="https://www.instagram.com"

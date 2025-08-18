@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+// import { DotLottieReact } from '@lottiefiles/dotlottie-react';   // uninstall
 import { useSelector } from "react-redux";
 
 export default function ChatBotWidget() {
@@ -10,7 +10,7 @@ export default function ChatBotWidget() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+//   const [isClient, setIsClient] = useState(false);
 
   const currentLanguage = useSelector((state) => state.language.currentLanguage);
 
@@ -20,7 +20,7 @@ export default function ChatBotWidget() {
   const t = (enText, arText) => currentLanguage === "ar" ? arText : enText;
 
   useEffect(() => {
-    setIsClient(true);
+    // setIsClient(true);
 
     // رسالة البداية
     setHistory([
@@ -83,17 +83,17 @@ export default function ChatBotWidget() {
     <>
       <div className="fixed bottom-[20%] sm:right-6 right-0 z-50 flex flex-col items-end">
         <button
-          className="rounded-full shadow-lg w-16 h-16 flex items-center justify-center hover:scale-110 transition relative"
+          className="rounded-full shadow-lg w-16 h-16 bg-[url('/animation/Animation-1751341569929.gif')] flex items-center bg-cover justify-center hover:scale-110 transition relative"
           onClick={() => { setShowChat(v => !v); setShowWelcome(false); }}
           aria-label="Open chat"
         >
-          {isClient && (
+          {/* {isClient && (
             <DotLottieReact
               src="https://lottie.host/58cfed2f-a4f8-4271-9887-02ff4bd7831b/EbAMuFGCsN.lottie"
               loop
               autoplay
             />
-          )}
+          )} */}
 
           {showWelcome && (
             <span className="absolute sm:right-20 right-10 top-[-20px] sm:top-1 bg-white text-blue-700 sm:px-4 px-1 py-2 rounded-l-[50px] rounded-tr-[30px] sm:rounded-xl shadow-lg text-base font-semibold animate-fade-in animate-slide-down sm:whitespace-nowrap w-[300px] sm:w-auto">
