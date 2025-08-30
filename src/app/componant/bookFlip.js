@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { setLanguage, setTranslations } from "../../lib/slices/languageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTranslations } from "../../utils/loadTranslations";
+import { AlertTriangle } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -17,6 +18,7 @@ const BookFlip = () => {
         div2: 0,
         div3: 0,
         div4: 0,
+        div5: 0,
     });
 
     const isRTL = currentLanguage !== "en";
@@ -44,11 +46,13 @@ const BookFlip = () => {
         }
     }, [isClient]);
 
-    const totalPages = 5;
+    const totalPages = 6;
 
     const flipNext = (id) => {
         setPages((prevPages) => {
             const newPage = prevPages[id] < totalPages ? prevPages[id] + 1 : 0;
+
+            console.log(newPage)
             return { ...prevPages, [id]: newPage };
         });
     };
@@ -56,6 +60,9 @@ const BookFlip = () => {
     const flipPrev = (id) => {
         setPages((prevPages) => {
             const newPage = prevPages[id] > 0 ? prevPages[id] - 1 : 0;
+
+            console.log(newPage)
+
             return { ...prevPages, [id]: newPage };
         });
     };
@@ -70,6 +77,8 @@ const BookFlip = () => {
                 return "bg-[url('https://i.postimg.cc/W4T9hr3R/Whats-App-Image-2025-05-02-at-15-48-17-04ec0411.jpg')]";
             case 3:
                 return "bg-[url('https://i.ibb.co/zhMD3x9F/Screenshot-2025-06-30-233600.png')]";
+            case 4:
+                return "bg-[url('https://i.ibb.co/1Gm6Y9Rq/Screenshot-2025-08-27-110420.png')]";
             default:
                 return "bg-[#222322]";
         }
@@ -95,6 +104,11 @@ const BookFlip = () => {
             case 3:
                 return [
                     "https://i.ibb.co/SXP5YkTy/Screenshot-2025-07-01-010412.png",
+
+                ];
+            case 4:
+                return [
+                    "https://i.ibb.co/3nRpB8r/61196c35add3.png",
 
                 ];
             default:
@@ -126,6 +140,12 @@ const BookFlip = () => {
                     "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
                     "https://github.com/RAMADAN-MAHDY/olive-oil-store",
                     "https://olive-oil-store-tau.vercel.app",
+                ];
+            case 4:
+                return [
+                    "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
+                    "https://github.com/RAMADAN-MAHDY/olive-oil-store",
+                    " https://nazafaa.com" || "#",
                 ];
             default:
                 return "bg-[#222322]";
@@ -305,6 +325,50 @@ const BookFlip = () => {
                 },
             },
         },
+        {
+            countPage: [1, 2, 3, 4, 5],
+            id: "div5", // Changed from div4 to div5 to be unique
+            SiteDefinition: {
+                Title: translations?.Project_Kharji_Cleaning_Services?.Title || "Default Title",
+                Description: translations?.Project_Kharji_Cleaning_Services?.Description || "Default Description",
+            },
+            ImportantPoints: {
+                Title: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.Title || "",
+
+                ModernUI: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.ModernUI || "",
+
+                GalleryCarousel: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.GalleryCarousel || "",
+
+                ChatBot: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.ChatBot || "",
+                Security: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.Security || "",
+
+                SessionManagement: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.SessionManagement || "",
+
+                Analytics: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.Analytics || "",
+
+                ResponsiveDesign: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.ResponsiveDesign || "",
+                ContentUs: translations?.Project_Kharji_Cleaning_Services?.MainFeatures?.Content || "",
+            },
+
+            ProjectDetails: {
+                Title: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.Title || "Default Title",
+                Technologies: {
+                    _1: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.Frontend?._1,
+                    _2: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.Frontend?._2,
+                    _3: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.Frontend?._3,
+                    _4: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.Backend?._1,
+                    _5: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.Backend?._2,
+                    _6: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.Backend?._3,
+                    _7: translations?.Project_Kharji_Cleaning_Services?.TechnologiesUsed?.AI?._1,
+                },
+                ProjectImages: {
+                    Title1: translations?.Project_Kharji_Cleaning_Services?.ProjectImages?.Title1 || "Default Title",
+                    Link1: translations?.Project_Kharji_Cleaning_Services?.ProjectImages?.Link1 || "Default Link1",
+                    Link2: translations?.Project_Kharji_Cleaning_Services?.ProjectImages?.Link2 || "Default Link2",
+                    Link3: translations?.Project_Kharji_Cleaning_Services?.ProjectImages?.Link3 || "Default Link2",
+                },
+            },
+        },
     ];
 
     if (!translations) {
@@ -388,15 +452,22 @@ const BookFlip = () => {
                                             {(content.id === "div1") && (
                                                 <li>{content?.ImportantPoints?.OrderManagement}</li>
 
+
                                             )}
                                         </ul>
                                     )}
-
+                                    {/* ----------------------------------------------------------------------------------------- */}
+                                    {/* محتوي المشورع الخامس  الصفحه الاولي */}
+                                    {(content.id === "div5") && (
+                                        <ul className="list-disc mr-6 ml-6 text-[10px]">                                                     <li className="mt-[-20px] text-[14px]">{content?.ImportantPoints?.ModernUI}</li>
+                                            <li className="text-[14px]">{content?.ImportantPoints?.ResponsiveDesign}</li>
+                                            <li className="text-[14px]">{content?.ImportantPoints?.GalleryCarousel}</li>
+                                        </ul>
+                                    )}
                                 </div>
                             ) : pages[content.id] === 2 ? (
                                 // الصفحه الثانيه
                                 <>
-
                                     {/* محتوي الصفحه التانيه للمشروع الاول والتاني  */}
                                     {(content.id === "div2" || content.id === "div1" || content.id === "div3") &&
                                         <ul
@@ -451,8 +522,6 @@ const BookFlip = () => {
 
                                         </ul>
                                     }
-
-
                                     {/* //  محتوي الصفحه التانيه للمشروع الرابع */}
 
                                     {content.id === "div4" && (
@@ -470,6 +539,37 @@ const BookFlip = () => {
                                                 <li>{content?.ImportantPoints?.ResponsiveDesign}</li>
                                                 <li>{content?.ImportantPoints?.CodeSeparation}</li>
                                             </ul>
+                                        </>
+                                    )}
+                                    {/* ----------------------------------------------------------- */}
+                                    {/* //  محتوي الصفحه التانيه للمشروع الخامس */}
+                                    {content.id === "div5" && (
+                                        <>
+                                            <ul
+                                                className={`list-disc ${isRTL ? "mr-5 ml-1" : "mr-1 ml-5"
+                                                    } mr-5 ml-1 mt-0 text-[14px]`}
+                                                dir={isRTL ? "rtl" : "ltr"}
+                                            >
+                                                <li>{content?.ImportantPoints?.ChatBot}</li>
+                                                <li>{content?.ImportantPoints?.Security}</li>
+                                                <li>{content?.ImportantPoints?.SessionManagement}</li>
+                                                <li>{content?.ImportantPoints?.Analytics}</li>
+                                                <li>{content?.ImportantPoints?.ContentUs}</li>
+                                            </ul>
+                                            <div
+                                                className="text-[4px] whitespace-break-spaces  "
+                                                data-aos="fade-top"
+                                                dir={isRTL ? "rtl" : "ltr"}
+                                            >
+                                                <h3 className="text-xl font-bold p-5 mb-2 text-[24px] text-[#e69999]">
+                                                    {content?.ProjectDetails?.Title}
+                                                </h3>
+                                                <ul className="list-disc p-6 pt-0 text-[13px]">
+                                                    <li>{content?.ProjectDetails?.Technologies?._1}</li>
+                                                    <li>{content?.ProjectDetails?.Technologies?._2}</li>
+                                                    <li>{content?.ProjectDetails?.Technologies?._3}</li>
+                                                </ul>
+                                            </div>
                                         </>
                                     )}
 
@@ -503,7 +603,6 @@ const BookFlip = () => {
                                             </ul>
                                         </div>
                                     )}
-
                                     {/* المشروع الثالث */}
                                     {(content.id === "div3" && (
                                         <div
@@ -531,8 +630,6 @@ const BookFlip = () => {
 
                                     ))
                                     }
-
-
                                     {/* المشروع الرابع */}
                                     {(content.id === "div4" && (
                                         <div
@@ -564,6 +661,20 @@ const BookFlip = () => {
 
                                     ))
                                     }
+                                    {/* المشروع الخامس */}
+                                    {(content.id === "div5") && (
+                                        <>
+                                            <ul className="list-disc p-0 m-[-170px] mt-[-220px] text-[13px]"
+                                                dir={isRTL ? "rtl" : "ltr"}
+
+                                            >
+                                                <li>{content?.ProjectDetails?.Technologies?._4}</li>
+                                                <li>{content?.ProjectDetails?.Technologies?._5}</li>
+                                                <li>{content?.ProjectDetails?.Technologies?._6}</li>
+                                                <li>{content?.ProjectDetails?.Technologies?._7}</li>
+                                            </ul>
+                                        </>
+                                    )}
 
 
                                 </>
@@ -593,6 +704,56 @@ const BookFlip = () => {
                             ) : pages[content.id] === 4 ? (  // الصفحه الرابعه
 
                                 <>
+                                    {/* المشروع الخامس */}
+                                    <div dir={isRTL ? "rtl" : "ltr"}>
+                                        {content.id === "div5" && (
+                                            <div className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden">
+                                                <h1 className="col-span-3 text-center pt-4">
+
+                                                    {content?.ProjectDetails?.ProjectImages?.Title1}
+
+                                                </h1>
+                                                <img
+                                                    className="w-full h-48 object-cover rounded-md col-span-3"
+                                                    src={getProjectsImage(index)[0]}
+                                                    alt="Nature"
+                                                />
+
+                                                <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
+                                                    <a
+                                                        href={getProjectsLinkes(index)[2]} // back end   surce code 
+                                                        target="-plank"
+                                                        className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
+                                                    >
+                                                        {content?.ProjectDetails?.ProjectImages?.Link1}
+                                                    </a>
+                                                    {/* <a
+                                                        href={getProjectsLinkes(index)[1]} // front end   surce code
+                                                        target="-plank"
+                                                        className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
+                                                    >
+                                                        {content?.ProjectDetails?.ProjectImages?.Link2}
+
+                                                    </a>
+                                                    <a
+                                                        href={getProjectsLinkes(index)[0]}  // زيارة الموقع
+                                                        target="-plank"
+                                                        className="bg-[#26458a] p-3  hover:bg-[#2669f8]"
+                                                    >
+                                                        {content?.ProjectDetails?.ProjectImages?.Link3}
+                                                    </a> */}
+                                                    <p className="text-sm font-semibold text-[#f0ff1b] p-3 flex items-center justify-center gap-2">
+                                                        <AlertTriangle className="w-4 h-4 text-[#f0ff1b]" />
+                                                        الكود غير متوفر احتراما لرغبة العميل 
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
+
+
                                     {/* المشروع الرابع  */}
                                     {(content.id === "div4" && (
                                         <div
@@ -617,7 +778,7 @@ const BookFlip = () => {
                                     ))
                                     }
 
-                                    {(content.id !== "div4" && (
+                                    {((content.id !== "div4" && content.id !== "div5") && (
                                         <section
                                             className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden"
                                             data-aos="fade-top"
@@ -712,7 +873,7 @@ const BookFlip = () => {
 
                                 </>
                             ) :
-                                pages[content.id] === 5 ? (
+                                pages[content.id] === 5 ? (   // الصفحة الخامسه
                                     <div dir={isRTL ? "rtl" : "ltr"}>
                                         {content.id === "div4" ? (
                                             <div className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden">
@@ -790,7 +951,7 @@ const BookFlip = () => {
                                                         target="-plank"
                                                         className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
                                                     >
-                                                    {content?.ProjectDetails?.ProjectImages?.Link3}
+                                                        {content?.ProjectDetails?.ProjectImages?.Link3}
 
                                                     </a>
                                                     <a
@@ -859,7 +1020,7 @@ const BookFlip = () => {
                     className="w-[494px] sm:w-full h-full bg-gradient-to-r from-[#0c3541] to-[#0e2ee6] text-white mt-[110px]"
                 >
                     {/* <div className="container sm:w-[140%] ">    */}
-                    <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] ml-[25%] w-[250px] pt-[60px]">
+                    <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] md:ml-[40%] ml-[25%] w-[250px] pt-[60px]">
                         {translations?.Projects?.Projects}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">

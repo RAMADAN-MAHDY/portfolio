@@ -1,67 +1,61 @@
 {
-    "Navpar":{
-        "Description" : "Ramadan | Web Developer" ,
-        "Home" : "Home",
-        "Projects" : "Projects",
-        "Contact" : "Contact"
+    "Navpar": {
+        "Description": "Ramadan | Web Developer",
+        "Home": "Home",
+        "Projects": "Projects",
+        "Contact": "Contact"
     },
-    
     "AboutMyself": {
         "Text": "- Hello, I'm Ramadan./-  Web Developer./-  Full Stack (MERN)./,- Web Developer, Full Stack (MERN)./"
-          
-        },
-    "ChatAdmin":{
-       "Chat_Admin" : "Chat Admin"
     },
-    "ChatUser":{
-        "Chat_User" : "Chat",
-        "open_chat" : "Open Chat",
-        "close_chat" : "Close Chat"
-
-     },
+    "ChatAdmin": {
+        "Chat_Admin": "Chat Admin"
+    },
+    "ChatUser": {
+        "Chat_User": "Chat",
+        "open_chat": "Open Chat",
+        "close_chat": "Close Chat"
+    },
     "Footer": {
-            "Copyright": ". All rights reserved."
-          },
-
-    "SkillsSection" : {
-        "Skills" : " My Skills",
-        "Frontend" : "Frontend Development",
-        "Backend" : "Backend Development",
-        "Other" : "Other tools"
-
-          },
-    "ContactMy" : {
-         "Contact" : "Contact me",
-         "FullName" : "full name",
-         "Email" : "Email",
-         "phone" : "Phone",
-         "Message" : "Message",
-         "Send" : "send",
-         "follow" : "Follow Chat"
-        },
-    "Projects" : {
-        "Projects" : "Some works",
-        "FlipNext" : "Flip Next",
-        "FlipPrev" :"Flip Prev"
+        "Copyright": ". All rights reserved."
+    },
+    "SkillsSection": {
+        "Skills": " My Skills",
+        "Frontend": "Frontend Development",
+        "Backend": "Backend Development",
+        "Other": "Other tools"
+    },
+    "ContactMy": {
+        "Contact": "Contact me",
+        "FullName": "full name",
+        "Email": "Email",
+        "phone": "Phone",
+        "Message": "Message",
+        "Send": "send",
+        "follow": "Follow Chat"
+    },
+    "Projects": {
+        "Projects": "Some works",
+        "FlipNext": "Flip Next",
+        "FlipPrev": "Flip Prev"
     },
     "SiteDefinition": {
         "Title": "Site Definition",
         "Description": "It is an affiliate marketing website that showcases home products, clothing, outdoor products, and electrical appliances."
-      },
-      "ImportantPoints": {
+    },
+    "ImportantPoints": {
         "Title": "Important Points",
-          "ControlPanel": "Control Panel: Displays statistics and reports on orders and commissions.",
-          "ProductManagement": "Product Management: Add, edit, and view products with details like name, price, images, and description.",
-          "OrderManagement": "Order Management: View order details such as customer name, address, quantity, and price, along with tracking the order status.",
-          "ShoppingCart": "Shopping Cart: View products added to the cart with options to edit or remove them.",
-          "Support": "Support: Provide means of communication with the support team via WhatsApp and Facebook.",
-          "OrderForm": "Order Form: Enter order details such as customer name, phone number, address, quantity, and shipping price.",
-          "DetailsPage": "Details Page: Display product details such as name, images, price, commission, shipping, and description."
-        
-      },
-        "ProjectDetails": {
-          "Title": "Technologies Used",
-          "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.",
+        "ControlPanel": "Control Panel: Displays statistics and reports on orders and commissions.",
+        "ProductManagement": "Product Management: Add, edit, and view products with details like name, price, images, and description.",
+        "OrderManagement": "Order Management: View order details such as customer name, address, quantity, and price, along with tracking the order status.",
+        "ShoppingCart": "Shopping Cart: View products added to the cart with options to edit or remove them.",
+        "Support": "Support: Provide means of communication with the support team via WhatsApp and Facebook.",
+        "OrderForm": "Order Form: Enter order details such as customer name, phone number, address, quantity, and shipping price.",
+        "DetailsPage": "Details Page: Display product details such as name, images, price, commission, shipping, and description."
+    },
+    "ProjectDetails": {
+        "Title": "Technologies Used",
+        "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.",
         "Technologies": {
             "_1": "Next.js for building the frontend.",
             "_2": "Tailwind CSS for styling and design.",
@@ -70,136 +64,180 @@
             "_5": "MongoDB for data storage."
         },
         "ProjectImages": {
-          "Title1": "Some pictures from the control panel (admin)",
-          "Link1": "Visit the site", 
-          "Link2": "backend code", 
-          "Link3": "frontend code"  
+            "Title1": "Some pictures from the control panel (admin)",
+            "Link1": "Visit the site",
+            "Link2": "backend code",
+            "Link3": "frontend code"
         }
-          },
-
-          "SiteDefinition_2": {
-            "Title": "Site Definition",
-            "Description": "It is a story management system that tracks the status of stories through various production stages such as cutting, back, chest, assembly, storage, washing, packing, and final storage."
-          },
-
-
-          "ImportantPoints_2": {
-            "Title": "Important Points",
-            "AdminPage": "Allows the admin to add the cuts (work) to the site and monitor their status. The admin can enter details such as work order, model number, quantity, name, status, received settings, notes, last update time, and supervisor name.",
-            "SupervisorPage": "Allows supervisors to update the status of the cuts and add notes. The status includes stages such as cutting, back, front, assembly, storage, laundry, packing, and final storage. The supervisor's name and update time are recorded.",
-            "SearchFunctionality": "Allows users to search for cuts by name, quantity, work order, or model number."
-          },
-          "Project_2_Details": { 
-            "Title": "Technologies Used", 
-            "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.", 
-          "Technologies": {
-             "_1": "Next.js for building the frontend.",
-             "_2": "Tailwind CSS for styling and design.", 
-             "_3": "Redux Toolkit for state management.", 
-             "_4": "Express for providing backend APIs.", 
-             "_5": "MongoDB for data storage."
-             }, 
-             "ProjectImages": { 
-                "Title1": "Some pictures from the control panel (admin)", 
-                "Link1": "Visit the site", 
-                "Link3": "backend code", 
-                "Link2": "frontend code " 
-            }      
-             }
-,
-"Project_3_Attendance": {
-  "Title": "Attendance Log School",
-  "Description": "Attendance Log School is a comprehensive system for managing student attendance in primary schools. It aims to improve efficiency and simplify administrative processes related to attendance and student promotion. The application features a responsive, Arabic-supported user interface, making it suitable for use across various devices.",
-  "MainFeatures": {
-    "AttendanceManagement": "Record student check-in and check-out times accurately and easily.",
-    "AttendanceReports": "Generate detailed attendance reports categorized by month and year.",
-    "StudentPromotion": "Promote successful students to the new academic year while excluding those who failed.",
-    "AdminPanel": "Manage student data, control attendance records, and promote students.",
-    "SecureAuthentication": "Confirm sensitive operations with administrative passwords.",
-    "ResponsiveDesign": "Works smoothly on both desktop and mobile devices."
-  },
-  "TechnologiesUsed": {
-    "Title": "Technologies Used",
-    "Frontend": {
-      "_1": "React and Next.js for building the user interface.",
-      "_2": "Tailwind CSS for responsive and user-friendly design.",
-      "_3": "React Hooks for state management."
     },
-    "Backend": {
-      "_1": "Node.js with Express.js for developing a robust API.",
-      "_2": "MongoDB for data management using NoSQL database.",
-      "_3": "Mongoose for data modeling.",
-      "_4": "cors for secure communication between server and frontend.",
-      "_5": "date-fns for date formatting."
-    }
-  },
-  "PromotionFeature": {
-    "Title": "Student Promotion Feature",
-    "Description": "This feature allows the admin to select students who failed (via their codes) and promote only the successful students to the new academic year. The operation is confirmed through a popup requiring the admin password for security."
-  },
-  "ProjectGoal": {
-    "Title": "Project Goal",
-    "Description": "To provide an integrated digital solution for managing student attendance and promotion, helping schools enhance efficiency, reduce manual errors, and ensure a smooth and secure user experience."
-  },
-  "Integration": {
-    "Title": "Frontend & Backend Integration",
-    "Description": "Attendance is recorded via a fully integrated API connected to the frontend. The server supports operations like user registration, login, attendance management, exporting attendance reports to Excel files, and checking students’ daily attendance status. The backend is designed with a modular architecture that makes it easy to maintain and extend with new features."
-  },
-  "ProjectImages": { 
-    "Title1": "Some pictures from the control panel (admin)", 
-    "Link1": "Visit the site", 
-    "Link2": "frontend code" ,
-    "Link3": "backend code"
-}   
-}
-,
-"Project_Olive_Oil_Store": {
-  "Title": "Integrated Olive Oil Store",
-  "Description": "The Olive Oil Store is a fully integrated system for managing and selling olive oil products online with a professional user experience. The system provides a dynamic admin dashboard for managing products, orders, and reviews, with full data protection and a responsive, Arabic-supported interface.",
-  "MainFeatures": {
-    "Title": "Key Features",
-    "DynamicProductManagement": "Dynamic product management with the ability to update settings (prices, quantities, discounts) through the admin dashboard.",
-    "OrderTracking": "Order status tracking with an interactive timeline and instant notifications for users.",
-    "ReviewSystem": "Integrated review system with the ability to add and display reviews dynamically, with control over the number of displayed reviews and a button to add new reviews.",
-    "SecureAuthentication": "Secure login and authentication using JWT, with tokens stored in cookies, and full protection for admin, orders, and reviews interfaces.",
-    "CentralizedAPISettings": "Centralized API links configuration in a single file for easier maintenance and development.",
-    "ResponsiveDesign": "Fully responsive user interface using Tailwind CSS, compatible with all devices for a smooth user experience.",
-    "CodeSeparation": "Separation of JavaScript code into independent files for each logic (products, orders, reviews, authentication) to improve maintainability."
-  },
-  "TechnologiesUsed": {
-    "Title": "Technologies Used",
-    "Frontend": {
-      "_1": "HTML5 and CSS3 with Tailwind CSS for a modern, responsive interface.",
-      "_2": "Vanilla JavaScript for interactive logic and page dynamics.",
-      "_3": "Scripts are separated into independent files for each feature."
+    "SiteDefinition_2": {
+        "Title": "Site Definition",
+        "Description": "It is a story management system that tracks the status of stories through various production stages such as cutting, back, chest, assembly, storage, washing, packing, and final storage."
     },
-    "Backend": {
-      "_1": "Node.js with Express.js to build a strong REST API.",
-      "_2": "MongoDB for data management using NoSQL database.",
-      "_3": "Mongoose for data modeling.",
-      "_4": "JWT for user authentication and authorization.",
-      "_5": "cors, helmet, and rate-limit for security and protection."
+    "ImportantPoints_2": {
+        "Title": "Important Points",
+        "AdminPage": "Allows the admin to add the cuts (work) to the site and monitor their status. The admin can enter details such as work order, model number, quantity, name, status, received settings, notes, last update time, and supervisor name.",
+        "SupervisorPage": "Allows supervisors to update the status of the cuts and add notes. The status includes stages such as cutting, back, front, assembly, storage, laundry, packing, and final storage. The supervisor's name and update time are recorded.",
+        "SearchFunctionality": "Allows users to search for cuts by name, quantity, work order, or model number."
+    },
+    "Project_2_Details": {
+        "Title": "Technologies Used",
+        "Description": "Uses the latest technologies such as Next.js, Tailwind CSS, and Redux Toolkit to build fast and efficient interfaces with robust state management and seamless server interaction.",
+        "Technologies": {
+            "_1": "Next.js for building the frontend.",
+            "_2": "Tailwind CSS for styling and design.",
+            "_3": "Redux Toolkit for state management.",
+            "_4": "Express for providing backend APIs.",
+            "_5": "MongoDB for data storage."
+        },
+        "ProjectImages": {
+            "Title1": "Some pictures from the control panel (admin)",
+            "Link1": "Visit the site",
+            "Link3": "backend code",
+            "Link2": "frontend code "
+        }
+    },
+    "Project_3_Attendance": {
+        "Title": "Attendance Log School",
+        "Description": "Attendance Log School is a comprehensive system for managing student attendance in primary schools. It aims to improve efficiency and simplify administrative processes related to attendance and student promotion. The application features a responsive, Arabic-supported user interface, making it suitable for use across various devices.",
+        "MainFeatures": {
+            "AttendanceManagement": "Record student check-in and check-out times accurately and easily.",
+            "AttendanceReports": "Generate detailed attendance reports categorized by month and year.",
+            "StudentPromotion": "Promote successful students to the new academic year while excluding those who failed.",
+            "AdminPanel": "Manage student data, control attendance records, and promote students.",
+            "SecureAuthentication": "Confirm sensitive operations with administrative passwords.",
+            "ResponsiveDesign": "Works smoothly on both desktop and mobile devices."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Frontend": {
+                "_1": "React and Next.js for building the user interface.",
+                "_2": "Tailwind CSS for responsive and user-friendly design.",
+                "_3": "React Hooks for state management."
+            },
+            "Backend": {
+                "_1": "Node.js with Express.js for developing a robust API.",
+                "_2": "MongoDB for data management using NoSQL database.",
+                "_3": "Mongoose for data modeling.",
+                "_4": "cors for secure communication between server and frontend.",
+                "_5": "date-fns for date formatting."
+            }
+        },
+        "PromotionFeature": {
+            "Title": "Student Promotion Feature",
+            "Description": "This feature allows the admin to select students who failed (via their codes) and promote only the successful students to the new academic year. The operation is confirmed through a popup requiring the admin password for security."
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "To provide an integrated digital solution for managing student attendance and promotion, helping schools enhance efficiency, reduce manual errors, and ensure a smooth and secure user experience."
+        },
+        "Integration": {
+            "Title": "Frontend & Backend Integration",
+            "Description": "Attendance is recorded via a fully integrated API connected to the frontend. The server supports operations like user registration, login, attendance management, exporting attendance reports to Excel files, and checking students’ daily attendance status. The backend is designed with a modular architecture that makes it easy to maintain and extend with new features."
+        },
+        "ProjectImages": {
+            "Title1": "Some pictures from the control panel (admin)",
+            "Link1": "Visit the site",
+            "Link2": "frontend code",
+            "Link3": "backend code"
+        }
+    },
+    "Project_Olive_Oil_Store": {
+        "Title": "Integrated Olive Oil Store",
+        "Description": "The Olive Oil Store is a fully integrated system for managing and selling olive oil products online with a professional user experience. The system provides a dynamic admin dashboard for managing products, orders, and reviews, with full data protection and a responsive, Arabic-supported interface.",
+        "MainFeatures": {
+            "Title": "Key Features",
+            "DynamicProductManagement": "Dynamic product management with the ability to update settings (prices, quantities, discounts) through the admin dashboard.",
+            "OrderTracking": "Order status tracking with an interactive timeline and instant notifications for users.",
+            "ReviewSystem": "Integrated review system with the ability to add and display reviews dynamically, with control over the number of displayed reviews and a button to add new reviews.",
+            "SecureAuthentication": "Secure login and authentication using JWT, with tokens stored in cookies, and full protection for admin, orders, and reviews interfaces.",
+            "CentralizedAPISettings": "Centralized API links configuration in a single file for easier maintenance and development.",
+            "ResponsiveDesign": "Fully responsive user interface using Tailwind CSS, compatible with all devices for a smooth user experience.",
+            "CodeSeparation": "Separation of JavaScript code into independent files for each logic (products, orders, reviews, authentication) to improve maintainability."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Frontend": {
+                "_1": "HTML5 and CSS3 with Tailwind CSS for a modern, responsive interface.",
+                "_2": "Vanilla JavaScript for interactive logic and page dynamics.",
+                "_3": "Scripts are separated into independent files for each feature."
+            },
+            "Backend": {
+                "_1": "Node.js with Express.js to build a strong REST API.",
+                "_2": "MongoDB for data management using NoSQL database.",
+                "_3": "Mongoose for data modeling.",
+                "_4": "JWT for user authentication and authorization.",
+                "_5": "cors, helmet, and rate-limit for security and protection."
+            }
+        },
+        "ReviewFeature": {
+            "Title": "Dynamic Reviews Feature",
+            "Description": "Users can easily add their reviews through a dedicated modal, with dynamic display of reviews and a show more/less button. Reviews update instantly after submission without page reload."
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "To provide a complete digital platform for selling and managing olive oil products, ensuring a professional user experience, full protection, and easy management of products, orders, and reviews."
+        },
+        "Integration": {
+            "Title": "Frontend and Backend Integration",
+            "Description": "The frontend integrates with the backend through a unified REST API that supports all operations (login, product management, orders, reviews) with full data protection and flexibility for future expansion."
+        },
+        "ProjectImages": {
+            "Title1": "Images from Admin Panel and Main Interface",
+            "Link1": "Visit the site",
+            "Link2": "frontend code",
+            "Link3": "backend code"
+        }
+    },
+    "Project_Kharji_Cleaning_Services": {
+        "Title": "Al-Kharji General Cleaning Services",
+        "Description": "A fully integrated website for Al-Kharji General Cleaning Services, specialized in providing cleaning services in Riyadh and Al-Kharj regions, with online booking and smart customer interaction.",
+        "MainFeatures": {
+            "Title": "Project Features",
+            "ModernUI": "Interactive and modern user interface built with React and Next.js, supporting RTL for Arabic.",
+            "GalleryCarousel": "Animated image gallery showcasing samples of cleaning works attractively.",
+            "ChatBot": "Smart interactive chatbot powered by OpenAI, responding to customer inquiries in Saudi dialect.",
+            "Security": "JWT authentication system to ensure session security and interactions.",
+            "SessionManagement": "Session management with chat history storage for continuous customer interaction.",
+            "Analytics": "Usage analytics to track user clicks and improve user experience.",
+            "ResponsiveDesign": "Responsive design using Tailwind CSS, supporting all devices and screen sizes.",
+            "Content": "Comprehensive content including services, booking times, covered areas, and contact details."
+            
+        },
+        "Dashboard": {
+            "Title": "Dashboard",
+            "ChatMonitoring": "Display conversations between the AI assistant and users for monitoring.",
+            "UserData": "Show user data and booking requests for easier management."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Frontend": {
+                "_1": "React with Next.js for building a modern interface.",
+                "_2": "Tailwind CSS for responsive design.",
+                "_3": "Framer Motion for smooth animations."
+            },
+            "Backend": {
+                "_1": "Node.js with Express to build REST API.",
+                "_2": "MongoDB for data management.",
+                "_3": "JWT for authentication and security."
+            },
+            "AI": {
+                "_1": "OpenAI API for powering the smart assistant."
+            }
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "Provide an easy-to-use platform for booking cleaning services with a smart assistant that helps customers choose suitable services and confirm bookings smoothly and effectively."
+        },
+        "Integration": {
+            "Title": "Frontend and Backend Integration",
+            "Description": "Integration through unified REST API supporting login, booking, session management, and analytics with full data protection."
+        },
+        "ProjectImages": {
+            "Title1": "Image from the Dashboard",
+            "Link1": "Visit website",
+            "Link2": "Frontend source code",
+            "Link3": "Backend source code"
+        }
     }
-  },
-  "ReviewFeature": {
-    "Title": "Dynamic Reviews Feature",
-    "Description": "Users can easily add their reviews through a dedicated modal, with dynamic display of reviews and a show more/less button. Reviews update instantly after submission without page reload."
-  },
-  "ProjectGoal": {
-    "Title": "Project Goal",
-    "Description": "To provide a complete digital platform for selling and managing olive oil products, ensuring a professional user experience, full protection, and easy management of products, orders, and reviews."
-  },
-  "Integration": {
-    "Title": "Frontend and Backend Integration",
-    "Description": "The frontend integrates with the backend through a unified REST API that supports all operations (login, product management, orders, reviews) with full data protection and flexibility for future expansion."
-  },
-  "ProjectImages": {
-    "Title1": "Images from Admin Panel and Main Interface",
-     "Link1": "Visit the site", 
-    "Link2": "frontend code" ,
-    "Link3": "backend code"
-  }
-}      
-
 }
-               
