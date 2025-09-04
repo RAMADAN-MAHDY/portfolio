@@ -166,7 +166,7 @@ const BookFlip = () => {
             case 5:
                 return [
                     "https://github.com/RAMADAN-MAHDY/down-syndrome-Api",
-                    "https://github.com/RAMADAN-MAHDY/olive-oil-store",
+                    "https://github.com/dina-abaza/down-syndrome",
                     "https://down-syndrome-one.vercel.app" || "#",
                     "https://portofilio-l9ls.vercel.app" || "#",
                 ];
