@@ -860,7 +860,7 @@ const BookFlip = () => {
                                                                     </span>
                                                                     </div> */}
 
-                                                                    <span className="text-2xl">👨‍💻</span>
+                                                                <span className="text-2xl">👨‍💻</span>
                                                                 <a
                                                                     href={getProjectsLinkes(index)[3]}
                                                                     target="_blank"
@@ -1050,23 +1050,6 @@ const BookFlip = () => {
                                                         aspect="1.7777777777777777"
                                                     ></wistia-player>
 
-                                                    <script src="https://fast.wistia.com/player.js" async></script>
-
-                                                    <script src="https://fast.wistia.com/embed/2oy5vdkezy.js" async type="module"></script>
-
-                                                    <style>
-                                                        {`
-                                                        
-                                                        wistia-player[media-id='2oy5vdkezy']:not(:defined) {background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/2oy5vdkezy/swatch'); display: block; filter: blur(5px); padding-top:55.94%; }
-                                         ` }
-
-                                                    </style>
-
-                                                    <wistia-player
-                                                        media-id="2oy5vdkezy"
-                                                        aspect="1.7877094972067038">
-
-                                                    </wistia-player>
 
                                                 </div>
                                             )}
