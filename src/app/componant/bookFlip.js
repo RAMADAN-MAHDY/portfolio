@@ -862,7 +862,7 @@ const BookFlip = () => {
 
                                                                     <span className="text-2xl">👨‍💻</span>
                                                                 <a
-                                                                    href={getProjectsLinkes(index)[0]}
+                                                                    href={getProjectsLinkes(index)[3]}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
                                                                     className="bg-white text-[#26458a] text-sm font-bold px-5 py-2 rounded-lg shadow-[20px_7px_20px_rgba(212,123,123,0.4)] hover:bg-[#f0f0f0] transition"
