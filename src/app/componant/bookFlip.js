@@ -19,6 +19,7 @@ const BookFlip = () => {
         div3: 0,
         div4: 0,
         div5: 0,
+        div6: 0,
     });
 
     const isRTL = currentLanguage !== "en";
@@ -79,6 +80,8 @@ const BookFlip = () => {
                 return "bg-[url('https://i.ibb.co/zhMD3x9F/Screenshot-2025-06-30-233600.png')]";
             case 4:
                 return "bg-[url('https://i.ibb.co/1Gm6Y9Rq/Screenshot-2025-08-27-110420.png')]";
+            case 5:
+                return "bg-[url('https://i.ibb.co/7dSMMhXd/Screenshot-2025-09-04-172302.png')]";
             default:
                 return "bg-[#222322]";
         }
@@ -109,6 +112,19 @@ const BookFlip = () => {
             case 4:
                 return [
                     "https://i.ibb.co/3nRpB8r/61196c35add3.png",
+
+                ];
+            case 5:
+                return [
+                    "https://i.ibb.co/3ybcTD4Q/Screenshot-2025-08-31-101054.png",
+                    "https://i.ibb.co/7t5TbVcD/Screenshot-2025-08-31-101109.png",
+                    "https://i.ibb.co/ZpDHK5XM/Screenshot-2025-09-04-170852.png",
+                    "https://i.ibb.co/hxCRtyzG/Screenshot-2025-09-04-171059.png",
+                    "https://i.ibb.co/m5dNTCPr/Screenshot-2025-09-04-171141.png",
+                    "https://i.ibb.co/KpDvmjGw/Screenshot-2025-09-04-171217.png",
+                    "https://i.ibb.co/35T5gSLb/Screenshot-2025-09-04-171251.png",
+                    "https://i.ibb.co/qFgb2P32/Screenshot-2025-09-04-171308.png",
+                    "https://i.ibb.co/MkYdKcVn/Screenshot-2025-09-04-171324.png"
 
                 ];
             default:
@@ -146,6 +162,13 @@ const BookFlip = () => {
                     "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
                     "https://github.com/RAMADAN-MAHDY/olive-oil-store",
                     " https://nazafaa.com" || "#",
+                ];
+            case 5:
+                return [
+                    "https://github.com/RAMADAN-MAHDY/down-syndrome-Api",
+                    "https://github.com/RAMADAN-MAHDY/olive-oil-store",
+                    "https://down-syndrome-one.vercel.app" || "#",
+                    "https://portofilio-l9ls.vercel.app" || "#",
                 ];
             default:
                 return "bg-[#222322]";
@@ -369,6 +392,45 @@ const BookFlip = () => {
                 },
             },
         },
+        {
+            countPage: [1, 2, 3, 4],
+            id: "div6", // unique id for this project
+            SiteDefinition: {
+                Title: translations?.Down_Syndrome_Support_Platform?.Title || "Default Title",
+                Description: translations?.Down_Syndrome_Support_Platform?.Description || "Default Description",
+            },
+            ImportantPoints: {
+                Title: translations?.Down_Syndrome_Support_Platform?.MainFeatures?.Title || "",
+
+                Dashboard: translations?.Down_Syndrome_Support_Platform?.MainFeatures?.Dashboard || "",
+                AIChat: translations?.Down_Syndrome_Support_Platform?.MainFeatures?.AIChat || "",
+                Authentication: translations?.Down_Syndrome_Support_Platform?.MainFeatures?.Authentication || "",
+                FileUpload: translations?.Down_Syndrome_Support_Platform?.MainFeatures?.FileUpload || "",
+                Security: translations?.Down_Syndrome_Support_Platform?.MainFeatures?.Security || "",
+                TokenManagement: translations?.Down_Syndrome_Support_Platform?.MainFeatures?.TokenManagement || "",
+            },
+
+            ProjectDetails: {
+                Title: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.Title || "Default Title",
+                Technologies: {
+                    _1: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.Backend?._1,
+                    _2: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.Backend?._2,
+                    _3: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.Backend?._3,
+                    _4: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.Backend?._4,
+                    _5: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.Backend?._5,
+                    _6: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.Backend?._6,
+                    _7: translations?.Down_Syndrome_Support_Platform?.TechnologiesUsed?.AI?._1,
+                },
+                ProjectImages: {
+                    Title1: translations?.Down_Syndrome_Support_Platform?.ProjectLinks?.Title1 || "Default Title",
+                    Link1: translations?.Down_Syndrome_Support_Platform?.ProjectLinks?.Link1 || "Default Link1",
+                    Link2: translations?.Down_Syndrome_Support_Platform?.ProjectLinks?.Link2 || "Default Link2",
+                    Link3: translations?.Down_Syndrome_Support_Platform?.ProjectLinks?.Link3 || "Default Link3",
+                    Link4: translations?.Down_Syndrome_Support_Platform?.ProjectLinks?.Link4 || "Default Link4",
+                },
+            },
+        },
+
     ];
 
     if (!translations) {
@@ -404,7 +466,7 @@ const BookFlip = () => {
                         >
                             {pages[content.id] === 1 ? (
                                 <div
-                                    className="text-[4px] whitespace-break-spaces"
+                                    className="text-[4px] rounded-3xl bg-[#23241060] whitespace-break-spaces"
                                     data-aos="fade-top"
                                     dir={isRTL ? "rtl" : "ltr"}
                                 >
@@ -414,9 +476,11 @@ const BookFlip = () => {
                                     <p className="text-[14px] mr-6 pl-5">
                                         {content?.SiteDefinition?.Description}
                                     </p>
-                                    <h3 className="text-xl font-bold mr-6 mt-2 pl-3 mb-0 text-[24px] text-[#e69999]">
-                                        {content?.ImportantPoints?.Title}
-                                    </h3>
+                                    {content.id !== "div6" &&
+                                        <h3 className="text-xl font-bold mr-6 mt-2 pl-3 mb-0 text-[24px] text-[#e69999]">
+                                            {content?.ImportantPoints?.Title}
+                                        </h3>
+                                    }
                                     {/* محتوي المشروع التالت  الصفحه الاولي */}
                                     {content.id === "div3" &&
                                         <ul className="list-disc mr-6 ml-6 text-[13px] font-sm"
@@ -541,6 +605,8 @@ const BookFlip = () => {
                                             </ul>
                                         </>
                                     )}
+
+
                                     {/* ----------------------------------------------------------- */}
                                     {/* //  محتوي الصفحه التانيه للمشروع الخامس */}
                                     {content.id === "div5" && (
@@ -569,6 +635,52 @@ const BookFlip = () => {
                                                     <li>{content?.ProjectDetails?.Technologies?._2}</li>
                                                     <li>{content?.ProjectDetails?.Technologies?._3}</li>
                                                 </ul>
+                                            </div>
+                                        </>
+                                    )}
+
+
+                                    {/* //  محتوي الصفحه التانيه للمشروع السادس */}
+
+                                    {content.id === "div6" && (
+                                        <>
+                                            <div className="p-4" data-aos="fade-top">
+                                                <h3 className={`text-2xl font-bold text-[#e69999] mb-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"
+                                                    }`}>
+                                                    {content?.ImportantPoints?.Title}
+                                                </h3>
+
+                                                <ul
+                                                    className={`list-disc text-sm space-y-1 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"
+                                                        }`}
+                                                    dir={isRTL ? "rtl" : "ltr"}
+
+                                                >
+                                                    <li>{content?.ImportantPoints?.Dashboard}</li>
+                                                    <li>{content?.ImportantPoints?.AIChat}</li>
+                                                    <li>{content?.ImportantPoints?.Authentication}</li>
+                                                    <li>{content?.ImportantPoints?.FileUpload}</li>
+                                                    <li>{content?.ImportantPoints?.Security}</li>
+                                                    <li>{content?.ImportantPoints?.TokenManagement}</li>
+                                                </ul>
+                                                <h3 className={`text-2xl font-bold text-[#e69999] mb-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"
+                                                    }`}>
+                                                    {content?.ProjectDetails?.Title}
+                                                </h3>
+                                                <ul
+                                                    className={`list-disc text-sm space-y-1 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"
+                                                        }`}
+                                                    dir={isRTL ? "rtl" : "ltr"}
+                                                >
+                                                    <li>{content?.ProjectDetails?.Technologies?._1}</li>
+                                                    <li>{content?.ProjectDetails?.Technologies?._2}</li>
+                                                    <li>{content?.ProjectDetails?.Technologies?._3}</li>
+                                                    <li>{content?.ProjectDetails?.Technologies?._4}</li>
+
+
+                                                </ul>
+
+
                                             </div>
                                         </>
                                     )}
@@ -676,6 +788,100 @@ const BookFlip = () => {
                                         </>
                                     )}
 
+                                    {/* المشروع السادس */}
+                                    {(content.id === "div6") && (
+                                        <>
+                                            <ul className="list-disc p-0 m-[-170px] mt-[-190px] text-[13px]"
+                                                dir={isRTL ? "rtl" : "ltr"}
+
+                                            >
+                                                <li>{content?.ProjectDetails?.Technologies?._5}</li>
+                                                <li>{content?.ProjectDetails?.Technologies?._6}</li>
+                                                <li>{content?.ProjectDetails?.Technologies?._7}</li>
+                                                {/* عرض الفديو واللينكات */}
+
+                                                {content.id === "div6" && (
+                                                    <div className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden">
+                                                        <h1 className="col-span-3 text-center pt-4">
+
+                                                            {content?.ProjectDetails?.ProjectImages?.Title1}
+
+                                                        </h1>
+                                                        {content.id === "div6" && (
+                                                            <div className="relative w-[350px] h-full col-span-3 row-span-3">
+                                                                <script src="https://fast.wistia.com/player.js" async></script>
+
+                                                                <script src="https://fast.wistia.com/embed/2oy5vdkezy.js" async type="module"></script>
+
+                                                                <style>
+                                                                    {`
+                                                        
+                                                        wistia-player[media-id='2oy5vdkezy']:not(:defined) {background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/2oy5vdkezy/swatch'); display: block; filter: blur(5px); padding-top:55.94%; }
+                                         ` }
+
+                                                                </style>
+
+                                                                <wistia-player
+                                                                    media-id="2oy5vdkezy"
+                                                                    aspect="1.7877094972067038">
+
+                                                                </wistia-player>
+
+                                                            </div>
+                                                        )}
+                                                        <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
+                                                            <a
+                                                                href={getProjectsLinkes(index)[2]} // back end   surce code 
+                                                                target="-plank"
+                                                                className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
+                                                            >
+                                                                {content?.ProjectDetails?.ProjectImages?.Link1}
+                                                            </a>
+                                                            <a
+                                                                href={getProjectsLinkes(index)[1]} // front end   surce code
+                                                                target="-plank"
+                                                                className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
+                                                            >
+                                                                {content?.ProjectDetails?.ProjectImages?.Link2}
+
+                                                            </a>
+                                                            <a
+                                                                href={getProjectsLinkes(index)[0]}  // زيارة الموقع
+                                                                target="-plank"
+                                                                className="bg-[#26458a] p-3  hover:bg-[#2669f8]"
+                                                            >
+                                                                {content?.ProjectDetails?.ProjectImages?.Link3}
+                                                            </a>
+                                                            {/* بورتفوليو مطوّر الفرونت */}
+                                                            <div className="flex items-center justify-around bg-gradient-to-r from-[#005eff] to-[#1e3c72] rounded-xl p-2 mt-3 w-[350px] shadow-md">
+                                                                {/* <div className="flex items-center gap-3 text-white">
+                                                                    <span className="text-base font-semibold">
+                                                                    بورتفوليو مطوّر الواجهة الأمامية
+                                                                    </span>
+                                                                    </div> */}
+
+                                                                    <span className="text-2xl">👨‍💻</span>
+                                                                <a
+                                                                    href={getProjectsLinkes(index)[0]}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="bg-white text-[#26458a] text-sm font-bold px-5 py-2 rounded-lg shadow-[20px_7px_20px_rgba(212,123,123,0.4)] hover:bg-[#f0f0f0] transition"
+                                                                >
+                                                                    {content?.ProjectDetails?.ProjectImages?.Link4 || "زيارة البورتفوليو"}
+                                                                </a>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                )}
+
+
+
+                                            </ul>
+                                        </>
+                                    )}
 
                                 </>
                             ) : (pages[content.id] === 4 && content.id === "div3") ? (
@@ -744,7 +950,7 @@ const BookFlip = () => {
                                                     </a> */}
                                                     <p className="text-sm font-semibold text-[#f0ff1b] p-3 flex items-center justify-center gap-2">
                                                         <AlertTriangle className="w-4 h-4 text-[#f0ff1b]" />
-                                                        الكود غير متوفر احتراما لرغبة العميل 
+                                                        الكود غير متوفر احتراما لرغبة العميل
                                                     </p>
 
                                                 </div>
@@ -843,8 +1049,35 @@ const BookFlip = () => {
                                                         media-id="59je9q3snh"
                                                         aspect="1.7777777777777777"
                                                     ></wistia-player>
+
+                                                    <script src="https://fast.wistia.com/player.js" async></script>
+
+                                                    <script src="https://fast.wistia.com/embed/2oy5vdkezy.js" async type="module"></script>
+
+                                                    <style>
+                                                        {`
+                                                        
+                                                        wistia-player[media-id='2oy5vdkezy']:not(:defined) {background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/2oy5vdkezy/swatch'); display: block; filter: blur(5px); padding-top:55.94%; }
+                                         ` }
+
+                                                    </style>
+
+                                                    <wistia-player
+                                                        media-id="2oy5vdkezy"
+                                                        aspect="1.7877094972067038">
+
+                                                    </wistia-player>
+
                                                 </div>
                                             )}
+
+
+
+
+
+
+
+
                                             {content.id === "div1" && (
                                                 <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
                                                     <a

@@ -202,7 +202,6 @@
             "Analytics": "Usage analytics to track user clicks and improve user experience.",
             "ResponsiveDesign": "Responsive design using Tailwind CSS, supporting all devices and screen sizes.",
             "Content": "Comprehensive content including services, booking times, covered areas, and contact details."
-            
         },
         "Dashboard": {
             "Title": "Dashboard",
@@ -238,6 +237,54 @@
             "Link1": "Visit website",
             "Link2": "Frontend source code",
             "Link3": "Backend source code"
+        }
+    },
+    "Down_Syndrome_Support_Platform": {
+        "Title": "Down Syndrome Support Platform",
+        "Description": "A comprehensive platform to support families of children with Down Syndrome. The project includes a content management dashboard, a smart Gemini AI-powered chat, and a secure API for integration with other applications. My main responsibility in this project was building and managing the backend system, including authentication, data management, and API integration, while collaborating closely with a frontend developer to ensure seamless integration.",
+        "MainFeatures": {
+            "Title": "Key Features",
+            "Dashboard": "Comprehensive dashboard for managing users, content, and media.",
+            "AIChat": "Smart chat powered by Gemini AI to provide simple, practical advice to families.",
+            "Authentication": "JWT-based authentication system for login and access control.",
+            "FileUpload": "Image upload and management using ImgBB API.",
+            "Security": "Sensitive data encryption using Crypto-TS.",
+            "TokenManagement": "Refresh Token system to securely extend session lifetimes."
+        },
+        "Dashboard": {
+            "Title": "Dashboard",
+            "ContentManagement": "Manage educational articles and Down Syndrome-related content.",
+            "UserManagement": "Add and update user data with role-based access control.",
+            "ChatMonitoring": "Monitor conversations between the smart chat and users."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Backend": {
+                "_1": "Node.js with Express.js to build a flexible REST API.",
+                "_2": "MongoDB and Mongoose for efficient data management.",
+                "_3": "TypeScript for code quality and maintainability.",
+                "_4": "JWT and secured cookies for authentication and session management.",
+                "_5": "Crypto-TS for password and sensitive data encryption.",
+                "_6": "ImgBB Integration for image upload and management."
+            },
+            "AI": {
+                "_1": "Gemini AI API for powering the smart chat system."
+            }
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "To build a digital platform that provides fast, reliable support for families, along with admin tools for developers and researchers to improve user experience and raise awareness about Down Syndrome."
+        },
+        "Integration": {
+            "Title": "Frontend & Backend Integration",
+            "Description": "Full integration through a unified REST API supporting authentication, data management, image upload, and interaction with the smart chat system. Collaborated with a frontend developer to ensure a seamless user experience."
+        },
+        "ProjectLinks": {
+            "Title1": "video introduction of the project",
+            "Link1": "Visit the site",
+            "Link2": "frontend code",
+            "Link3": "backend code",
+            "Link4": "frontend developer"
         }
     }
 }
