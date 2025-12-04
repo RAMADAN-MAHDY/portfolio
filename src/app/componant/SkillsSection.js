@@ -31,7 +31,7 @@ const SkillsSection = () => {
                                 <h4 className="text-lg">JavaScript</h4>
                             </div>
                             <div className=" text-center">
-                                <img src='/pngTs.png' alt='TypeScript' className="w-20 h-14 mb-4 hover:text-yellow-400" />
+                                <img src='/pngTs.png' alt='TypeScript Logo' className="w-20 h-14 mb-4 hover:text-yellow-400" />
                                 <h4 className="text-lg">TypeScript</h4>
                             </div>
                             <div className=" text-center">
@@ -106,7 +106,7 @@ const SkillsSection = () => {
                                 <h4 className="text-lg">Linux (WSL)</h4>
                             </div>
                             <div className=" text-center">
-                                <img className="w-16 h-16 text-green-800 hover:text-[#49d349]  mb-4" src="/logo.svg" alt="Logo" />
+                                <img className="w-16 h-16 text-green-800 hover:text-[#49d349]  mb-4" src="/logo.svg" alt="Next.js Logo" />
 
                                 <h4 className="text-lg">Postman</h4>
                             </div>
