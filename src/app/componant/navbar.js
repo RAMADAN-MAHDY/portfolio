@@ -57,7 +57,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="text-2xl font-bold">
                     <Link href="/">
-                        <p>{translations?.Navpar?.Description || 'Description'}</p>
+                        <p>{translations?.Navpar?.Description || 'Ramadan | Web Developer'}</p>
                     </Link>
                 </div>
 
