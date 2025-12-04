@@ -36,7 +36,7 @@ function RootLayout({ children }: LocaleLayoutProps) {
             <head>
                 <meta name="google" content="notranslate" />
                 <meta name="google-site-verification" content="-1HDfMA8r2MPfNp6oa5PTR1Pe2Z-g4CThr_hEn1rIsM" />
-                <link rel="icon" href="/451548470_3829658120605216_14025268882969849787_n.JPG" sizes="32x32" />
+                <link rel="icon" href="/ramadan-mahdy-fullstack-developer3.jpg" sizes="32x32" />
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1900509020605535"
                     crossOrigin="anonymous"></script>
                 <script
