@@ -10,9 +10,9 @@ import ChatBotWidget from "@/app/componant/ChatBotWidget";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Ramadan | Full-Stack Web Developer Portfolio",
+    title: "Ramadan Mahdy | Full-Stack Web Developer Portfolio | مطور ويب | فرونت اند | باك اند | رمضان مهدي سعيد",
     description:
-        "Explore Ramadan's portfolio, showcasing expertise in full-stack web development, modern technologies, and innovative web solutions. | استكشف بورتفوليو رمضان، الذي يعرض خبرته في تطوير الويب باستخدام أحدث التقنيات وحلول الويب المبتكرة.",
+        "Explore Ramadan Mahdy's portfolio, showcasing expertise in full-stack web development, modern technologies, and innovative web solutions. Specializing in front-end and back-end development. | استكشف بورتفوليو رمضان مهدي، الذي يعرض خبرته في تطوير الويب باستخدام أحدث التقنيات وحلول الويب المبتكرة. متخصص في تطوير الواجهة الأمامية والخلفية. رمضان مهدي سعيد.",
 };
 
 interface LocaleLayoutProps {

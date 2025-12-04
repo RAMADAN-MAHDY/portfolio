@@ -7,7 +7,7 @@ const Vismeforms = () => {
     <div className='w-full rounded-l-[100px] rounded-r-[100px]  h-[200px] relative flex items-center justify-center mt-[20%] sm:mt-[10%]'>
             {/* <SpiderWeb /> */}
         <div className='absolute flex items-center justify-center mr-[-39px]'>
-            <img src='451548470_3829658120605216_1402526888296984978_n.jpg' className='w-[110px] mt-[-48px] ] h-[130px] z-20 ' style={{clipPath: 'polygon(34% 0, 100% 31%, 100% 100%, 34% 66%)'}} />
+            <img src='ramadan-mahdy-fullstack-developer2.jpg' className='w-[110px] mt-[-48px] ] h-[130px] z-20 ' style={{clipPath: 'polygon(34% 0, 100% 31%, 100% 100%, 34% 66%)'}} alt='Ramadan mahdy' />
         </div>
         <DotLottieReact
             className='absolute h-[200px]'
