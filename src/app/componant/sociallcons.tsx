@@ -5,7 +5,7 @@ import styleAnimation from './style/sociallcon.module.css';
 
 const SocialIcons = () => {
   return (
-    <div className="fixed top-1/2 left-4 flex flex-col space-y-4 sm:p-4 p-2 rounded-lg shadow-lg z-[1000] bg-gradient-to-b from-transparent via-white/10 to-transparent backdrop-blur-[10px] border border-white/20">
+    <div className="fixed top-1/2 left-4 flex flex-col space-y-4 sm:p-4 p-2 rounded-lg shadow-lg z-[100] bg-gradient-to-b from-transparent via-white/10 to-transparent backdrop-blur-[10px] border border-white/20">
 
       <span className={`absolute inset-0 border-2 border-transparent animate-spin-light bg-[#00ff2a] w-2 h-2 ${styleAnimation.spinLight}`}></span>
 

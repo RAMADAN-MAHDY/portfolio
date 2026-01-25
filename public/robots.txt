@@ -1,2 +1,29 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+
+Sitemap: https://ramadan-three.vercel.app/sitemap.xml
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+
+# Bingbot specific directives  
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+# Prevent crawling of duplicate content
+User-agent: *
+Disallow: /*?*
+
+# Allow AI crawlers to access structured data
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: OAI-Bot
+Allow: /

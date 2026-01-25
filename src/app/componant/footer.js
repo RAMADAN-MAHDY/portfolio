@@ -35,10 +35,11 @@ const Footer = () => {
   }
 
   return (
-    <footer className="text-white py-4 text-center w-full bg-gradient-to-r from-transparent via-white/10 to-transparent backdrop-blur-[10px] border-t border-white/20 shadow-lg">
+    <footer className="text-[#d9eca2] py-4 text-center w-full bg-gradient-to-r from-transparent via-white/10 to-transparent backdrop-blur-[10px] border-t border-white/20 shadow-lg">
       <div className="mb-4 flex flex-wrap justify-center">
         <a href="/" className="mx-2 hover:text-yellow-400 transition-colors duration-300">{translations?.Navpar?.Home}</a>
         <a href="/projects" className="mx-2 hover:text-yellow-400 transition-colors duration-300">{translations?.Navpar?.Projects}</a>
+        <a href="/about" className="mx-2 hover:text-yellow-400 transition-colors duration-300">{translations?.Navpar?.About_me}</a>
         {/* <a href="/ContactMe" className="mx-2 hover:text-yellow-400 transition-colors duration-300">{translations?.Navpar?.Contact}</a> */}
         {/* <a href="#press" className="mx-2 hover:text-yellow-400 transition-colors duration-300"></a> */}
       </div>

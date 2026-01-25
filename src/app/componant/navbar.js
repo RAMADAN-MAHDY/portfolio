@@ -4,7 +4,7 @@ import { useState ,useEffect} from 'react';
 import {loadTranslations} from '../../utils/loadTranslations';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
-import { FaHome, FaProjectDiagram, FaEnvelope, FaLanguage } from 'react-icons/fa';
+import { FaHome, FaProjectDiagram, FaEnvelope, FaLanguage ,FaUser} from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
@@ -52,10 +52,10 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gray-800 text-white shadow-lg sm:mt-0 pt-11 fixed top-0 right-0 left-0 z-30">
+        <nav className="bg-gray-800 text-[#d9eca28a] shadow-lg sm:mt-0 pt-11 fixed top-0 right-0 left-0 z-[1200]">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 {/* Logo */}
-                <div className="text-2xl font-bold">
+                <div className="text-2xl font-bold font-serif">
                     <Link href="/">
                         <p>{translations?.Navpar?.Description || 'Ramadan | Web Developer'}</p>
                     </Link>
@@ -70,6 +70,10 @@ const Navbar = () => {
                     <Link href="/projects" className={`px-2 flex items-center ${pathname === '/projects' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`}> 
                         <FaProjectDiagram className="mr-2" />
                         <p>{translations?.Navpar?.Projects || 'Projects'}</p>
+                    </Link>
+                       <Link href="/about" className={`px-2 flex items-center ${pathname === '/projects' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`}> 
+                        <FaUser className="mr-2" />
+                        <p>{translations?.Navpar?.About_me || 'About me'}</p>
                     </Link>
                     <div className='px-2 flex items-center'>
                         <FaLanguage className="mr-2" />
@@ -87,7 +91,7 @@ const Navbar = () => {
                 <div className="md:hidden z-20">
                     <button
                         onClick={toggleMenu}
-                        className={`text-white focus:outline-none z-20 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                        className={`text-white focus:outline-none transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                         aria-label="Toggle menu"
                     >
                         {isOpen ? (
@@ -105,7 +109,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className={`md:hidden fixed z-30 bg-gray-800 text-white px-4 pb-4 ${isClosing ? "animate-slide-in" : "animate-slide-out"}`}>
+                <div className={`md:hidden fixed bg-gray-800 text-white px-4 pb-4 ${isClosing ? "animate-slide-in" : "animate-slide-out"}`}>
                     <Link href="/" className={`flex items-center py-5 px-5 ${pathname === '/' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`} onClick={() => setIsOpen(false)}>
                         <FaHome className="mr-2" />
                         <p>{translations?.Navpar?.Home || 'Home'}</p>
@@ -113,6 +117,10 @@ const Navbar = () => {
                     <Link href="/projects" className={`flex items-center py-5 px-5 ${pathname === '/projects' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`} onClick={() => setIsOpen(false)}>
                         <FaProjectDiagram className="mr-2" />
                         <p>{translations?.Navpar?.Projects || 'Projects'}</p>
+                    </Link>
+                    <Link href="/about" className={`flex items-center py-5 px-5 ${pathname === '/about' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`} onClick={() => setIsOpen(false)}>
+                        <FaUser className="mr-2" />
+                        <p>{translations?.Navpar?.About_me || 'About me'}</p>
                     </Link>
                     <div className="flex items-center py-5 px-5 hover:text-yellow-400">
                         <FaLanguage className="mr-2" />

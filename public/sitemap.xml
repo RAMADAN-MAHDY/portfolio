@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
   <url>
     <loc>https://ramadan-three.vercel.app/</loc>
-    <lastmod>2025-12-04T12:00:00+00:00</lastmod>
+    <lastmod>2026-01-25T12:00:00+00:00</lastmod>
     <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ramadan-three.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ramadan-three.vercel.app/" />
   </url>
+  
+  <!-- Projects Page -->
   <url>
     <loc>https://ramadan-three.vercel.app/projects</loc>
-   <lastmod>2025-12-04T12:00:00+00:00</lastmod>
+    <lastmod>2026-01-25T12:00:00+00:00</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ramadan-three.vercel.app/projects" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ramadan-three.vercel.app/projects" />
+  </url>
+  
+  <!-- Contact Me Page -->
+  <url>
+    <loc>https://ramadan-three.vercel.app/ContactMe</loc>
+    <lastmod>2026-01-25T12:00:00+00:00</lastmod>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ramadan-three.vercel.app/ContactMe" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ramadan-three.vercel.app/ContactMe" />
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://ramadan-three.vercel.app/about</loc>
+    <lastmod>2026-01-25T12:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ramadan-three.vercel.app/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ramadan-three.vercel.app/about" />
   </url>
 </urlset>
