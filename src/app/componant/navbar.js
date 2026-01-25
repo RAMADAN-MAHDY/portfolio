@@ -71,13 +71,13 @@ const Navbar = () => {
                         <FaProjectDiagram className="mr-2" />
                         <p>{translations?.Navpar?.Projects || 'Projects'}</p>
                     </Link>
-                       <Link href="/about" className={`px-2 flex items-center ${pathname === '/projects' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`}> 
+                       <Link href="/about" className={`px-2 flex items-center ${pathname === '/about' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`}> 
                         <FaUser className="mr-2" />
                         <p>{translations?.Navpar?.About_me || 'About me'}</p>
                     </Link>
-                    <div className='px-2 flex items-center'>
+                    <div className='px-2 '>
+                        <button onClick={handleLanguageChange} className="hover:text-yellow-400 flex items-center">
                         <FaLanguage className="mr-2" />
-                        <button onClick={handleLanguageChange} className="hover:text-yellow-400">
                             {currentLanguage === "en" ? "عربي " : "English"}
                         </button>
                     </div>
@@ -123,8 +123,8 @@ const Navbar = () => {
                         <p>{translations?.Navpar?.About_me || 'About me'}</p>
                     </Link>
                     <div className="flex items-center py-5 px-5 hover:text-yellow-400">
+                        <button onClick={() => { handleLanguageChange(); setIsOpen(false); }} className="flex items-center">
                         <FaLanguage className="mr-2" />
-                        <button onClick={() => { handleLanguageChange(); setIsOpen(false); }}>
                             {currentLanguage === "en" ? "ترجمة" : "translate"}
                         </button>
                     </div>
