@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHtml5, faCss3Alt, faJs, faTs, faReact, faNode, faGit, faGithub, faLinux } from '@fortawesome/free-brands-svg-icons';
 import { useSelector } from 'react-redux';
 import SpiderWeb from './SpiderWeb';
+import Image from 'next/image';
 const SkillsSection = () => {
     const { translations } = useSelector((state) => state.language);
 
@@ -31,7 +32,16 @@ const SkillsSection = () => {
                                 <h4 className="text-lg">JavaScript</h4>
                             </div>
                             <div className=" text-center">
-                                <img src='/pngTs.png' alt='TypeScript Logo' className="w-20 h-14 mb-4 hover:text-yellow-400" />
+                                <Image 
+                                    src='/pngTs.png' 
+                                    width={80} 
+                                    height={56} 
+                                    alt='TypeScript Logo' 
+                                    className="w-20 h-14 mb-4 hover:text-yellow-400" 
+                                    priority={false}
+                                    placeholder='blur'
+                                    blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII='
+                                />
                                 <h4 className="text-lg">TypeScript</h4>
                             </div>
                             <div className=" text-center">
@@ -78,7 +88,16 @@ const SkillsSection = () => {
                                 {/* <h4 className="text-lg">Node.js</h4> */}
                             </div>
                             <div className=" text-center">
-                                <img src='pngwing.com.png' alt='MongoDb' className="w-16 h-16 mb-4 hover: " />
+                                <Image 
+                                    src='/pngwing.com.png' 
+                                    width={64} 
+                                    height={64} 
+                                    alt='MongoDb' 
+                                    className="w-16 h-16 mb-4 hover: " 
+                                    priority={false}
+                                    placeholder='blur'
+                                    blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII='
+                                />
                                 {/* <h4 className="text-lg">MongoDB</h4> */}
                             </div>
                             <div className=" text-center">
@@ -106,8 +125,16 @@ const SkillsSection = () => {
                                 <h4 className="text-lg">Linux (WSL)</h4>
                             </div>
                             <div className=" text-center">
-                                <img className="w-16 h-16 text-green-800 hover:text-[#49d349]  mb-4" src="/logo.svg" alt="Next.js Logo" />
-
+                                <Image 
+                                    src="/logo.svg" 
+                                    width={64} 
+                                    height={64} 
+                                    className="w-16 h-16 text-green-800 hover:text-[#49d349]  mb-4" 
+                                    alt="Postman Logo" 
+                                    priority={false}
+                                    placeholder='blur'
+                                    blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiM2QjZENEQiLz48L3N2Zz4='
+                                />
                                 <h4 className="text-lg">Postman</h4>
                             </div>
                         </div>
