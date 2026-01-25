@@ -41,8 +41,8 @@ export default function AboutUs() {
                    My work includes <span className="font-bold text-[#60e6ff]">e-commerce</span>, <span className="font-bold text-[#60e6ff]">dashboards</span>, and <span className="font-bold text-[#60e6ff]">smart attendance systems</span>, always focusing on <span className="font-bold text-[#60e6ff]">clean code</span>, <span className="font-bold text-[#60e6ff]">beautiful UI</span>, and a <span className="font-bold text-[#60e6ff]">seamless user experience</span>.
                  </span>
                  <span className="block mt-6">
-                   <span className="font-semibold text-[#60e6ff]">+ AI Integration:</span> I can integrate smart AI chatbots that answer based on your site data, just like in
-                   <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">Live AI Demo</a>.
+                   <span className="font-semibold text-[#60e6ff]">+ AI Integration:</span> I can integrate smart AI chatbots that answer based on your site data
+                   {/* <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">Live AI Demo</a>. */}
                  </span>
                </>
              ) : (
@@ -60,8 +60,8 @@ export default function AboutUs() {
                    تشمل أعمالي <span className="font-bold text-[#60e6ff]">المتاجر الإلكترونية</span>، <span className="font-bold text-[#60e6ff]">لوحات التحكم</span>، و <span className="font-bold text-[#60e6ff]">أنظمة الحضور الذكية</span>، مع التركيز دائمًا على <span className="font-bold text-[#60e6ff]">كود نظيف</span>، <span className="font-bold text-[#60e6ff]">تصميم جذاب</span> و <span className="font-bold text-[#60e6ff]">تجربة مستخدم سلسة</span>.
                  </span>
                  <span className="block mt-6">
-                   <span className="font-semibold text-[#60e6ff]">+ دمج الذكاء الاصطناعي:</span> أستطيع دمج شات ذكي يجيب بناءً على بيانات موقعك، كما في
-                   <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">تجربة حية</a>.
+                   <span className="font-semibold text-[#60e6ff]">+ دمج الذكاء الاصطناعي:</span> أستطيع دمج شات ذكي يجيب بناءً على بيانات موقعك
+                   {/* <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">تجربة حية</a>. */}
                  </span>
                </>
              )}

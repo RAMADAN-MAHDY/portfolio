@@ -1,24 +1,13 @@
 'use client'
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import Image from 'next/image';
 
 const Vismeforms = () => {
   return (
-    <div className='w-full rounded-l-[100px] rounded-r-[100px] h-[200px] relative flex items-center justify-center mt-[20%] sm:mt-[10%]'>
-        {/* Image container with fixed dimensions to prevent CLS */}
-        <div className='absolute flex items-center justify-center mr-[-39px]' style={{ width: '110px', height: '130px', marginTop: '-48px' }}>
-            <Image 
-                src='/ramadan-mahdy-fullstack-developer3.jpg' 
-                width={110} 
-                height={130} 
-                className='z-20 object-cover' 
-                style={{clipPath: 'polygon(34% 0, 100% 31%, 100% 100%, 34% 66%)'}} 
-                alt='Ramadan Mahdy Full-Stack Web Developer Profile Picture' 
-                priority
-                placeholder='blur'
-                blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII='
-            />
+    <div className='w-full rounded-l-[100px] rounded-r-[100px]  h-[200px] relative flex items-center justify-center mt-[20%] sm:mt-[10%]'>
+            {/* <SpiderWeb /> */}
+        <div className='absolute flex items-center justify-center mr-[-39px]'>
+            <img src='ramadan-mahdy-fullstack-developer3.jpg' className='w-[110px] mt-[-48px] ] h-[130px] z-20 ' style={{clipPath: 'polygon(34% 0, 100% 31%, 100% 100%, 34% 66%)'}} alt='Ramadan Mahdy Full-Stack Web Developer Profile Picture' />
         </div>
         <DotLottieReact
             className='absolute h-[200px]'
