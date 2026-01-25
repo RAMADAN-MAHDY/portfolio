@@ -10,6 +10,21 @@ const SpiderWeb = () => {
     const mount = mountRef.current;
     if (!mount) return;
 
+    // Check if WebGL is supported
+    const isWebGLSupported = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+      } catch (e) {
+        return false;
+      }
+    };
+
+    if (!isWebGLSupported()) {
+      console.warn('WebGL is not supported. Skipping SpiderWeb animation.');
+      return;
+    }
+
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x87CEEB); // لون السماء الأزرق
 
@@ -19,10 +34,16 @@ const SpiderWeb = () => {
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.z = 50;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    mount.appendChild(renderer.domElement);
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      mount.appendChild(renderer.domElement);
+    } catch (error) {
+      console.error('Failed to create WebGLRenderer:', error);
+      return;
+    }
 
     // تحميل صورة سحابة شفافة (ممكن تغير اللينك حسب ما تحب)
     const textureLoader = new THREE.TextureLoader();

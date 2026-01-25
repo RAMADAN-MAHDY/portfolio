@@ -286,5 +286,47 @@
             "Link3": "backend code",
             "Link4": "frontend developer"
         }
+    },
+    "Project_7_Ecommerce": {
+        "Title": "E-commerce Platform Backend",
+        "Description": "A professional backend for an e-commerce platform supporting multi-channel authentication, product and order management, and a rich reviews system with instant notifications. Built for small and medium stores and operations teams, with a delivery timeline of 6–8 weeks covering design, development, integration, testing, and deployment.",
+        "MainFeatures": {
+            "Title": "Key Features",
+            "MultiChannelAuth": "Authentication via email/password, Google OAuth, and phone OTP with separate web and mobile flows.",
+            "CoreModules": "Core modules: products, categories, cart, orders, site settings, and store owner management.",
+            "AdvancedReviews": "Advanced reviews: add, view, vote, report, and analytics.",
+            "Notifications": "Integrations: Telegram notifications for new orders and email confirmations.",
+            "ImageUploads": "External image uploads for product and review media."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Backend": {
+                "_1": "Node.js with Express.js to build a robust REST API.",
+                "_2": "MongoDB with Mongoose for data modeling and persistence.",
+                "_3": "JWT for authentication and session security.",
+                "_4": "Google OAuth and phone OTP for multi-channel login.",
+                "_5": "cors, helmet, and rate-limit for security and protection."
+            },
+            "Services": {
+                "_1": "Telegram Bot API for instant order notifications.",
+                "_2": "SMTP/email provider for confirmation emails.",
+                "_3": "External image storage for media uploads."
+            }
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "Deliver a secure, performant backend that simplifies store operations, enables reliable purchasing and reviews, and provides instant operational visibility."
+        },
+        "Integration": {
+            "Title": "Frontend & Mobile Integration",
+            "Description": "Unified REST APIs with separated web/mobile auth flows, real-time Telegram notifications, email confirmations, and external image storage."
+        },
+        "ProjectImages": {
+            "Title1": "Images from admin dashboard and API",
+            "Link1": "Visit the site",
+            "Link2": "frontend code",
+            "Link3": "backend code",
+            "Link4": "frontend developer"
+        }
     }
 }

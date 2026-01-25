@@ -6,6 +6,7 @@ import Navbar from "@/app/componant/navbar";
 import ClientProvider from '../lib/ClientProvider';
 import GoogleAnalytics from '@/app/componant/googleAnalytics';
 import ChatBotWidget from "@/app/componant/ChatBotWidget";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,12 +39,18 @@ function RootLayout({ children }: LocaleLayoutProps) {
                 <meta name="google-site-verification" content="-1HDfMA8r2MPfNp6oa5PTR1Pe2Z-g4CThr_hEn1rIsM" />
                 <link rel="icon" href="/ramadan-mahdy-fullstack-developer2.jpg" sizes="32x32" type="image/jpeg" />
                 <link rel="apple-touch-icon" href="/ramadan-mahdy-fullstack-developer2.jpg" />
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1900509020605535"
-                    crossOrigin="anonymous"></script>
-                <script
-                    src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-                    type="module"
-                ></script>
+                <Script
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1900509020605535"
+                    strategy="afterInteractive"
+                    async
+                    crossOrigin="anonymous"
+                    id="adsense-script"
+                />
+                <Script
+                    src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+                    strategy="afterInteractive"
+                    id="lottie-player-script"
+                />
             </head>
             <body className={inter.className}>
                 <GoogleAnalytics trackingId={GA_TRACKING_ID} />
