@@ -36,7 +36,7 @@ function RootLayout({ children }: LocaleLayoutProps) {
         <html>
             <head>
                 <meta name="google" content="notranslate" />
-                <meta name="google-site-verification" content="-1HDfMA8r2MPfNp6oa5PTR1Pe2Z-g4CThr_hEn1rIsM" />
+                <meta name="google-site-verification" content="a7cDoFaMs8fod9LHeAd1nKF-VxhOaEkjOBRvHriEzzU" />
                 <link rel="icon" href="/ramadan-mahdy-fullstack-developer2.jpg" sizes="32x32" type="image/jpeg" />
                 <link rel="apple-touch-icon" href="/ramadan-mahdy-fullstack-developer2.jpg" />
                 
