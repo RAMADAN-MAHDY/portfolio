@@ -324,7 +324,7 @@ export default function AboutPage() {
                     ).map((item, index) => (
                       <motion.li 
                         key={index} 
-                        variants={itemVariants}
+                        // variants={itemVariants}
                         whileHover={{ x: 10, scale: 1.02 }}
                         transition={{ duration: 0.2 }}
                       >{item}</motion.li>

@@ -88,7 +88,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="md:hidden z-20">
+                <div className="md:hidden z-20 pl-10 pt-6">        
                     <button
                         onClick={toggleMenu}
                         className={`text-white focus:outline-none transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
