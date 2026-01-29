@@ -11,11 +11,11 @@ export const getPageBackground = (index) => {
     case 3:
       return "bg-[url('https://i.ibb.co/zhMD3x9F/Screenshot-2025-06-30-233600.png')]";
     case 4:
-      return "bg-[url('https://i.ibb.co/1Gm6Y9Rq/Screenshot-2025-08-27-110420.png')]";
+      return "bg-[url('https://i.ibb.co/GvmC19Pn/Screenshot-2026-01-29-193020.png')]";
     case 5:
       return "bg-[url('https://i.ibb.co/7dSMMhXd/Screenshot-2025-09-04-172302.png')]";
     case 6:
-      return "bg-[url('https://i.ibb.co/wFJHCJNS/3-D-Book-Mockup-394x500-1.png')]";
+      return "bg-[url('https://i.ibb.co/yFyvNxx8/Screenshot-2026-01-25-150958.png')]";
     default:
       return "bg-[#222322]";
   }
