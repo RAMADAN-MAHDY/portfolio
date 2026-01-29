@@ -15,7 +15,7 @@ export const getPageBackground = (index) => {
     case 5:
       return "bg-[url('https://i.ibb.co/7dSMMhXd/Screenshot-2025-09-04-172302.png')]";
     case 6:
-      return "bg-[url('https://i.ibb.co/HfmzZX3t/Screenshot-2026-01-25-150958.png')]";
+      return "bg-[url('https://i.ibb.co/wFJHCJNS/3-D-Book-Mockup-394x500-1.png')]";
     default:
       return "bg-[#222322]";
   }
