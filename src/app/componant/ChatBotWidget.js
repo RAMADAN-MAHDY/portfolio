@@ -53,7 +53,7 @@ export default function ChatBotWidget() {
 
     const timer = setTimeout(() => setShowWelcome(false), 5000);
     return () => clearTimeout(timer);
-  }, [currentLanguage]);
+  }, [currentLanguage, t]);
 
   useEffect(() => {
     if (showChat && chatEndRef.current) {
