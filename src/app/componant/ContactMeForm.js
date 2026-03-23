@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 export default function ContactMe({getStatusfromContactMe}) {
 
     const { translations } = useSelector((state) => state.language);
-    const [getReq, setGetReq] = useState(false);
+
 
   const [data , setData] = useState({
     full_name : "",

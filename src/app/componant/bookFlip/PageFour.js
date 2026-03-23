@@ -1,6 +1,7 @@
 "use client";
 import { AlertTriangle } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 import ImageModal from "./ImageModal";
 
 export default function PageFour({
@@ -65,21 +66,25 @@ export default function PageFour({
             
             <div className="grid grid-cols-2 gap-2">
                 {images[0] && (
-                    <div className="col-span-2 rounded-xl overflow-hidden border border-white/10 shadow-lg group">
-                        <img
-                            className="w-full h-40 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                    <div className="col-span-2 rounded-xl overflow-hidden border border-white/10 shadow-lg group relative h-40">
+                        <Image
+                            className="object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
                             src={images[0]}
                             alt="Project main"
+                            fill
+                            sizes="100%"
                             onClick={() => openImage(images[0])}
                         />
                     </div>
                 )}
                 {images.slice(1, 3).map((img, i) => img && (
-                    <div key={i} className="rounded-xl overflow-hidden border border-white/10 shadow-lg group">
-                        <img
-                            className="w-full h-24 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                    <div key={i} className="rounded-xl overflow-hidden border border-white/10 shadow-lg group relative h-24">
+                        <Image
+                            className="object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
                             src={img}
                             alt={`Project ${i}`}
+                            fill
+                            sizes="100%"
                             onClick={() => openImage(img)}
                         />
                     </div>

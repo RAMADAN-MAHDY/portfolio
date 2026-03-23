@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';   // uninstall
 import { useSelector } from "react-redux";
 
@@ -17,7 +18,7 @@ export default function ChatBotWidget() {
   const chatEndRef = useRef(null);
 
   // دالة ترجمة بسيطة
-  const t = (enText, arText) => currentLanguage === "ar" ? arText : enText;
+  const t = useCallback((enText, arText) => (currentLanguage === "ar" ? arText : enText), [currentLanguage]);
 
   useEffect(() => {
     // setIsClient(true);
@@ -139,7 +140,7 @@ export default function ChatBotWidget() {
               ))}
               <div ref={chatEndRef} />
             </div>
-            {loading && <img className="w-20 h-20" src="/animation/Ripple-loading-animation.gif" alt="..."/>}
+            {loading && <div className="relative w-20 h-20"><Image src="/animation/Ripple-loading-animation.gif" alt="loading..." fill sizes="80px" unoptimized /></div>}
             <div className="flex gap-2 mt-2">
               <input
                 className="flex-1 border border-blue-300 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"

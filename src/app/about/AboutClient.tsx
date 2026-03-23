@@ -6,7 +6,7 @@ import { motion, useInView, useAnimation, AnimationControls } from 'framer-motio
 import { useEffect, useRef } from 'react';
 
 export default function AboutPage() {
-  const currentLanguage = useSelector((state: any) => state.language.currentLanguage);
+  const currentLanguage = useSelector((state: { language: { currentLanguage: string } }) => state.language.currentLanguage);
   const isEnglish = currentLanguage === 'en';
 
   const useAnimatedSection = (): [React.RefObject<HTMLDivElement>, AnimationControls] => {
@@ -85,7 +85,7 @@ export default function AboutPage() {
   const [summaryRef, summaryControls] = useAnimatedSection();
   const [experienceRef, experienceControls] = useAnimatedSection();
   const [projectsRef, projectsControls] = useAnimatedSection();
-  const [educationRef, educationControls] = useAnimatedSection();
+
 
   return (
     <div className="min-h-screen mt-[60px] bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200">

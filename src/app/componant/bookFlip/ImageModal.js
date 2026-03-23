@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { X, ZoomIn, Maximize2, Move } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -82,13 +83,16 @@ export default function ImageModal({ isOpen, onClose, imageUrl }) {
             <div className="absolute -inset-10 bg-blue-600/10 blur-[100px] rounded-full opacity-50"></div>
             
             {/* Image Container */}
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/5">
-              <img 
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/5 w-full h-[80vh]">
+              <Image 
                 ref={imgRef}
                 src={imageUrl} 
                 alt="Detailed view" 
-                className="max-w-full max-h-[80vh] object-contain select-none"
+                fill
+                className="object-contain select-none"
                 onContextMenu={(e) => e.preventDefault()}
+                priority
+                unoptimized
               />
               
               {/* Magnifier Lens */}

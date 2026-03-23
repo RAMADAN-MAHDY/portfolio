@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHtml5, faCss3Alt, faJs, faTs, faReact, faNode, faGit, faGithub, faLinux } from '@fortawesome/free-brands-svg-icons';
+import { faJs, faReact, faNode, faGit, faGithub, faLinux } from '@fortawesome/free-brands-svg-icons';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
