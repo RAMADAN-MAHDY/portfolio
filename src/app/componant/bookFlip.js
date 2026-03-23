@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import FlipBookItem from "./bookFlip/FlipBookItem";
 import { getPageBackground, getProjectsImage, getProjectsLinkes } from "./bookFlip/helpers";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const BookFlip = () => {
     const dispatch = useDispatch();
@@ -457,29 +458,55 @@ const BookFlip = () => {
                     }
                 </style>
                 <section
-                    className="w-full h-full bg-gradient-to-r from-[#0c3541] to-[#0e2ee6] text-white mt-[110px]"
+                    className="w-full min-h-screen bg-slate-50 relative overflow-hidden pt-32 pb-20 dark:bg-[#0d1416]"
                 >
-                    <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-10 sm:ml-[50%] md:ml-[40%] ml-[25%] w-[250px] pt-[60px]">
-                        {translations?.Projects?.Projects}
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">{projectContent?.map((content, index) => (
-                        
-                        <FlipBookItem
-                            key={content.id}
-                            content={content}
-                            index={index}
-                            isRTL={isRTL}
-                            pages={pages}
-                            totalPages={totalPages}
-                            flipNext={flipNext}
-                            flipPrev={flipPrev}
-                            translations={translations}
-                            getPageBackground={getPageBackground}
-                            getProjectsImage={getProjectsImage}
-                            getProjectsLinkes={getProjectsLinkes}
-                        />
-                    ))}
+                    {/* Background Decorative Elements */}
+                    <div className="fixed inset-0 -z-10 pointer-events-none">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-400/5 dark:bg-blue-900/20 blur-[120px] rounded-full" />
+                        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/5 dark:bg-cyan-900/20 blur-[120px] rounded-full" />
+                    </div>
 
+                    <div className="container mx-auto px-6 relative z-10">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-center mb-20"
+                        >
+                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter mb-6 [text-shadow:_0_2px_4px_rgba(255,255,255,0.8)] dark:[text-shadow:none]">
+                                {translations?.Projects?.Projects}
+                            </h2>
+                            <div className="w-32 h-2 bg-gradient-to-r from-blue-700 to-indigo-900 mx-auto rounded-full shadow-sm" />
+                            <p className="mt-6 text-slate-600 dark:text-slate-400 font-bold max-w-2xl mx-auto text-lg uppercase tracking-[0.2em]">
+                                {isRTL ? "معرض المشاريع التفاعلي" : "Interactive Projects Showcase"}
+                            </p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-24 justify-items-center">
+                            {projectContent?.map((content, index) => (
+                                <motion.div
+                                    key={content.id}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    className="relative group"
+                                >
+                                    <FlipBookItem
+                                        content={content}
+                                        index={index}
+                                        isRTL={isRTL}
+                                        pages={pages}
+                                        totalPages={totalPages}
+                                        flipNext={flipNext}
+                                        flipPrev={flipPrev}
+                                        translations={translations}
+                                        getPageBackground={getPageBackground}
+                                        getProjectsImage={getProjectsImage}
+                                        getProjectsLinkes={getProjectsLinkes}
+                                    />
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </section>
             </>

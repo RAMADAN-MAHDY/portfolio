@@ -19,96 +19,80 @@ export default function PageFive({
     setSelectedImage(null);
   };
 
+  const images = getProjectsImage(index);
+  const links = getProjectsLinkes(index);
+
   return (
-    <div dir={isRTL ? "rtl" : "ltr"}>
-      {content.id === "div4" ? (
-        <div className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden">
-          <h1 className="col-span-3 text-center pt-4">
-            {content?.ProjectDetails?.ProjectImages?.Title1}
-          </h1>
-          <img
-            className="w-full h-48 object-cover rounded-md col-span-3 cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-            src={getProjectsImage(index)[0]}
-            alt="Nature"
-            onClick={() => openImage(getProjectsImage(index)[0])}
-          />
-          <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
-            <a
-              href={getProjectsLinkes(index)[2]}
-              target="-plank"
-              className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
-            >
-              {content?.ProjectDetails?.ProjectImages?.Link1}
-            </a>
-            <a
-              href={getProjectsLinkes(index)[1]}
-              target="-plank"
-              className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
-            >
-              {content?.ProjectDetails?.ProjectImages?.Link2}
-            </a>
-            <a
-              href={getProjectsLinkes(index)[0]}
-              target="-plank"
-              className="bg-[#26458a] p-3  hover:bg-[#2669f8]"
-            >
-              {content?.ProjectDetails?.ProjectImages?.Link3}
-            </a>
+    <div className="w-full h-full p-6 flex flex-col gap-4 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-[#e69999]/30" dir={isRTL ? "rtl" : "ltr"}>
+      <div className="space-y-4 shrink-0">
+        <h4 className="text-center text-[#e69999] font-black text-[11px] uppercase tracking-widest">
+          {content?.ProjectDetails?.ProjectImages?.Title1 || (isRTL ? "معرض الصور" : "Project Gallery")}
+        </h4>
+        
+        {content.id === "div4" ? (
+          <div className="space-y-4 shrink-0">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0">
+              <img
+                className="w-full h-40 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                src={images[0]}
+                alt="Project view"
+                onClick={() => openImage(images[0])}
+              />
+            </div>
+            <div className="flex flex-wrap justify-center gap-2 shrink-0">
+              {[2, 1, 0].map((i) => links[i] && (
+                <a
+                  key={i}
+                  href={links[i]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#26458a] px-3 py-1.5 rounded-xl text-[10px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10 shadow-lg"
+                >
+                  {content?.ProjectDetails?.ProjectImages?.[`Link${i+1}`]}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      ) : (
-        <>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full h-auto overflow-hidden">
-            <img
-              className="w-full h-48 object-cover rounded-md col-span-3 cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-              src={getProjectsImage(index)[0]}
-              alt="Nature"
-              onClick={() => openImage(getProjectsImage(index)[0])}
-            />
-            <img
-              className="w-full h-48 object-cover rounded-md cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-              src={getProjectsImage(index)[2]}
-              alt="Nature"
-              onClick={() => openImage(getProjectsImage(index)[2])}
-            />
-            <img
-              className="w-full h-48 object-cover rounded-md cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-              src={getProjectsImage(index)[4]}
-              alt="Nature"
-              onClick={() => openImage(getProjectsImage(index)[4])}
-            />
-            <img
-              className="w-full h-48 object-cover rounded-md cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-              src={getProjectsImage(index)[5]}
-              alt="Nature"
-              onClick={() => openImage(getProjectsImage(index)[5])}
-            />
+        ) : (
+          <div className="space-y-5 shrink-0">
+            <div className="grid grid-cols-2 gap-2 shrink-0">
+              <div className="col-span-2 rounded-xl overflow-hidden border border-white/10 shadow-lg group">
+                <img
+                  className="w-full h-28 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                  src={images[0]}
+                  alt="Gallery 1"
+                  onClick={() => openImage(images[0])}
+                />
+              </div>
+              {[2, 4, 5].map((imgIdx, i) => images[imgIdx] && (
+                <div key={i} className={`rounded-xl overflow-hidden border border-white/10 shadow-lg group ${i === 2 ? 'col-span-2' : ''}`}>
+                  <img
+                    className={`w-full ${i === 2 ? 'h-20' : 'h-16'} object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500`}
+                    src={images[imgIdx]}
+                    alt={`Gallery ${imgIdx}`}
+                    onClick={() => openImage(images[imgIdx])}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2 shrink-0">
+              {[2, 1, 0].map((i) => links[i] && (
+                <a
+                  key={i}
+                  href={links[i]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#26458a] px-3 py-1.5 rounded-xl text-[10px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10"
+                >
+                  {content?.ProjectDetails?.ProjectImages?.[`Link${i === 0 ? 1 : i === 1 ? 3 : 2}`]}
+                </a>
+              ))}
+            </div>
           </div>
-          <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3" dir="ltr">
-            <a
-              href={getProjectsLinkes(index)[2]}
-              target="-plank"
-              className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
-            >
-              {content?.ProjectDetails?.ProjectImages?.Link1}
-            </a>
-            <a
-              href={getProjectsLinkes(index)[1]}
-              target="-plank"
-              className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
-            >
-              {content?.ProjectDetails?.ProjectImages?.Link3}
-            </a>
-            <a
-              href={getProjectsLinkes(index)[0]}
-              target="-plank"
-              className="bg-[#26458a] p-3  hover:bg-[#2669f8]"
-            >
-              {content?.ProjectDetails?.ProjectImages?.Link2}
-            </a>
-          </div>
-        </>
-      )}
+        )}
+      </div>
+
       <ImageModal 
         isOpen={!!selectedImage} 
         onClose={closeImage} 

@@ -49,6 +49,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const storedTheme = localStorage.getItem('theme');
+                  if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <meta name="google-site-verification" content="-1HDfMA8r2MPfNp6oa5PTR1Pe2Z-g4CThr_hEn1rIsM" />
         <link rel="icon" href="/ramadan-mahdy-fullstack-developer2.jpg" />
         <link rel="apple-touch-icon" href="/ramadan-mahdy-fullstack-developer2.jpg" />
@@ -89,7 +105,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
 
-      <body className={inter.className}>
+      <body className={`${inter.className} dark:bg-[#0d1416]`}>
         <GoogleAnalytics trackingId={GA_TRACKING_ID} />
         <ClientProvider>
           <Navbar />

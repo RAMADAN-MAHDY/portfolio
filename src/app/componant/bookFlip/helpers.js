@@ -69,53 +69,50 @@ export const getProjectsLinkes = (index) => {
   switch (index) {
     case 0:
       return [
-        "https://github.com/RAMADAN-MAHDY/affiliate-app",
-        "https://github.com/RAMADAN-MAHDY/affiliate-app",
         "https://elmahdy.vercel.app/",
+        // "https://github.com/RAMADAN-MAHDY/affiliate_api",
+        // "https://github.com/RAMADAN-MAHDY/affiliate-app",
       ];
     case 1:
       return [
-        "https://github.com/RAMADAN-MAHDY/affiliate-app",
+        // "https://github.com/RAMADAN-MAHDY/affiliate-app",
         "https://elmahdy.vercel.app/",
       ];
     case 2:
       return [
-        "https://github.com/RAMADAN-MAHDY/Attendance-Log-school",
-        "https://github.com/RAMADAN-MAHDY/Attendance-Log-school-api",
         "https://attendance-log-school.vercel.app",
+        // "https://github.com/RAMADAN-MAHDY/Attendance-Log-school",
+        // "https://github.com/RAMADAN-MAHDY/Attendance-Log-school-api",
       ];
     case 3:
       return [
-        "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
-        "https://github.com/RAMADAN-MAHDY/olive-oil-store",
+        // "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
+        // "https://github.com/RAMADAN-MAHDY/olive-oil-store",
         "https://olive-oil-store-tau.vercel.app",
       ];
     case 4:
       return [
-        "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
-        "https://github.com/RAMADAN-MAHDY/olive-oil-store",
+        // "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
+        // "https://github.com/RAMADAN-MAHDY/olive-oil-store",
         " https://nazafaa.com",
       ];
     case 5:
       return [
-        "https://github.com/RAMADAN-MAHDY/down-syndrome-Api",
-        "https://github.com/dina-abaza/down-syndrome",
+        // "https://github.com/RAMADAN-MAHDY/down-syndrome-Api",
+        // "https://github.com/dina-abaza/down-syndrome",
         "https://down-syndrome-one.vercel.app",
         "https://portofilio-l9ls.vercel.app",
       ];
     case 6:
       return [
-        "https://github.com/RAMADAN-MAHDY/Iraqi-EStore-api",
-        "https://github.com/dina-abaza/grocy-web",
+        // "https://github.com/RAMADAN-MAHDY/Iraqi-EStore-api",
+        // "https://github.com/dina-abaza/grocy-web",
         "https://grocy-web.vercel.app/",
         "https://portofilio-l9ls.vercel.app",
       ];
     case 7:
       return [
-        "https://github.com/RAMADAN-MAHDY", // Placeholder links
-        "https://github.com/RAMADAN-MAHDY",
-        "https://ramadan-three.vercel.app/",
-        "https://portofilio-l9ls.vercel.app",
+        "https://warehouse-management-system-for-an-sooty.vercel.app", // Placeholder links
       ];
     default:
       return "bg-[#222322]";

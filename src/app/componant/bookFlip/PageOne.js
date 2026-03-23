@@ -3,60 +3,70 @@
 export default function PageOne({ content, isRTL }) {
   return (
     <div
-      className="text-[4px] rounded-3xl bg-[#23241060] whitespace-break-spaces"
+      className="w-full h-full p-6 flex flex-col gap-4 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-[#e69999]/30"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      <h3 className="text-xl font-bold mb-2 mr-6 pl-3 text-[24px]  text-[#e69999]">
-        {content?.SiteDefinition?.Title}
-      </h3>
-      <p className="text-[14px] mr-6 pl-5">{content?.SiteDefinition?.Description}</p>
-      {content.id !== "div6" && (
-        <h3 className="text-xl font-bold mr-6 mt-2 pl-3 mb-0 text-[24px] text-[#e69999]">
-          {content?.ImportantPoints?.Title}
+      <div className="space-y-3 shrink-0">
+        <h3 className="text-xl font-black text-[#e69999] leading-tight tracking-tight drop-shadow-sm">
+          {content?.SiteDefinition?.Title}
         </h3>
-      )}
-      {content.id === "div3" && (
-        <ul className="list-disc mr-6 ml-6 text-[13px] font-sm">
-          <li>{content?.ImportantPoints?.AttendanceManagement}</li>
-          <li>{content?.ImportantPoints?.AttendanceReports}</li>
-          <li>{content?.ImportantPoints?.StudentPromotion}</li>
-        </ul>
-      )}
-      {content.id === "div4" && (
-        <ul className="list-disc mr-6 ml-6 text-[13px] font-sm">
-          <li>{content?.ImportantPoints?.DynamicProductManagement}</li>
-          <li>{content?.ImportantPoints?.OrderTracking}</li>
-        </ul>
-      )}
-      {(content.id === "div1" || content.id === "div2") && (
-        <ul className="list-disc mr-6 ml-6 text-[10px]">
-          <li>{content?.ImportantPoints?.ControlPanel}</li>
-          <li>{content?.ImportantPoints?.ProductManagement}</li>
-          {content.id === "div1" && <li>{content?.ImportantPoints?.OrderManagement}</li>}
-        </ul>
-      )}
-      {content.id === "div5" && (
-        <ul className="list-disc mr-6 ml-6 text-[10px]">
-          <li className="mt-[20px] text-[14px]">{content?.ImportantPoints?.ModernUI}</li>
-          <li className="text-[14px]">{content?.ImportantPoints?.ResponsiveDesign}</li>
-          <li className="text-[14px]">{content?.ImportantPoints?.GalleryCarousel}</li>
-        </ul>
-      )}
-      {content.id === "div7" && (
-        <ul className="list-disc mr-6 ml-6 text-[10px]">
-          <li className="text-[14px]">{content?.ImportantPoints?.MultiChannelAuth}</li>
-          <li className="text-[14px]">{content?.ImportantPoints?.CoreModules}</li>
-          {/* <li className="text-[14px]">{content?.ImportantPoints?.AdvancedReviews}</li> */}
-          {/* <li className="text-[14px]">{content?.ImportantPoints?.Notifications}</li> */}
-          {/* <li className="text-[14px]">{content?.ImportantPoints?.ImageUploads}</li> */}
-        </ul>
-      )}
-      {content.id === "div8" && (
-        <ul className="list-disc mr-6 ml-6 text-[10px]">
-          <li className="text-[14px]">{content?.ImportantPoints?.Dashboard}</li>
-          {/* <li className="text-[14px]">{content?.ImportantPoints?.SalesPurchases}</li> */}
-          {/* <li className="text-[14px]">{content?.ImportantPoints?.Subscriptions}</li> */}
-        </ul>
+        <div className="w-12 h-1 bg-[#e69999]/30 rounded-full" />
+        <p className="text-[13px] font-bold text-white/90 leading-relaxed text-justify">
+          {content?.SiteDefinition?.Description}
+        </p>
+      </div>
+
+      {content.id !== "div6" && (
+        <div className="space-y-3 flex-1">
+          <h3 className="text-lg font-black text-[#e69999] flex items-center gap-2 shrink-0">
+            <span className="w-1.5 h-5 bg-[#e69999] rounded-full inline-block" />
+            {content?.ImportantPoints?.Title}
+          </h3>
+          
+          <ul className={`space-y-2.5 ${isRTL ? 'pr-4' : 'pl-4'}`}>
+            {content.id === "div3" && (
+              <>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.AttendanceManagement}</li>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.AttendanceReports}</li>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.StudentPromotion}</li>
+              </>
+            )}
+            {content.id === "div4" && (
+              <>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.DynamicProductManagement}</li>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.OrderTracking}</li>
+              </>
+            )}
+            {(content.id === "div1" || content.id === "div2") && (
+              <>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.ControlPanel}</li>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.ProductManagement}</li>
+                {content.id === "div1" && <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.OrderManagement}</li>}
+              </>
+            )}
+            {content.id === "div5" && (
+              <>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.ModernUI}</li>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.ResponsiveDesign}</li>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.GalleryCarousel}</li>
+              </>
+            )}
+            {content.id === "div7" && (
+              <>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.MultiChannelAuth}</li>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.CoreModules}</li>
+                <li className="text-[12px] text-white/80 list-disc marker:text-[#e69999]">{content?.ImportantPoints?.AdvancedReviews}</li>
+              </>
+            )}
+            {content.id === "div8" && (
+              <>
+                <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.Dashboard}</li>
+          <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.SalesPurchases}</li>
+          <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.Subscriptions}</li>
+              </>
+            )}
+          </ul>
+        </div>
       )}
     </div>
   );

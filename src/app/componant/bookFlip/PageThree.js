@@ -4,165 +4,196 @@ export default function PageThree({ content, isRTL, index, getProjectsLinkes }) 
     return (
         <>
             {(content.id === "div2" || content.id === "div1") && (
-                <div
-                    className="text-[4px] whitespace-break-spaces"
-                    // data-aos="fade-top"
-                    dir={isRTL ? "rtl" : "ltr"}
-                >
-                    <h3 className="text-xl font-bold p-5 mb-2 text-[24px]">
-                        {content?.ProjectDetails?.Title}
+                <div className="space-y-4 shrink-0">
+                    <div className="space-y-2">
+                        <h3 className="text-xl font-black text-[#e69999] leading-tight">
+                            {content?.ProjectDetails?.Title}
+                        </h3>
+                        <div className="w-12 h-1 bg-[#e69999]/30 rounded-full" />
+                    </div>
+
+                    <p className="text-[12px] font-bold text-white/90 leading-relaxed text-justify italic">
+                        {content.ProjectDetails.Description}
+                    </p>
+
+                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10 shrink-0">
+                        <h4 className="text-[13px] font-black text-[#e69999] mb-3 flex items-center gap-2">
+                            <span className="w-1 h-4 bg-[#e69999] rounded-full" />
+                            {isRTL ? "التقنيات المستخدمة" : "Technologies Used"}
+                        </h4>
+                        <ul className="grid grid-cols-2 gap-2">
+                            {[1, 2, 3, 4, 5].map((i) => (
+                                content?.ProjectDetails?.Technologies?.[`_${i}`] && (
+                                    <li key={i} className="text-[10px] font-bold text-white/70 flex items-center gap-1.5">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#e69999]/40" />
+                                        {content?.ProjectDetails?.Technologies?.[`_${i}`]}
+                                    </li>
+                                )
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            )}
+
+            {content.id === "div3" && (
+                <div className="space-y-4 shrink-0">
+                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 shrink-0">
+                        <h3 className="text-base font-black text-[#e69999] flex items-center gap-2">
+                            <span className="text-lg">✨</span>
+                            {content?.ProjectDetails?.PromotionFeatures?.Title}
+                        </h3>
+                        <p className="text-[12px] font-bold text-white/80 leading-relaxed">
+                            {content.ProjectDetails?.PromotionFeatures?.Description}
+                        </p>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 shrink-0">
+                        <h3 className="text-base font-black text-[#e69999] flex items-center gap-2">
+                            <span className="text-lg">🔄</span>
+                            {content?.ProjectDetails?.Integration?.Title}
+                        </h3>
+                        <p className="text-[12px] font-bold text-white/80 leading-relaxed">
+                            {content.ProjectDetails?.Integration?.Description}
+                        </p>
+                    </div>
+                </div>
+            )}
+
+            {content.id === "div4" && (
+                <div className="space-y-3 shrink-0">
+                    {[
+                        {
+                            title: content?.ProjectDetails?.ProjectGoal?.Title,
+                            desc: content?.ProjectDetails?.ProjectGoal?.Description,
+                            icon: "🎯"
+                        },
+                        {
+                            title: content?.ProjectDetails?.ReviewFeature?.Title,
+                            desc: content?.ProjectDetails?.ReviewFeature?.Description,
+                            icon: "⭐"
+                        },
+                        {
+                            title: content?.ProjectDetails?.Integration?.Title,
+                            desc: content?.ProjectDetails?.Integration?.Description,
+                            icon: "🔌"
+                        }
+                    ].map((item, idx) => (
+                        item.title && (
+                            <div key={idx} className="p-3 rounded-xl bg-white/5 border border-white/10 shrink-0">
+                                <h3 className="text-[14px] font-black text-[#e69999] mb-1 flex items-center gap-2">
+                                    <span>{item.icon}</span>
+                                    {item.title}
+                                </h3>
+                                <p className="text-[11px] font-bold text-white/70 leading-snug">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        )
+                    ))}
+                </div>
+            )}
+
+            {content.id === "div5" && (
+                <div className="p-5 rounded-3xl bg-white/5 border border-white/10 shrink-0">
+                    <h3 className="text-base font-black text-[#e69999] mb-4 flex items-center gap-2">
+                        <span className="w-1.5 h-5 bg-[#e69999] rounded-full" />
+                        {isRTL ? "تقنيات إضافية" : "Additional Tech"}
                     </h3>
-                    <p className="text-[14px] p-5">{content.ProjectDetails.Description}</p>
-                    <ul className="list-disc p-6 text-[13px]">
-                        <li>{content?.ProjectDetails?.Technologies?._1}</li>
-                        <li>{content?.ProjectDetails?.Technologies?._2}</li>
-                        <li>{content?.ProjectDetails?.Technologies?._3}</li>
-                        <li>{content?.ProjectDetails?.Technologies?._4}</li>
-                        <li>{content?.ProjectDetails?.Technologies?._5}</li>
+                    <ul className="space-y-2.5">
+                        {[4, 5, 6, 7].map((i) => (
+                            content?.ProjectDetails?.Technologies?.[`_${i}`] && (
+                                <li key={i} className="text-[13px] font-bold text-white/80 flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-sm rotate-45 bg-[#e69999]/60" />
+                                    {content?.ProjectDetails?.Technologies?.[`_${i}`]}
+                                </li>
+                            )
+                        ))}
                     </ul>
                 </div>
             )}
-            {content.id === "div3" && (
-                <div
-                    className="text-[4px] font-semibold p-2 whitespace-break-spaces"
-                    // data-aos="fade-top"
-                    dir={isRTL ? "rtl" : "ltr"}
-                >
-                    <h3 className="text-xl p-1  text-[24px] text-[#fff]">
-                        * {content?.ProjectDetails?.PromotionFeatures?.Title}
-                    </h3>
-                    <p className="text-[14px] p-1">
-                        {content.ProjectDetails?.PromotionFeatures?.Description}
-                    </p>
-                    <h3 className="text-xl p-1  text-[24px] text-[#fff]">
-                        * {content?.ProjectDetails?.Integration?.Title}
-                    </h3>
-                    <p className="text-[14px] p-1 ">
-                        {content.ProjectDetails?.Integration?.Description}
-                    </p>
-                </div>
-            )}
-            {content.id === "div4" && (
-                <div
-                    className="text-[4px] font-semibold p-1  whitespace-break-spaces"
-                    // data-aos="fade-top"
-                    dir={isRTL ? "rtl" : "ltr"}
-                >
-                    <h3 className="text-xl p-0   text-[20px] text-[#e69999]">
-                        * {content?.ProjectDetails?.ProjectGoal?.Title}
-                    </h3>
-                    <p className="text-[14px] p-1">
-                        * {content?.ProjectDetails?.ProjectGoal?.Description}
-                    </p>
-                    <h3 className="text-xl p-0   text-[20px] text-[#e69999]">
-                        * {content?.ProjectDetails?.ReviewFeature?.Title}
-                    </h3>
-                    <p className="text-[14px] p-1">
-                        * {content?.ProjectDetails?.ReviewFeature?.Description}
-                    </p>
-                    <h3 className="text-xl p-0   text-[20px] text-[#e69999]">
-                        * {content?.ProjectDetails?.Integration?.Title}
-                    </h3>
-                    <p className="text-[14px] p-1">
-                        * {content?.ProjectDetails?.Integration?.Description}
-                    </p>
-                </div>
-            )}
-            {content.id === "div5" && (
-                <ul className="list-disc p-0 m-[-170px] mt-[-220px] text-[13px]" dir={isRTL ? "rtl" : "ltr"}>
-                    <li>{content?.ProjectDetails?.Technologies?._4}</li>
-                    <li>{content?.ProjectDetails?.Technologies?._5}</li>
-                    <li>{content?.ProjectDetails?.Technologies?._6}</li>
-                    <li>{content?.ProjectDetails?.Technologies?._7}</li>
-                </ul>
-            )}
+
             {content.id === "div6" && (
-                <div className="flex flex-col gap-6">
-                    <ul className="list-disc text-[13px]" dir={isRTL ? "rtl" : "ltr"}>
-                        <li>{content?.ProjectDetails?.Technologies?._5}</li>
-                        <li>{content?.ProjectDetails?.Technologies?._6}</li>
-                        <li>{content?.ProjectDetails?.Technologies?._7}</li>
+                <div className="space-y-4 flex-1">
+                    <ul className="grid grid-cols-1 gap-2.5 p-4 rounded-2xl bg-white/5 border border-white/10 shrink-0">
+                        {[5, 6, 7].map((i) => (
+                            content?.ProjectDetails?.Technologies?.[`_${i}`] && (
+                                <li key={i} className="text-[12px] font-bold text-white/80 flex items-center gap-2">
+                                    <span className="text-[#e69999]">⚡</span>
+                                    {content?.ProjectDetails?.Technologies?.[`_${i}`]}
+                                </li>
+                            )
+                        ))}
                     </ul>
 
-                    <div className="grid grid-cols-3 gap-2 w-[100%]">
-                        <h1 className="col-span-3 text-center pt-0 text-[#e69999]">
+                    <div className="space-y-2 shrink-0">
+                        <h4 className="text-center text-[#e69999] font-black text-[11px] uppercase tracking-widest">
                             {content?.ProjectDetails?.ProjectImages?.Title1}
-                        </h1>
-                        <div className="relative w-[350px] h-full col-span-3 row-span-3">
+                        </h4>
+                        <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                             <script src="https://fast.wistia.com/player.js" async></script>
                             <script src="https://fast.wistia.com/embed/2oy5vdkezy.js" async type="module"></script>
-                            <style>
-                                {`
-                  wistia-player[media-id='2oy5vdkezy']:not(:defined) {
-                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/2oy5vdkezy/swatch');
-                    display: block;
-                    filter: blur(5px);
-                    padding-top:55.94%;
-                  }
-                `}
-                            </style>
-                            <wistia-player media-id="2oy5vdkezy" aspect="1.7877094972067038"></wistia-player>
-                        </div>
-
-                        <div className="w-full col-span-3 text-white text-center mt-4 text-[12px] flex flex-col items-center gap-2">
-
+                            <div className="aspect-video w-full bg-slate-900">
+                                <wistia-player media-id="2oy5vdkezy" aspect="1.7877094972067038"></wistia-player>
+                            </div>
                             {/* Secondary Links */}
                             <div className="flex flex-wrap justify-center gap-2">
-                                <a
-                                    href={getProjectsLinkes(index)[2]}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="
-        bg-[#26458a]
-        px-4 py-2
-        rounded-lg
-        hover:bg-[#2669f8]
-        transition
-        min-w-[90px]
-      "
-                                >
-                                    {content?.ProjectDetails?.ProjectImages?.Link1}
-                                </a>
-
-                                <a
-                                    href={getProjectsLinkes(index)[1]}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="
-        bg-[#26458a]
-        px-4 py-2
-        rounded-lg
-        hover:bg-[#2669f8]
-        transition
-        min-w-[90px]
-      "
-                                >
-                                    {content?.ProjectDetails?.ProjectImages?.Link2}
-                                </a>
-
                                 <a
                                     href={getProjectsLinkes(index)[0]}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="
-        bg-[#26458a]
+        
         px-4 py-2
         rounded-lg
-        hover:bg-[#2669f8]
+        text-xs
+        hover:text-[#2669f8]
         transition
         min-w-[90px]
+        underline
       "
                                 >
-                                    {content?.ProjectDetails?.ProjectImages?.Link3}
+                                    {content?.ProjectDetails?.ProjectImages?.Link1}
                                 </a>
-                            </div>
 
+                                {/* <a
+                                    href={getProjectsLinkes(index)[1]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="
+         px-4 py-2
+        rounded-lg
+        text-xs
+        hover:text-[#2669f8]
+        transition
+        min-w-[90px]
+        underline
+      "
+                                >
+                                    {content?.ProjectDetails?.ProjectImages?.Link2}
+                                </a> */}
+
+                             {/*    <a
+                                    href={getProjectsLinkes(index)[0]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="  px-4 py-2
+        rounded-lg
+        text-xs
+        hover:text-[#2669f8]
+        transition
+        min-w-[90px]
+        underline
+      "
+                                > 
+                                    {content?.ProjectDetails?.ProjectImages?.Link3}
+                                </a> */}
+                            </div>
                             {/* Primary CTA */}
                             <div className="flex items-center justify-between bg-gradient-to-r from-[#005eff] to-[#1e3c72] rounded-xl px-4 py-3 w-[350px] shadow-md">
                                 <span className="text-2xl">👨‍💻</span>
 
                                 <a
-                                    href={getProjectsLinkes(index)[3]}
+                                    href={getProjectsLinkes(index)[1]}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="
@@ -181,53 +212,49 @@ export default function PageThree({ content, isRTL, index, getProjectsLinkes }) 
                             </div>
                         </div>
                     </div>
+
                 </div>
             )}
-             {content.id === "div7" && (
-            <div className="text-[4px] bg-[#23252bcb] py-6 whitespace-break-spaces" 
-            // data-aos="fade-top" 
-            dir={isRTL ? "rtl" : "ltr"}>
-     <h3 className={`text-2xl font-bold text-[#e69999] ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.ProjectGoal.Title}
-          </h3>
-          <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.ProjectGoal.Description}
-          </p>
-  <h3 className={`text-2xl font-bold text-[#e69999] mt-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.Integration.Title}
-          </h3>
-          <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.Integration.Description}
-          </p>
-        </div>
-      )}
-      {content.id === "div8" && (
-        <div className="text-[4px] bg-[#23252bcb] py-6 whitespace-break-spaces" dir={isRTL ? "rtl" : "ltr"}>
-            <ul
-            className={`list-disc text-sm space-y-1 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}
-            dir={isRTL ? "rtl" : "ltr"}
-          >
-            <li>{content?.ProjectDetails?.Technologies?.Backend._2}</li>
-            <li>{content?.ProjectDetails?.Technologies?.Backend._3}</li>
-            <li>{content?.ProjectDetails?.Technologies?.Tools._1}</li>
-            <li>{content?.ProjectDetails?.Technologies?.Tools._2}</li>
-            <li>{content?.ProjectDetails?.Technologies?.Tools._3}</li>
-            <li>{content?.ProjectDetails?.Technologies?.Tools._4}</li>
-            </ul>
-          <h3 className={`text-2xl font-bold text-[#e69999] ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.ProjectGoal.Title}
-          </h3>
-          <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.ProjectGoal.Description}
-          </p>
-          <h3 className={`text-2xl font-bold text-[#e69999] mt-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.Integration.Title}
-          </h3>
-          <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
-            {content?.ProjectDetails?.Integration.Description}
-          </p>
-        </div>
-      )}
+            {content.id === "div7" && (
+                <div className="text-[4px] bg-[#23252bcb] py-6 whitespace-break-spaces"
+                    // data-aos="fade-top" 
+                    dir={isRTL ? "rtl" : "ltr"}>
+                    <h3 className={`text-2xl font-bold text-[#e69999] ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.ProjectGoal.Title}
+                    </h3>
+                    <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.ProjectGoal.Description}
+                    </p>
+                    <h3 className={`text-2xl font-bold text-[#e69999] mt-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.Integration.Title}
+                    </h3>
+                    <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.Integration.Description}
+                    </p>
+                </div>
+            )}
+            {content.id === "div8" && (
+                <div className="text-[4px] bg-[#23252bcb] py-6 whitespace-break-spaces" dir={isRTL ? "rtl" : "ltr"}>
+                    <ul
+                        className={`list-disc text-sm space-y-1 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}
+                        dir={isRTL ? "rtl" : "ltr"}
+                    >
+                       
+                    </ul>
+                    <h3 className={`text-2xl font-bold text-[#e69999] ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.ProjectGoal.Title}
+                    </h3>
+                    <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.ProjectGoal.Description}
+                    </p>
+                    <h3 className={`text-2xl font-bold text-[#e69999] mt-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.Integration.Title}
+                    </h3>
+                    <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+                        {content?.ProjectDetails?.Integration.Description}
+                    </p>
+                </div>
+            )}
         </>
     );
 }

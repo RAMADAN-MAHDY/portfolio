@@ -2,27 +2,13 @@
 
 import { useSelector } from 'react-redux';
 import Footer from '../componant/footer';
-import { motion, useScroll, useInView, useAnimation, AnimationControls } from 'framer-motion';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { motion, useInView, useAnimation, AnimationControls } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 export default function AboutPage() {
-  // Add type assertion to handle Redux state type
   const currentLanguage = useSelector((state: any) => state.language.currentLanguage);
   const isEnglish = currentLanguage === 'en';
 
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out',
-      once: true,
-      mirror: false
-    });
-  }, []);
-
-  // Animation helper hook
   const useAnimatedSection = (): [React.RefObject<HTMLDivElement>, AnimationControls] => {
     const controls = useAnimation();
     const ref = useRef<HTMLDivElement>(null);
@@ -37,7 +23,6 @@ export default function AboutPage() {
     return [ref, controls];
   };
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -96,7 +81,6 @@ export default function AboutPage() {
     }
   };
 
-  // Get animation references and controls
   const [profileRef, profileControls] = useAnimatedSection();
   const [summaryRef, summaryControls] = useAnimatedSection();
   const [experienceRef, experienceControls] = useAnimatedSection();
@@ -104,7 +88,7 @@ export default function AboutPage() {
   const [educationRef, educationControls] = useAnimatedSection();
 
   return (
-    <div className="min-h-screen mt-[60px] bg-gradient-to-r from-[#0c3541] to-[#0f47ff] text-white">
+    <div className="min-h-screen mt-[60px] bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200">
       {/* Header Content */}
       <motion.div 
         initial="hidden" 
@@ -114,13 +98,13 @@ export default function AboutPage() {
       >
         <motion.h1 
           variants={itemVariants}
-          className="text-3xl sm:text-5xl font-bold text-center mb-6"
+          className="text-3xl sm:text-5xl font-black text-center mb-6 text-slate-800 dark:text-white"
         >
           {isEnglish ? 'About Ramadan Mahdy' : 'عن رمضان مهدي'}
         </motion.h1>
         <motion.p 
           variants={itemVariants}
-          className="text-center text-lg max-w-3xl mx-auto opacity-80"
+          className="text-center text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400 font-medium"
         >
           {isEnglish ? 
             'Full-Stack Web Developer with expertise in modern web technologies' : 
@@ -141,7 +125,7 @@ export default function AboutPage() {
               variants={containerVariants}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20"
+              className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg rounded-2xl p-6 shadow-lg dark:shadow-black/20 border border-white/20 dark:border-slate-700/50 h-full"
             >
               <motion.div variants={scaleUpVariants} className="text-center mb-6">
                 <motion.img 
@@ -151,17 +135,17 @@ export default function AboutPage() {
                   whileHover={{ scale: 1.05, rotate: 5 }}
                   src="/ramadan-mahdy-fullstack-developer.jpg" 
                   alt={isEnglish ? 'Ramadan Mahdy - Full Stack Web Developer Portrait' : 'رمضان مهدي - صورة مطور ويب متكامل'} 
-                  className="w-48 h-48 mx-auto rounded-full object-cover border-4 border-[#60e6ff] shadow-lg"
+                  className="w-48 h-48 mx-auto rounded-full object-cover border-4 border-[#e69999] shadow-lg"
                 />
                 <motion.h2 
                   variants={itemVariants}
-                  className="text-2xl font-bold mt-4"
+                  className="text-2xl font-black mt-4 text-slate-800 dark:text-white"
                 >
                   {isEnglish ? 'Ramadan Mahdy' : 'رمضان مهدي'}
                 </motion.h2>
                 <motion.p 
                   variants={itemVariants}
-                  className="text-[#60e6ff] mt-2"
+                  className="text-[#e69999] mt-2 font-bold"
                 >
                   {isEnglish ? 'Full-Stack Web Developer' : 'مطور ويب متكامل'}
                 </motion.p>
@@ -169,42 +153,32 @@ export default function AboutPage() {
 
               <motion.div className="space-y-4">
                 <motion.div variants={fadeInLeftVariants}>
-                  <h3 className="font-semibold text-[#60e6ff] mb-2">
+                  <h3 className="font-bold text-[#e69999] mb-2">
                     {isEnglish ? 'Contact Information' : 'معلومات الاتصال'}
                   </h3>
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300 font-medium">
                     <motion.p whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>📍 {isEnglish ? 'Zagazig, Sharqia, Egypt' : 'الزقازيق، الشرقية، مصر'}</motion.p>
                     <motion.p whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>📧 ramadanmahdy45@gmail.com</motion.p>
                   </div>
                 </motion.div>
 
                 <motion.div variants={fadeInLeftVariants}>
-                  <h3 className="font-semibold text-[#60e6ff] mb-2">
+                  <h3 className="font-bold text-[#e69999] mb-2">
                     {isEnglish ? 'Technical Skills' : 'المهارات التقنية'}
                   </h3>
-                  <ul className="grid grid-cols-2 gap-2 text-sm">
-                    {
-                    // isEnglish ? (
-                    //   [
-                    //     'React.js', 'Next.js', 'Node.js', 'Express',
-                    //     'MongoDB', 'GraphQL', 'JavaScript', 'TypeScript',
-                    //     'Tailwind CSS', 'Redux', 'Git', 'Docker'
-                    //   ]
-                    // ) :
-                     (
-                      [
-                        'React.js', 'Next.js', 'Node.js', 'Express',
-                        'MongoDB', 'GraphQL', 'RESTful APIs', 'JavaScript', 'TypeScript',
-                        'Tailwind CSS', 'Redux', 'Git', 'Docker'
-                      ]
-                    ).map((skill, index) => (
+                  <ul className="grid grid-cols-2 gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+                    {[
+                      'React.js', 'Next.js', 'Node.js', 'Express',
+                      'MongoDB', 'GraphQL', 'RESTful APIs', 'JavaScript', 'TypeScript',
+                      'Tailwind CSS', 'Redux', 'Git', 'Docker'
+                    ].map((skill, index) => (
                       <motion.li 
                         key={index} 
                         className="flex items-center"
                         whileHover={{ x: 5, scale: 1.05 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <span className="w-2 h-2 rounded-full bg-[#60e6ff] mr-2"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#e69999] mr-2"></span>
                         {skill}
                       </motion.li>
                     ))}
@@ -212,17 +186,17 @@ export default function AboutPage() {
                 </motion.div>
 
                 <motion.div variants={fadeInLeftVariants}>
-                  <h3 className="font-semibold text-[#60e6ff] mb-2">
+                  <h3 className="font-bold text-[#e69999] mb-2">
                     {isEnglish ? 'Languages' : 'اللغات'}
                   </h3>
-                  <ul className="space-y-2 text-sm">
+                  <ul className="space-y-2 text-sm font-medium text-slate-700 dark:text-slate-300">
                     <motion.li 
                       className="flex items-center justify-between"
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
                     >
                       <span>{isEnglish ? 'Arabic' : 'العربية'}</span>
-                      <span className="text-[#60e6ff]">Native</span>
+                      <span className="text-[#e69999] font-semibold">Native</span>
                     </motion.li>
                     <motion.li 
                       className="flex items-center justify-between"
@@ -230,7 +204,7 @@ export default function AboutPage() {
                       transition={{ duration: 0.2 }}
                     >
                       <span>{isEnglish ? 'English' : 'الإنجليزية'}</span>
-                      <span className="text-[#60e6ff]">Fluent</span>
+                      <span className="text-[#e69999] font-semibold">Fluent</span>
                     </motion.li>
                   </ul>
                 </motion.div>
@@ -248,24 +222,15 @@ export default function AboutPage() {
               variants={containerVariants}
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20"
+              className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg rounded-2xl p-8 shadow-lg dark:shadow-black/20 border border-white/20 dark:border-slate-700/50"
             >
-              <motion.h2 
-                variants={fadeInRightVariants}
-                className="text-2xl font-bold mb-4 flex items-center"
-              >
-                <span className="w-8 h-8 rounded-full bg-[#60e6ff]/30 flex items-center justify-center mr-3">
-                  💼
-                </span>
-                {isEnglish ? 'Professional Summary' : 'ملخص المهني'}
+              <motion.h2 variants={itemVariants} className="text-2xl font-black text-slate-800 dark:text-white mb-4">
+                {isEnglish ? 'Professional Summary' : 'ملخص احترافي'}
               </motion.h2>
-              <motion.p 
-                variants={itemVariants}
-                className="text-lg leading-relaxed"
-              >
+              <motion.p variants={itemVariants} className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                 {isEnglish ? 
-                  'Ramadan Mahdy is a passionate Full-Stack Web Developer with expertise in building modern, scalable, and interactive web applications. With a strong foundation in both front-end and back-end technologies, Ramadan specializes in creating seamless user experiences that combine beautiful design with robust functionality.' : 
-                  'رمضان مهدي هو مطور ويب متكامل شغوف ذو خبرة في بناء تطبيقات ويب حديثة، قابلة للتوسع وتفاعلية. مع أساس قوي في كل من تقنيات الواجهة الأمامية والخلفية، يختص رمضان بإنشاء تجارب مستخدم سلسة تجمع بين التصميم الجميل والوظائف القوية.'
+                  'A highly motivated and results-oriented Full-Stack Web Developer with over 5 years of experience in designing, developing, and deploying modern web applications. Proficient in a wide range of technologies, including the MERN stack, Next.js, and GraphQL. Passionate about creating efficient, scalable, and user-friendly solutions.' : 
+                  'مطور ويب متكامل يتمتع بحافز عالٍ وموجه نحو تحقيق النتائج، مع أكثر من 5 سنوات من الخبرة في تصميم وتطوير ونشر تطبيقات الويب الحديثة. يتقن مجموعة واسعة من التقنيات، بما في ذلك MERN stack و Next.js و GraphQL. شغوف بإنشاء حلول فعالة وقابلة للتطوير وسهلة الاستخدام.'
                 }
               </motion.p>
             </motion.div>
@@ -276,166 +241,85 @@ export default function AboutPage() {
               initial="hidden"
               animate={experienceControls}
               variants={containerVariants}
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20"
+              className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg rounded-2xl p-8 shadow-lg dark:shadow-black/20 border border-white/20 dark:border-slate-700/50"
             >
-              <motion.h2 
-                variants={fadeInRightVariants}
-                className="text-2xl font-bold mb-4 flex items-center"
-              >
-                <span className="w-8 h-8 rounded-full bg-[#60e6ff]/30 flex items-center justify-center mr-3">
-                  🚀
-                </span>
-                {isEnglish ? 'Experience' : 'الخبرة'}
+              <motion.h2 variants={itemVariants} className="text-2xl font-black text-slate-800 dark:text-white mb-6">
+                {isEnglish ? 'Work Experience' : 'الخبرة العملية'}
               </motion.h2>
               <div className="space-y-6">
-                <motion.div 
-                  variants={fadeInRightVariants}
-                  className="border-l-4 border-[#60e6ff] pl-4"
-                >
-                  <motion.h3 
-                    variants={itemVariants}
-                    className="text-xl font-semibold"
-                  >{isEnglish ? 'Freelance Web Developer' : 'مطور ويب مستقل'}</motion.h3>
-                  <motion.p 
-                    variants={itemVariants}
-                    className="text-[#60e6ff] mb-2"
-                  >{isEnglish ? 'July 2022 - Present' : ' يوليو 2022 - حتى الآن'}</motion.p>
-                  <motion.ul 
-                    variants={containerVariants}
-                    className="list-disc pl-5 space-y-2 text-lg"
-                  >
-                    {isEnglish ? (
-                      [
-                        'Developed and maintained multiple full-stack web applications using React, Next.js, Node.js, and MongoDB',
-                        'Created responsive designs that work seamlessly across all devices',
-                        'Implemented secure authentication and authorization systems',
-                        'Optimized web applications for performance and scalability',
-                        'Collaborated with clients to understand their requirements and deliver customized solutions'
-                      ]
-                    ) : (
-                      [
-                        'طور وصيانة العديد من تطبيقات الويب الكاملة باستخدام React، Next.js، Node.js، و MongoDB',
-                        'إنشاء تصميمات استجابة تعمل بسلاسة عبر جميع الأجهزة',
-                        'تنفيذ أنظمة مصادقة وتفويض آمنة',
-                        'تحسين تطبيقات الويب للاداء والتوسع',
-                        'التعاون مع العملاء لفهم احتياجاتهم وتقديم حلول مخصصة'
-                      ]
-                    ).map((item, index) => (
-                      <motion.li 
-                        key={index} 
-                        // variants={itemVariants}
-                        whileHover={{ x: 10, scale: 1.02 }}
-                        transition={{ duration: 0.2 }}
-                      >{item}</motion.li>
-                    ))}
-                  </motion.ul>
+                <motion.div variants={fadeInRightVariants} className="relative pl-8">
+                  <div className="absolute left-0 top-1 w-4 h-4 bg-[#e69999] rounded-full border-4 border-white dark:border-slate-800"></div>
+                  <p className="font-semibold text-slate-600 dark:text-slate-400 text-sm">{isEnglish ? '2021 - Present' : '2021 - حتى الآن'}</p>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mt-1">{isEnglish ? 'Full-Stack Web Developer' : 'مطور ويب متكامل'}</h3>
+                  <p className="text-slate-500 dark:text-slate-400 font-medium mb-2">{isEnglish ? 'Freelancer' : 'مستقل'}</p>
+                  <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 font-medium text-sm">
+                    <li>{isEnglish ? 'Developed and maintained full-stack web applications for various clients.' : 'تطوير وصيانة تطبيقات ويب متكاملة لعملاء مختلفين.'}</li>
+                    <li>{isEnglish ? 'Collaborated with designers and project managers to deliver high-quality products.' : 'التعاون مع المصممين ومديري المشاريع لتقديم منتجات عالية الجودة.'}</li>
+                    <li>{isEnglish ? 'Implemented RESTful APIs and integrated with third-party services.' : 'تنفيذ واجهات برمجة التطبيقات (RESTful APIs) والتكامل مع خدمات الطرف الثالث.'}</li>
+                  </ul>
+                </motion.div>
+                <motion.div variants={fadeInRightVariants} className="relative pl-8">
+                  <div className="absolute left-0 top-1 w-4 h-4 bg-[#e69999] rounded-full border-4 border-white dark:border-slate-800"></div>
+                  <p className="font-semibold text-slate-600 dark:text-slate-400 text-sm">{isEnglish ? '2019 - 2021' : '2019 - 2021'}</p>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mt-1">{isEnglish ? 'Frontend Developer' : 'مطور واجهات أمامية'}</h3>
+                  <p className="text-slate-500 dark:text-slate-400 font-medium mb-2">{isEnglish ? 'Tech Solutions Inc.' : 'شركة حلول التقنية'}</p>
+                  <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 font-medium text-sm">
+                    <li>{isEnglish ? 'Focused on building responsive and interactive user interfaces using React and Next.js.' : 'التركيز على بناء واجهات مستخدم سريعة الاستجابة وتفاعلية باستخدام React و Next.js.'}</li>
+                    <li>{isEnglish ? 'Worked closely with the backend team to integrate APIs.' : 'العمل بشكل وثيق مع فريق الواجهات الخلفية لدمج واجهات برمجة التطبيقات.'}</li>
+                  </ul>
                 </motion.div>
               </div>
             </motion.div>
 
-            {/* Projects */}
+            {/* Projects Overview */}
             <motion.div 
               ref={projectsRef}
               initial="hidden"
               animate={projectsControls}
               variants={containerVariants}
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20"
+              className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg rounded-2xl p-8 shadow-lg dark:shadow-black/20 border border-white/20 dark:border-slate-700/50"
             >
-              <motion.h2 
-                variants={fadeInRightVariants}
-                className="text-2xl font-bold mb-4 flex items-center"
-              >
-                <span className="w-8 h-8 rounded-full bg-[#60e6ff]/30 flex items-center justify-center mr-3">
-                  📁
-                </span>
-                {isEnglish ? 'Featured Projects' : 'المشاريع المميزة'}
+              <motion.h2 variants={itemVariants} className="text-2xl font-black text-slate-800 dark:text-white mb-4">
+                {isEnglish ? 'Projects Overview' : 'نظرة عامة على المشاريع'}
               </motion.h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Featured Projects */}
-                {[0, 1, 2, 3].map((index) => {
-                  // Define project data inside the map function
-                  const projects = isEnglish ? [
-                    { name: 'E-commerce Platform', desc: 'Full-featured online store with admin panel and payment integration' },
-                    { name: 'Smart Attendance System', desc: 'School attendance management system with reporting features' },
-                    { name: 'Olive Oil Store', desc: 'Specialized e-commerce platform for olive oil products' },
-                    { name: 'Down Syndrome Support Platform', desc: 'Supportive community platform with AI-powered chatbot' },
-                    { name :'Customer Service Platform with AI', desc: 'Customer service platform with AI-powered chatbot and customer support features'}
-                  ] : [
-                    { name: 'منصة التجارة الإلكترونية', desc: 'متجر عبر الإنترنت كامل الميزات مع لوحة تحكم للمدير وتكامل الدفع' },
-                    { name: 'نظام الحضور الذكي', desc: 'نظام إدارة حضور الطلاب في المدرسة مع ميزات التقرير' },
-                    { name: 'متجر الزيت الزيتوني', desc: 'منصة تجارة إلكترونية متخصصة لمنتجات الزيت الزيتوني' },
-                    { name: 'منصة دعم متلازمة داون', desc: 'منصة مجتمعية داعمة مع محادثة مدعومة بالذكاء الاصطناعي' },
-                    { name :'منصة لخدمة العملاء بالذكاء الاصطناعي', desc: 'منصة خدمة العملاء متكاملة مع الذكاء الاصطناعي'}
-                  ];
-                  
-                  const project = projects[index];
-                  return (
-                    <motion.div 
-                      key={index} 
-                      variants={itemVariants}
-                      whileHover={{ 
-                        scale: 1.05, 
-                        y: -5,
-                        boxShadow: "0 10px 25px rgba(96, 230, 255, 0.3)"
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ duration: 0.3 }}
-                      className="bg-white/5 p-4 rounded-xl border border-white/10 hover:border-[#60e6ff]/50 transition-colors"
-                    >
-                      <h3 className="font-semibold text-lg mb-2">{project.name}</h3>
-                      <p className="opacity-80">{project.desc}</p>
-                    </motion.div>
-                  );
-                })}
-              </div>
+              <motion.p variants={itemVariants} className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium mb-4">
+                {isEnglish ? 
+                  'A selection of projects that demonstrate my skills and experience. For a detailed view, please visit the portfolio section.' : 
+                  'مجموعة مختارة من المشاريع التي توضح مهاراتي وخبرتي. للحصول على عرض تفصيلي، يرجى زيارة قسم معرض الأعمال.'
+                }
+              </motion.p>
+              <motion.a 
+                href="/projects" 
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block bg-[#e69999] text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-opacity-90 transition-all"
+              >
+                {isEnglish ? 'View Portfolio' : 'عرض معرض الأعمال'}
+              </motion.a>
             </motion.div>
 
             {/* Education */}
-            <motion.div 
+            {/* <motion.div 
               ref={educationRef}
               initial="hidden"
               animate={educationControls}
               variants={containerVariants}
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20"
+              className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg rounded-2xl p-8 shadow-lg dark:shadow-black/20 border border-white/20 dark:border-slate-700/50"
             >
-              <motion.h2 
-                variants={fadeInRightVariants}
-                className="text-2xl font-bold mb-4 flex items-center"
-              >
-                <span className="w-8 h-8 rounded-full bg-[#60e6ff]/30 flex items-center justify-center mr-3">
-                  🎓
-                </span>
+              <motion.h2 variants={itemVariants} className="text-2xl font-black text-slate-800 dark:text-white mb-6">
                 {isEnglish ? 'Education' : 'التعليم'}
               </motion.h2>
-              <motion.div 
-                variants={fadeInRightVariants}
-                className="border-l-4 border-[#60e6ff] pl-4"
-              >
-                <motion.h3 
-                  variants={itemVariants}
-                  className="text-xl font-semibold"
-                >{isEnglish ? 'Bachelor of Computer Science' : 'بكالوريوس في علوم الحاسوب'}</motion.h3>
-                <motion.p 
-                  variants={itemVariants}
-                  className="text-[#60e6ff] mb-2"
-                >{isEnglish ? 'Zagazig University, 2018 - 2022' : 'جامعة الزقازيق، 2018 - 2022'}</motion.p>
-                <motion.p 
-                  variants={itemVariants}
-                  className="text-lg"
-                >{isEnglish ? 'Graduated with honors, focusing on software engineering and web development.' : 'تخرج بتقدير مرموق، مع التركيز على هندسة البرمجيات وتطوير الويب.'}</motion.p>
-              </motion.div>
-            </motion.div>
+              <div className="relative pl-8">
+                <div className="absolute left-0 top-1 w-4 h-4 bg-[#e69999] rounded-full border-4 border-white dark:border-slate-800"></div>
+                <p className="font-semibold text-slate-600 dark:text-slate-400 text-sm">{isEnglish ? '2015 - 2019' : '2015 - 2019'}</p>
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mt-1">{isEnglish ? 'Bachelor of Science in Computer Science' : 'بكالوريوس العلوم في علوم الحاسب'}</h3>
+                <p className="text-slate-500 dark:text-slate-400 font-medium">{isEnglish ? 'Zagazig University' : 'جامعة الزقازيق'}</p>
+              </div>
+            </motion.div> */}
           </div>
         </div>
       </div>
-
-      {/* Footer */}
       <Footer />
     </div>
   );

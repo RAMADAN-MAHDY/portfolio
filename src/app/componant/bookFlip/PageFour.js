@@ -20,313 +20,187 @@ export default function PageFour({
         setSelectedImage(null);
     };
 
-    if (content.id === "div3") {
-        return (
-            <div className="text-[4px] whitespace-break-spaces" dir={isRTL ? "rtl" : "ltr"}>
-                <h3 className="text-xl font-bold p-5 mb-2 text-[24px]">
-                    * {content?.ProjectDetails?.Title}
-                </h3>
-                <ul className="list-disc p-6 text-[13px]">
-                    <li>{content?.ProjectDetails?.Technologies?.Frontend?._1}</li>
-                    <li>{content?.ProjectDetails?.Technologies?.Frontend?._2}</li>
-                    <li>{content?.ProjectDetails?.Technologies?.Frontend?._3}</li>
-                    <li>{content?.ProjectDetails?.Technologies?.Backend?._1}</li>
-                    <li>{content?.ProjectDetails?.Technologies?.Backend?._2}</li>
-                    <li>{content?.ProjectDetails?.Technologies?.Backend?._3}</li>
-                    <li>{content?.ProjectDetails?.Technologies?.Backend?._5}</li>
-                </ul>
-            </div>
-        );
-    }
-
-    return (
-        <>
-            <div dir={isRTL ? "rtl" : "ltr"}>
-                {content.id === "div5" && (
-                    <div className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden">
-                        <h1 className="col-span-3 text-center pt-4">
-                            {content?.ProjectDetails?.ProjectImages?.Title1}
-                        </h1>
-                        <img
-                            className="w-full h-48 object-cover rounded-md col-span-3 cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-                            src={getProjectsImage(index)[0]}
-                            alt="Nature"
-                            onClick={() => openImage(getProjectsImage(index)[0])}
-                        />
-                        <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
-                            <a
-                                href={getProjectsLinkes(index)[2]}
-                                target="-plank"
-                                className="bg-[#26458a] p-3 mx-3  hover:bg-[#2669f8]"
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link1}
-                            </a>
-                            <p className="text-sm font-semibold text-[#f0ff1b] p-3 flex items-center justify-center gap-2">
-                                <AlertTriangle className="w-4 h-4 text-[#f0ff1b]" />
-                                الكود غير متوفر احتراما لرغبة العميل
-                            </p>
-                        </div>
+    const TechList = ({ title, frontend, backend }) => (
+        <div className="space-y-4">
+            <h3 className="text-xl font-black text-[#e69999] flex items-center gap-2">
+                <span className="w-1.5 h-6 bg-[#e69999] rounded-full inline-block" />
+                {title}
+            </h3>
+            <div className="grid grid-cols-1 gap-4">
+                {frontend && (
+                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                        <h4 className="text-sm font-black text-[#e69999]/80 mb-2 uppercase tracking-wider">Frontend</h4>
+                        <ul className="space-y-1.5">
+                            {Object.values(frontend).map((tech, i) => tech && (
+                                <li key={i} className="text-[12px] font-bold text-white/80 flex items-center gap-2">
+                                    <span className="w-1 h-1 bg-[#e69999] rounded-full" />
+                                    {tech}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+                {backend && (
+                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                        <h4 className="text-sm font-black text-[#e69999]/80 mb-2 uppercase tracking-wider">Backend</h4>
+                        <ul className="space-y-1.5">
+                            {Object.values(backend).map((tech, i) => tech && (
+                                <li key={i} className="text-[12px] font-bold text-white/80 flex items-center gap-2">
+                                    <span className="w-1 h-1 bg-[#e69999] rounded-full" />
+                                    {tech}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 )}
             </div>
-            {content.id === "div4" && (
-                <div className="text-[4px] whitespace-break-spaces" dir={isRTL ? "rtl" : "ltr"}>
-                    <h3 className="text-xl font-bold p-5 mb-2 text-[24px] text-[#e69999]">
-                        * {content?.ProjectDetails?.Title}
-                    </h3>
-                    <ul className="list-disc p-6 text-[13px]">
-                        <li>{content?.ProjectDetails?.Technologies?.Frontend?._1}</li>
-                        <li>{content?.ProjectDetails?.Technologies?.Frontend?._2}</li>
-                        <li>{content?.ProjectDetails?.Technologies?.Frontend?._3}</li>
-                        <li>{content?.ProjectDetails?.Technologies?.Backend?._1}</li>
-                        <li>{content?.ProjectDetails?.Technologies?.Backend?._2}</li>
-                        <li>{content?.ProjectDetails?.Technologies?.Backend?._3}</li>
-                        <li>{content?.ProjectDetails?.Technologies?.Backend?._5}</li>
-                    </ul>
+        </div>
+    );
+
+    const ImageGallery = ({ title, images, links, showCodeWarning }) => (
+        <div className="space-y-4">
+            <h4 className="text-center text-[#e69999] font-black text-sm uppercase tracking-widest">
+                {title || (isRTL ? "معرض الصور" : "Project Gallery")}
+            </h4>
+            
+            <div className="grid grid-cols-2 gap-2">
+                {images[0] && (
+                    <div className="col-span-2 rounded-xl overflow-hidden border border-white/10 shadow-lg group">
+                        <img
+                            className="w-full h-40 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                            src={images[0]}
+                            alt="Project main"
+                            onClick={() => openImage(images[0])}
+                        />
+                    </div>
+                )}
+                {images.slice(1, 3).map((img, i) => img && (
+                    <div key={i} className="rounded-xl overflow-hidden border border-white/10 shadow-lg group">
+                        <img
+                            className="w-full h-24 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                            src={img}
+                            alt={`Project ${i}`}
+                            onClick={() => openImage(img)}
+                        />
+                    </div>
+                ))}
+            </div>
+
+            <div className="flex flex-col gap-3 mt-4">
+                <div className="flex flex-wrap justify-center gap-2">
+                    {links?.slice(0, 3).map((link, i) => link && (
+                        <a
+                            key={i}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-[#26458a] px-4 py-2 rounded-xl text-[11px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10 shadow-lg active:scale-95"
+                        >
+                            {content?.ProjectDetails?.ProjectImages?.[`Link${i+1}`] || (isRTL ? "رابط" : "Link")}
+                        </a>
+                    ))}
+                </div>
+                
+                {showCodeWarning && (
+                    <div className="flex items-center justify-center gap-2 p-2 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+                        <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                        <p className="text-[10px] font-black text-yellow-500/90">
+                            {isRTL ? "الكود غير متوفر احتراما لرغبة العميل" : "Code private per client request"}
+                        </p>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+
+    return (
+        <div className="w-full h-full p-6 flex flex-col gap-4 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-[#e69999]/30" dir={isRTL ? "rtl" : "ltr"}>
+            {(content.id === "div3" || content.id === "div4") && (
+                <TechList 
+                    title={content?.ProjectDetails?.Title}
+                    frontend={content?.ProjectDetails?.Technologies?.Frontend}
+                    backend={content?.ProjectDetails?.Technologies?.Backend}
+                />
+            )}
+
+            {(content.id === "div5" || content.id === "div8") && (
+                <ImageGallery 
+                    title={content.id === "div8" ? (isRTL ? "عرض تفصيلي للمشروع" : "Project Detailed View") : content?.ProjectDetails?.ProjectImages?.Title1}
+                    images={getProjectsImage(index)}
+                    links={getProjectsLinkes(index)}
+                    showCodeWarning={content.id === "div5"}
+                />
+            )}
+
+            {content.id === "div1" && (
+                <ImageGallery 
+                    title={content?.ProjectDetails?.ProjectImages?.Title1}
+                    images={getProjectsImage(index)}
+                    links={getProjectsLinkes(index)}
+                />
+            )}
+
+            {content.id === "div2" && (
+                <div className="space-y-3 shrink-0">
+                    <h4 className="text-center text-[#e69999] font-black text-[11px] uppercase tracking-widest">
+                        {isRTL ? "فيديو سريع عن الموقع" : "Quick video about the site"}
+                    </h4>
+                    <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video">
+                        <script src="https://fast.wistia.com/player.js" async></script>
+                        <script src="https://fast.wistia.com/embed/59je9q3snh.js" async type="module"></script>
+                        <wistia-player media-id="59je9q3snh" aspect="1.7777777777777777"></wistia-player>
+                    </div>
                 </div>
             )}
-            {content.id !== "div4" && content.id !== "div5" && content.id !== "div8" && (
-                <section
-                    className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden"
-                    // data-aos="fade-top"
-                    dir={isRTL ? "rtl" : "ltr"}
-                >
-                    <h1 className="col-span-3 text-center pt-4">
-                        {content.id === "div1"
-                            ? content?.ProjectDetails?.ProjectImages?.Title1
-                            : isRTL
-                                ? "فديو سريع عن الموقع "
-                                : "Quick video about the site"}
-                    </h1>
-                    {content.id === "div1" && (
-                        <>
-                            <div className="relative w-full col-span-2 h-[100%] mt-0 drop-shadow-[0_35px_35px_rgba(24,0,255,0.25)]">
-                                <img 
-                                    className="w-full h-full cursor-zoom-in hover:scale-[1.02] transition-transform duration-300" 
-                                    src={getProjectsImage(index)[0]} 
-                                    alt="Nature" 
-                                    onClick={() => openImage(getProjectsImage(index)[0])}
-                                />
-                            </div>
-                            <div className="relative w-full h-full">
-                                <img
-                                    src={getProjectsImage(index)[1]}
-                                    alt="City Skyline"
-                                    className="w-full h-full object-cover cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-                                    onClick={() => openImage(getProjectsImage(index)[1])}
-                                />
-                            </div>
-                            <div className="relative w-full h-full col-span-3">
-                                <img
-                                    src={getProjectsImage(index)[2]}
-                                    alt="Forest Mountain"
-                                    className="object-cover w-full h-full cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-                                    onClick={() => openImage(getProjectsImage(index)[2])}
-                                />
-                            </div>
-                        </>
-                    )}
-                    {content.id === "div2" && (
-                        <div className="relative w-full h-full col-span-3 row-span-3">
-                            <script src="https://fast.wistia.com/player.js" async></script>
-                            <script
-                                src="https://fast.wistia.com/embed/59je9q3snh.js"
-                                async
-                                type="module"
-                            ></script>
-                            <style>
-                                {`
-                  wistia-player[media-id='59je9q3snh']:not(:defined) {
-                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/59je9q3snh/swatch');
-                    display: block;
-                    filter: blur(5px);
-                    padding-top: 56.25%;
-                  }
-                `}
-                            </style>
-                            <wistia-player media-id="59je9q3snh" aspect="1.7777777777777777"></wistia-player>
-                        </div>
-                    )}
-                    {content.id === "div1" && (
-                        <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
-                            <a
-                                href={getProjectsLinkes(index)[2]}
-                                target="-plank"
-                                className="bg-[#26458a] p-3 mx-3 rounded-lg  hover:bg-[#2669f8] rounded-tl-[4px] rounded-tr-[50px] rounded-bl-[60px] rounded-br-[9px]"
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link1}
-                            </a>
-                            <a
-                                href={getProjectsLinkes(index)[0]}
-                                target="-plank"
-                                className="bg-[#26458a] p-3 rounded-tl-[50px] rounded-tr-[4px] rounded-bl-[9px] rounded-br-[60px]  hover:bg-[#2669f8]"
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link3}
-                            </a>
-                        </div>
-                    )}
-                </section>
-            )}
+
             {content.id === "div7" && (
-                <div className="grid grid-cols-3 gap-2 w-[100%]">
-                    <div className="relative w-[350px] h-full col-span-3 row-span-3">
+                <div className="space-y-5 shrink-0">
+                     <h4 className="text-center text-[#e69999] font-black text-[11px] uppercase tracking-widest">
+                        {isRTL ? "فيديو سريع عن الموقع" : "Quick video about the site"}
+                    </h4>
+                    <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video shrink-0">
                         <script src="https://fast.wistia.com/player.js" async></script>
                         <script src="https://fast.wistia.com/embed/va62jyxsll.js" async type="module"></script>
-                        <style>
-                            {`
-                  wistia-player[media-id='2oy5vdkezy']:not(:defined) {
-                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/va62jyxsll/swatch');
-                    display: block;
-                    filter: blur(5px);
-                    padding-top:55.94%;
-                  }
-                `}
-                        </style>
                         <wistia-player media-id="va62jyxsll" aspect="1.7877094972067038"></wistia-player>
                     </div>
 
-                    <div className="w-full col-span-3 text-white text-center mt-4 text-[12px] flex flex-col items-center gap-2">
-
-                        {/* Secondary Links */}
+                    <div className="space-y-4 shrink-0">
                         <div className="flex flex-wrap justify-center gap-2">
-                            <a
-                                href={getProjectsLinkes(index)[2]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="
-        bg-[#26458a]
-        px-4 py-2
-        rounded-lg
-        hover:bg-[#2669f8]
-        transition
-        min-w-[90px]
-      "
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link1}
-                            </a>
-
-                            <a
-                                href={getProjectsLinkes(index)[1]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="
-        bg-[#26458a]
-        px-4 py-2
-        rounded-lg
-        hover:bg-[#2669f8]
-        transition
-        min-w-[90px]
-      "
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link2}
-                            </a>
-
-                            <a
-                                href={getProjectsLinkes(index)[0]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="
-        bg-[#26458a]
-        px-4 py-2
-        rounded-lg
-        hover:bg-[#2669f8]
-        transition
-        min-w-[90px]
-      "
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link3}
-                            </a>
+                            {[0].map((i) => getProjectsLinkes(index)[i] && (
+                                <a
+                                    key={i}
+                                    href={getProjectsLinkes(index)[i]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-[#26458a] px-3 py-1.5 rounded-xl text-[10px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10"
+                                >
+                                    {content?.ProjectDetails?.ProjectImages?.[`Link${i+1}`]}
+                                </a>
+                            ))}
+                           
                         </div>
 
-                        {/* Primary CTA */}
-                        <div className="flex items-center justify-between bg-gradient-to-r from-[#005eff] to-[#1e3c72] rounded-xl px-4 py-3 w-[350px] shadow-md">
-                            <span className="text-2xl">👨‍💻</span>
-
-                            <a
-                                href={getProjectsLinkes(index)[3]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="
-        bg-white
-        text-[#26458a]
-        text-sm
-        font-bold
-        px-5 py-2
-        rounded-lg
-        hover:bg-[#f0f0f0]
-        transition
-      "
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link4 || "زيارة البورتفوليو"}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            )}
-            {content.id === "div8" && (
-                <div className="grid grid-cols-3 gap-2 w-[100%] h-full">
-                    <h1 className="col-span-3 text-center pt-4 text-[#e69999] font-bold">
-                        {isRTL ? "عرض تفصيلي للمشروع" : "Project Detailed View"}
-                    </h1>
-                    <div className="relative w-full col-span-3 h-48 drop-shadow-xl">
-                        <img 
-                            className="w-full h-full object-cover rounded-lg border-2 border-[#26458a] cursor-zoom-in hover:scale-[1.02] transition-transform duration-300" 
-                            src={getProjectsImage(index)[0]} 
-                            alt="Project Preview" 
-                            onClick={() => openImage(getProjectsImage(index)[0])}
-                        />
-                    </div>
-
-                    <div className="w-full col-span-3 text-white text-center mt-4 text-[12px] flex flex-col items-center gap-4">
-                        <div className="flex flex-wrap justify-center gap-3">
-                            <a
-                                href={getProjectsLinkes(index)[2]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-[#26458a] px-6 py-2 rounded-lg hover:bg-[#2669f8] transition-all shadow-lg min-w-[120px]"
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link1}
-                            </a>
-
-                            <a
-                                href={getProjectsLinkes(index)[1]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-[#26458a] px-6 py-2 rounded-lg hover:bg-[#2669f8] transition-all shadow-lg min-w-[120px]"
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link2}
-                            </a>
-
-                            <a
-                                href={getProjectsLinkes(index)[0]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-[#26458a] px-6 py-2 rounded-lg hover:bg-[#2669f8] transition-all shadow-lg min-w-[120px]"
-                            >
-                                {content?.ProjectDetails?.ProjectImages?.Link3}
-                            </a>
-                        </div>
-
-                        {/* <div className="flex items-center justify-between bg-gradient-to-r from-[#005eff] to-[#1e3c72] rounded-xl px-6 py-4 w-[350px] shadow-2xl transform hover:scale-105 transition-transform">
-                            <span className="text-3xl animate-bounce">🚀</span>
-                            <a
-                                href={getProjectsLinkes(index)[3] || "#"}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-white text-[#26458a] text-sm font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-                            >
-                                {isRTL ? "زيارة البورتفوليو" : "Visit Portfolio"}
-                            </a>
-                        </div> */}
+                        <a
+                            href={getProjectsLinkes(index)[1]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between bg-gradient-to-r from-[#005eff] to-[#1e3c72] rounded-2xl px-4 py-2.5 shadow-xl hover:scale-[1.02] transition-transform"
+                        >
+                            <span className="text-lg">👨‍💻</span>
+                            <span className="text-white text-[10px] font-black">
+                                {content?.ProjectDetails?.ProjectImages?.Link4 || (isRTL ? "زيارة البورتفوليو" : "Visit Portfolio")}
+                            </span>
+                            <span className="text-white/50 text-xs">→</span>
+                        </a>
                     </div>
                 </div>
             )}
+
             <ImageModal 
                 isOpen={!!selectedImage} 
                 onClose={closeImage} 
                 imageUrl={selectedImage} 
             />
-        </>
+        </div>
     );
 }

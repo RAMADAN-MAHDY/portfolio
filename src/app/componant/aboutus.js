@@ -2,70 +2,123 @@
 
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { Sparkles, Terminal, Cpu, Database, Layout, Code2 } from "lucide-react";
 
 export default function AboutUs() {
   const [isClient, setIsClient] = useState(false);
   const currentLanguage = useSelector((state) => state.language.currentLanguage);
-  const gitLanguage = currentLanguage === "ar" ? "ar" : "en";
+  const isRTL = currentLanguage === "ar";
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  if (!isClient) return null; // منع الريندر قبل التأكد إننا على الكلاينت
+  if (!isClient) return null;
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
+
+  const techStack = [
+    { name: "Next.js", icon: Layout, color: "text-blue-400" },
+    { name: "React", icon: Code2, color: "text-cyan-400" },
+    { name: "Node.js", icon: Terminal, color: "text-green-400" },
+    { name: "MongoDB", icon: Database, color: "text-emerald-500" },
+    { name: "Tailwind", icon: Cpu, color: "text-sky-400" },
+  ];
 
   return (
-    <div className="mb-8 text-center" data-aos="fade-up" data-aos-duration="1200">
-         <h1 className="text-[15px] p-1 whitespace-nowrap sm:whitespace-pre-wrap sm:text-4xl rounded-2xl md:text-5xl font-bold sm:font-extrabold mb-10 mt-6 bg-gradient-to-r from-[#1b474e] via-[#4c3ca8] to-[#3a773a] drop-shadow-xl animate-slide-down animate-delay-[100ms]">
-           <span className="inline-block text-4xl sm:text-7xl md:text-8xl text-[#60e6ff] animate-wiggle mr-2 align-middle">🕸️</span>
-           <span className="align-middle">
-             {gitLanguage === "en"
-               ? "Full-Stack Web Developer"
-               : "مطور ويب متكامل (MERN)"}
-           </span>
-         </h1>
-         <p className="text-base sm:text-lg md:text-2xl lg:text-3xl text-blue-50 max-w-4xl mx-auto animate-slide-up animate-delay-[700ms] tracking-wide leading-relaxed font-semibold text-center space-y-4">
-           {gitLanguage === "en"
-             ? (
-               <>
-                 <span className="block mb-4">
-                   I create <span className="font-bold text-[#60e6ff]">modern</span>, <span className="font-bold text-[#60e6ff]">scalable</span>, and <span className="font-bold text-[#60e6ff]">interactive</span> web apps using
-                   <span className="font-semibold text-[#60e6ff]"> Next.js</span>,
-                   <span className="font-semibold text-[#61dafb]"> React</span>,
-                   <span className="font-semibold text-[#367930]"> Node.js</span>,
-                   <span className="font-semibold text-[#f7df1e]"> Express</span>,
-                   <span className="font-semibold text-[#114433]"> MongoDB</span>, and
-                   <span className="font-semibold text-[#3e606e]"> Tailwind CSS</span>.
-                 </span>
-                 <span className="block mb-4">
-                   My work includes <span className="font-bold text-[#60e6ff]">e-commerce</span>, <span className="font-bold text-[#60e6ff]">dashboards</span>, and <span className="font-bold text-[#60e6ff]">smart attendance systems</span>, always focusing on <span className="font-bold text-[#60e6ff]">clean code</span>, <span className="font-bold text-[#60e6ff]">beautiful UI</span>, and a <span className="font-bold text-[#60e6ff]">seamless user experience</span>.
-                 </span>
-                 <span className="block mt-6">
-                   <span className="font-semibold text-[#60e6ff]">+ AI Integration:</span> I can integrate smart AI chatbots that answer based on your site data
-                   {/* <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">Live AI Demo</a>. */}
-                 </span>
-               </>
-             ) : (
-               <>
-                 <span className="block mb-4">
-                   أطور تطبيقات ويب <span className="font-bold text-[#60e6ff]">حديثة</span>، <span className="font-bold text-[#60e6ff]">قابلة للتوسع</span> و <span className="font-bold text-[#60e6ff]">تفاعلية</span> باستخدام
-                   <span className="font-semibold text-[#60e6ff]"> Next.js</span>،
-                   <span className="font-semibold text-[#61dafb]"> React</span>،
-                   <span className="font-semibold text-[#367930]"> Node.js</span>،
-                   <span className="font-semibold text-[#f7df1e]"> Express</span>،
-                   <span className="font-semibold text-[#114433]"> MongoDB</span>، و
-                   <span className="font-semibold text-[#3e606e]"> Tailwind CSS</span>.
-                 </span>
-                 <span className="block mb-4">
-                   تشمل أعمالي <span className="font-bold text-[#60e6ff]">المتاجر الإلكترونية</span>، <span className="font-bold text-[#60e6ff]">لوحات التحكم</span>، و <span className="font-bold text-[#60e6ff]">أنظمة الحضور الذكية</span>، مع التركيز دائمًا على <span className="font-bold text-[#60e6ff]">كود نظيف</span>، <span className="font-bold text-[#60e6ff]">تصميم جذاب</span> و <span className="font-bold text-[#60e6ff]">تجربة مستخدم سلسة</span>.
-                 </span>
-                 <span className="block mt-6">
-                   <span className="font-semibold text-[#60e6ff]">+ دمج الذكاء الاصطناعي:</span> أستطيع دمج شات ذكي يجيب بناءً على بيانات موقعك
-                   {/* <a href="https://village-services-dxve.vercel.app/" target="_blank" className="inline-block font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#60e6ff] to-[#4c3ca8] text-white shadow-lg hover:scale-105 transition-transform ml-2 animate-glow focus:outline-none focus:ring-4 focus:ring-[#60e6ff]/50 mt-6">تجربة حية</a>. */}
-                 </span>
-               </>
-             )}
-         </p>
-       </div>
+    <motion.div 
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="relative z-10 text-center py-12 px-4"
+    >
+      {/* Badge */}
+      <motion.div 
+        variants={itemVariants}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/10 border border-blue-900/20 text-blue-900 text-xs font-bold uppercase tracking-widest mb-8 shadow-lg shadow-blue-900/5 backdrop-blur-sm"
+      >
+        <Sparkles size={14} className="animate-pulse" />
+        <span className="[text-shadow:_0_1px_2px_rgba(255,255,255,0.5)]">{isRTL ? "متاح للعمل الحر" : "Available for Projects"}</span>
+      </motion.div>
+
+      {/* Main Title */}
+      <motion.h1 
+        variants={itemVariants}
+        className="text-4xl sm:text-6xl md:text-7xl font-black mb-8 tracking-tight text-slate-900 drop-shadow-[0_2px_2px_rgba(255,255,255,0.8)]"
+      >
+        {isRTL ? (
+          <span className="leading-[1.2]">
+            مطور ويب <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900">متكامل</span>
+          </span>
+        ) : (
+          <span className="leading-[1.1]">
+            Full-Stack <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900">Web Developer</span>
+          </span>
+        )}
+      </motion.h1>
+
+      {/* Description */}
+      <motion.div variants={itemVariants} className="max-w-3xl mx-auto space-y-6">
+        <p className="text-lg md:text-xl text-slate-800 leading-relaxed font-bold [text-shadow:_0_1px_1px_rgba(255,255,255,0.5)]">
+          {isRTL ? (
+            <>
+              أقوم ببناء تطبيقات ويب <span className="text-blue-900 font-black underline decoration-blue-700/50 underline-offset-4">حديثة وتفاعلية</span> تركز على السرعة، الأمان، وتجربة المستخدم السلسة. متخصص في تحويل الأفكار المعقدة إلى حلول رقمية بسيطة وقوية.
+            </>
+          ) : (
+            <>
+              I craft <span className="text-blue-900 font-black underline decoration-blue-700/50 underline-offset-4">modern and interactive</span> web applications focused on performance, security, and seamless user experience. Specialized in turning complex ideas into simple, powerful digital solutions.
+            </>
+          )}
+        </p>
+
+        {/* Tech Stack Pills */}
+        <div className="flex flex-wrap justify-center gap-3 pt-4">
+          {techStack.map((tech) => {
+            const Icon = tech.icon;
+            return (
+              <motion.div
+                key={tech.name}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/40 border border-slate-900/10 backdrop-blur-md hover:bg-white/60 transition-all cursor-default shadow-sm shadow-black/5"
+              >
+                <Icon size={16} className={`${tech.color.replace('400', '700')} drop-shadow-sm`} />
+                <span className="text-sm font-black text-slate-900">{tech.name}</span>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {/* Action Buttons */}
+      <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-6 mt-12">
+        <a 
+          href="/projects" 
+          className="px-10 py-5 rounded-2xl bg-gradient-to-r from-blue-700 to-indigo-800 text-white font-black text-xl hover:from-blue-600 hover:to-indigo-700 transition-all shadow-2xl shadow-blue-900/30 hover:shadow-blue-900/50 active:scale-95 transform"
+        >
+          {isRTL ? "عرض أعمالي" : "View My Work"}
+        </a>
+      </motion.div>
+    </motion.div>
   );
 }
