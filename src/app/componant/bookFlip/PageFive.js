@@ -1,4 +1,6 @@
 "use client";
+import { useState } from "react";
+import ImageModal from "./ImageModal";
 
 export default function PageFive({
   content,
@@ -7,6 +9,16 @@ export default function PageFive({
   getProjectsImage,
   getProjectsLinkes,
 }) {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openImage = (url) => {
+    setSelectedImage(url);
+  };
+
+  const closeImage = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <div dir={isRTL ? "rtl" : "ltr"}>
       {content.id === "div4" ? (
@@ -15,9 +27,10 @@ export default function PageFive({
             {content?.ProjectDetails?.ProjectImages?.Title1}
           </h1>
           <img
-            className="w-full h-48 object-cover rounded-md col-span-3"
+            className="w-full h-48 object-cover rounded-md col-span-3 cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
             src={getProjectsImage(index)[0]}
             alt="Nature"
+            onClick={() => openImage(getProjectsImage(index)[0])}
           />
           <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
             <a
@@ -47,24 +60,28 @@ export default function PageFive({
         <>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full h-auto overflow-hidden">
             <img
-              className="w-full h-48 object-cover rounded-md col-span-3"
+              className="w-full h-48 object-cover rounded-md col-span-3 cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
               src={getProjectsImage(index)[0]}
               alt="Nature"
+              onClick={() => openImage(getProjectsImage(index)[0])}
             />
             <img
-              className="w-full h-48 object-cover rounded-md"
+              className="w-full h-48 object-cover rounded-md cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
               src={getProjectsImage(index)[2]}
               alt="Nature"
+              onClick={() => openImage(getProjectsImage(index)[2])}
             />
             <img
-              className="w-full h-48 object-cover rounded-md"
+              className="w-full h-48 object-cover rounded-md cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
               src={getProjectsImage(index)[4]}
               alt="Nature"
+              onClick={() => openImage(getProjectsImage(index)[4])}
             />
             <img
-              className="w-full h-48 object-cover rounded-md"
+              className="w-full h-48 object-cover rounded-md cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
               src={getProjectsImage(index)[5]}
               alt="Nature"
+              onClick={() => openImage(getProjectsImage(index)[5])}
             />
           </div>
           <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3" dir="ltr">
@@ -92,6 +109,12 @@ export default function PageFive({
           </div>
         </>
       )}
+      <ImageModal 
+        isOpen={!!selectedImage} 
+        onClose={closeImage} 
+        imageUrl={selectedImage} 
+      />
     </div>
   );
 }
+

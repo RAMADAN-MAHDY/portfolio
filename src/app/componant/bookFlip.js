@@ -22,6 +22,7 @@ const BookFlip = () => {
         div5: 0,
         div6: 0,
         div7: 0,
+        div8: 0,
     });
 
     const isRTL = currentLanguage !== "en";
@@ -376,7 +377,57 @@ const BookFlip = () => {
                 },
             },
         },
-
+        {
+            countPage: [1, 2, 3, 4, 5],
+            id: "div8",
+            SiteDefinition: {
+                Title: translations?.Project_8_ProStockManager?.Title || "Default Title",
+                Description: translations?.Project_8_ProStockManager?.Description || "Default Description",
+            },
+            ImportantPoints: {
+                Title: translations?.Project_8_ProStockManager?.MainFeatures?.Title || "",
+                Dashboard: translations?.Project_8_ProStockManager?.MainFeatures?.Dashboard || "",
+                SalesPurchases: translations?.Project_8_ProStockManager?.MainFeatures?.SalesPurchases || "",
+                Subscriptions: translations?.Project_8_ProStockManager?.MainFeatures?.Subscriptions || "",
+                Reports: translations?.Project_8_ProStockManager?.MainFeatures?.Reports || "",
+                MultiTenancy: translations?.Project_8_ProStockManager?.MainFeatures?.MultiTenancy || "",
+            },
+            ProjectDetails: {
+                Title: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Title || "Default Title",
+                Technologies: {
+                    Frontend: {
+                        _1: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Frontend?._1 || "",
+                        _2: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Frontend?._2 || "",
+                        _3: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Frontend?._3 || "",
+                    },
+                    Backend: {
+                        _1: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Backend?._1 || "",
+                        _2: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Backend?._2 || "",
+                        _3: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Backend?._3 || "",
+                    },
+                    Tools: {
+                        _1: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Tools?._1 || "",
+                        _2: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Tools?._2 || "",
+                        _3: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Tools?._3 || "",
+                        _4: translations?.Project_8_ProStockManager?.TechnologiesUsed?.Tools?._4 || "",
+                    },
+                },
+                ProjectGoal: {
+                    Title: translations?.Project_8_ProStockManager?.ProjectGoal?.Title || "Default Title",
+                    Description: translations?.Project_8_ProStockManager?.ProjectGoal?.Description || "Default Description",
+                },
+                Integration: {
+                    Title: translations?.Project_8_ProStockManager?.Integration?.Title || "Default Title",
+                    Description: translations?.Project_8_ProStockManager?.Integration?.Description || "Default Description",
+                },
+                ProjectImages: {
+                    Title1: translations?.Project_8_ProStockManager?.ProjectImages?.Title1 || "Default Title",
+                    Link1: translations?.Project_8_ProStockManager?.ProjectImages?.Link1 || "Default Link1",
+                    Link2: translations?.Project_8_ProStockManager?.ProjectImages?.Link2 || "Default Link2",
+                    Link3: translations?.Project_8_ProStockManager?.ProjectImages?.Link3 || "Default Link3",
+                },
+            },
+        },
     ];
 
     return (

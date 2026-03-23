@@ -16,6 +16,8 @@ export const getPageBackground = (index) => {
       return "bg-[url('https://i.ibb.co/7dSMMhXd/Screenshot-2025-09-04-172302.png')]";
     case 6:
       return "bg-[url('https://i.ibb.co/yFyvNxx8/Screenshot-2026-01-25-150958.png')]";
+    case 7:
+      return "bg-[url('https://i.ibb.co/fdXN70Th/Screenshot-2026-03-23-022816.png')]"; // Placeholder background
     default:
       return "bg-[#222322]";
   }
@@ -53,6 +55,10 @@ export const getProjectsImage = (index) => {
         "https://i.ibb.co/35T5gSLb/Screenshot-2025-09-04-171251.png",
         "https://i.ibb.co/qFgb2P32/Screenshot-2025-09-04-171308.png",
         "https://i.ibb.co/MkYdKcVn/Screenshot-2025-09-04-171324.png",
+      ];
+    case 7:
+      return [
+        "https://i.ibb.co/QvPfdpWg/image.jpg", // Placeholder image
       ];
     default:
       return "bg-[#222322]";
@@ -102,6 +108,13 @@ export const getProjectsLinkes = (index) => {
         "https://github.com/RAMADAN-MAHDY/Iraqi-EStore-api",
         "https://github.com/dina-abaza/grocy-web",
         "https://grocy-web.vercel.app/",
+        "https://portofilio-l9ls.vercel.app",
+      ];
+    case 7:
+      return [
+        "https://github.com/RAMADAN-MAHDY", // Placeholder links
+        "https://github.com/RAMADAN-MAHDY",
+        "https://ramadan-three.vercel.app/",
         "https://portofilio-l9ls.vercel.app",
       ];
     default:

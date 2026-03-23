@@ -329,5 +329,50 @@
             "Link3": "backend code",
             "Link4": "frontend developer"
         }
+    },
+    "Project_8_ProStockManager": {
+        "Title": "Pro Stock Manager (Smart Inventory & Sales Management System)",
+        "Description": "An integrated system for managing commercial operations and warehouses, aiming to digitize paper processes and facilitate real-time tracking of sales, purchases, and inventory. Built with a modern architecture ensuring speed, security, and an exceptional user experience with full RTL support.",
+        "MainFeatures": {
+            "Title": "Key Features",
+            "Dashboard": "Interactive Dashboard: Live stats for profits, expenses, and top-selling products using advanced charts.",
+            "SalesPurchases": "Sales & Purchases Cycle Management: Track invoices, suppliers, and customers with an inventory shortage alert system.",
+            "Subscriptions": "Advanced Subscription System: Supports electronic payments via (InstaPay) and (Vodafone Cash) with a smart confirmation interface.",
+            "Reports": "Report Generation: Export all data and financial reports to Excel and PDF formats with one click.",
+            "MultiTenancy": "Multi-tenancy: Database structured to support multiple branches or institutions independently and securely."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Frontend": {
+                "_1": "Next.js 16 (App Router) and React 19.",
+                "_2": "TypeScript and Tailwind CSS 4.",
+                "_3": "Redux Toolkit and Framer Motion."
+            },
+            "Backend": {
+                "_1": "Node.js and Express 5.",
+                "_2": "MongoDB with Mongoose.",
+                "_3": "JWT Authentication for security."
+            },
+            "Tools": {
+                "_1": "Chart.js for visual data representation.",
+                "_2": "Axios for API communication.",
+                "_3": "Zod/Joi for data validation.",
+                "_4": "XLSX/jsPDF for report generation."
+            }
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "Transforming traditional administrative operations into a smart digital system that provides high accuracy in tracking inventory and financial operations, helping business owners make decisions based on precise, real-time data."
+        },
+        "Integration": {
+            "Title": "System Integration",
+            "Description": "Full integration between frontend and backend with multi-branch support, financial/technical report export, and secure electronic payment confirmation."
+        },
+        "ProjectImages": {
+            "Title1": "Images from Dashboard and Main Interface",
+            "Link1": "Visit Site",
+            "Link2": "Frontend Code",
+            "Link3": "Backend Code"
+        }
     }
 }

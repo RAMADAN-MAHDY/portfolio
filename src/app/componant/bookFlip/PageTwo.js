@@ -133,6 +133,29 @@ export default function PageTwo({ content, isRTL }) {
           </ul>
         </div>
       )}
+      {content.id === "div8" && (
+        <div className="text-[4px] whitespace-break-spaces" dir={isRTL ? "rtl" : "ltr"}>
+          <ul className="list-disc mr-6 ml-6 text-[10px]">
+            <li className="text-[14px]">{content?.ImportantPoints?.SalesPurchases}</li>
+            <li className="text-[14px]">{content?.ImportantPoints?.Subscriptions}</li>
+            <li className="text-[14px]">{content?.ImportantPoints?.Reports}</li>
+            <li className="text-[14px]">{content?.ImportantPoints?.MultiTenancy}</li>
+          </ul>
+          <h3 className={`text-2xl font-bold text-[#e69999] mb-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+            {content?.ProjectDetails?.Title}
+          </h3>
+          <ul
+            className={`list-disc text-sm space-y-1 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}
+            dir={isRTL ? "rtl" : "ltr"}
+          >
+            <li>{content?.ProjectDetails?.Technologies?.Frontend._1}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Frontend._2}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Frontend._3}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Backend._1}</li>
+          
+          </ul>
+        </div>
+      )}
     </>
   );
 }

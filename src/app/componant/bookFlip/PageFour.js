@@ -1,5 +1,7 @@
 "use client";
 import { AlertTriangle } from "lucide-react";
+import { useState } from "react";
+import ImageModal from "./ImageModal";
 
 export default function PageFour({
     content,
@@ -8,6 +10,16 @@ export default function PageFour({
     getProjectsImage,
     getProjectsLinkes,
 }) {
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const openImage = (url) => {
+        setSelectedImage(url);
+    };
+
+    const closeImage = () => {
+        setSelectedImage(null);
+    };
+
     if (content.id === "div3") {
         return (
             <div className="text-[4px] whitespace-break-spaces" dir={isRTL ? "rtl" : "ltr"}>
@@ -36,9 +48,10 @@ export default function PageFour({
                             {content?.ProjectDetails?.ProjectImages?.Title1}
                         </h1>
                         <img
-                            className="w-full h-48 object-cover rounded-md col-span-3"
+                            className="w-full h-48 object-cover rounded-md col-span-3 cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
                             src={getProjectsImage(index)[0]}
                             alt="Nature"
+                            onClick={() => openImage(getProjectsImage(index)[0])}
                         />
                         <div className="w-full h-full text-[#ffffff] text-center mt-2 text-[12px] col-span-3">
                             <a
@@ -72,7 +85,7 @@ export default function PageFour({
                     </ul>
                 </div>
             )}
-            {content.id !== "div4" && content.id !== "div5" && (
+            {content.id !== "div4" && content.id !== "div5" && content.id !== "div8" && (
                 <section
                     className="grid grid-cols-3 gap-2 w-[100%] h-[100%] overflow-hidden"
                     // data-aos="fade-top"
@@ -88,20 +101,27 @@ export default function PageFour({
                     {content.id === "div1" && (
                         <>
                             <div className="relative w-full col-span-2 h-[100%] mt-0 drop-shadow-[0_35px_35px_rgba(24,0,255,0.25)]">
-                                <img className="w-full h-full" src={getProjectsImage(index)[0]} alt="Nature" />
+                                <img 
+                                    className="w-full h-full cursor-zoom-in hover:scale-[1.02] transition-transform duration-300" 
+                                    src={getProjectsImage(index)[0]} 
+                                    alt="Nature" 
+                                    onClick={() => openImage(getProjectsImage(index)[0])}
+                                />
                             </div>
                             <div className="relative w-full h-full">
                                 <img
                                     src={getProjectsImage(index)[1]}
                                     alt="City Skyline"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
+                                    onClick={() => openImage(getProjectsImage(index)[1])}
                                 />
                             </div>
                             <div className="relative w-full h-full col-span-3">
                                 <img
                                     src={getProjectsImage(index)[2]}
                                     alt="Forest Mountain"
-                                    className="object-cover w-full h-full"
+                                    className="object-cover w-full h-full cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
+                                    onClick={() => openImage(getProjectsImage(index)[2])}
                                 />
                             </div>
                         </>
@@ -244,6 +264,69 @@ export default function PageFour({
                 </div>
 
             )}
+            {content.id === "div8" && (
+                <div className="grid grid-cols-3 gap-2 w-[100%] h-full">
+                    <h1 className="col-span-3 text-center pt-4 text-[#e69999] font-bold">
+                        {isRTL ? "عرض تفصيلي للمشروع" : "Project Detailed View"}
+                    </h1>
+                    <div className="relative w-full col-span-3 h-48 drop-shadow-xl">
+                        <img 
+                            className="w-full h-full object-cover rounded-lg border-2 border-[#26458a] cursor-zoom-in hover:scale-[1.02] transition-transform duration-300" 
+                            src={getProjectsImage(index)[0]} 
+                            alt="Project Preview" 
+                            onClick={() => openImage(getProjectsImage(index)[0])}
+                        />
+                    </div>
+
+                    <div className="w-full col-span-3 text-white text-center mt-4 text-[12px] flex flex-col items-center gap-4">
+                        <div className="flex flex-wrap justify-center gap-3">
+                            <a
+                                href={getProjectsLinkes(index)[2]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-[#26458a] px-6 py-2 rounded-lg hover:bg-[#2669f8] transition-all shadow-lg min-w-[120px]"
+                            >
+                                {content?.ProjectDetails?.ProjectImages?.Link1}
+                            </a>
+
+                            <a
+                                href={getProjectsLinkes(index)[1]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-[#26458a] px-6 py-2 rounded-lg hover:bg-[#2669f8] transition-all shadow-lg min-w-[120px]"
+                            >
+                                {content?.ProjectDetails?.ProjectImages?.Link2}
+                            </a>
+
+                            <a
+                                href={getProjectsLinkes(index)[0]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-[#26458a] px-6 py-2 rounded-lg hover:bg-[#2669f8] transition-all shadow-lg min-w-[120px]"
+                            >
+                                {content?.ProjectDetails?.ProjectImages?.Link3}
+                            </a>
+                        </div>
+
+                        {/* <div className="flex items-center justify-between bg-gradient-to-r from-[#005eff] to-[#1e3c72] rounded-xl px-6 py-4 w-[350px] shadow-2xl transform hover:scale-105 transition-transform">
+                            <span className="text-3xl animate-bounce">🚀</span>
+                            <a
+                                href={getProjectsLinkes(index)[3] || "#"}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-white text-[#26458a] text-sm font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                            >
+                                {isRTL ? "زيارة البورتفوليو" : "Visit Portfolio"}
+                            </a>
+                        </div> */}
+                    </div>
+                </div>
+            )}
+            <ImageModal 
+                isOpen={!!selectedImage} 
+                onClose={closeImage} 
+                imageUrl={selectedImage} 
+            />
         </>
     );
 }

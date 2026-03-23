@@ -51,6 +51,13 @@ export default function PageOne({ content, isRTL }) {
           {/* <li className="text-[14px]">{content?.ImportantPoints?.ImageUploads}</li> */}
         </ul>
       )}
+      {content.id === "div8" && (
+        <ul className="list-disc mr-6 ml-6 text-[10px]">
+          <li className="text-[14px]">{content?.ImportantPoints?.Dashboard}</li>
+          {/* <li className="text-[14px]">{content?.ImportantPoints?.SalesPurchases}</li> */}
+          {/* <li className="text-[14px]">{content?.ImportantPoints?.Subscriptions}</li> */}
+        </ul>
+      )}
     </div>
   );
 }

@@ -201,6 +201,33 @@ export default function PageThree({ content, isRTL, index, getProjectsLinkes }) 
           </p>
         </div>
       )}
+      {content.id === "div8" && (
+        <div className="text-[4px] bg-[#23252bcb] py-6 whitespace-break-spaces" dir={isRTL ? "rtl" : "ltr"}>
+            <ul
+            className={`list-disc text-sm space-y-1 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}
+            dir={isRTL ? "rtl" : "ltr"}
+          >
+            <li>{content?.ProjectDetails?.Technologies?.Backend._2}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Backend._3}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Tools._1}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Tools._2}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Tools._3}</li>
+            <li>{content?.ProjectDetails?.Technologies?.Tools._4}</li>
+            </ul>
+          <h3 className={`text-2xl font-bold text-[#e69999] ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+            {content?.ProjectDetails?.ProjectGoal.Title}
+          </h3>
+          <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+            {content?.ProjectDetails?.ProjectGoal.Description}
+          </p>
+          <h3 className={`text-2xl font-bold text-[#e69999] mt-2 ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+            {content?.ProjectDetails?.Integration.Title}
+          </h3>
+          <p className={`text-sm ${isRTL ? "pr-6 text-right" : "pl-6 text-left"}`}>
+            {content?.ProjectDetails?.Integration.Description}
+          </p>
+        </div>
+      )}
         </>
     );
 }
