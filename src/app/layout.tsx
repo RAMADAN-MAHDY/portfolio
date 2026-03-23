@@ -47,7 +47,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

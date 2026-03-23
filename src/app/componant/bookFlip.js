@@ -7,7 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import FlipBookItem from "./bookFlip/FlipBookItem";
 import { getPageBackground, getProjectsImage, getProjectsLinkes } from "./bookFlip/helpers";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const BookFlip = () => {
     const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const BookFlip = () => {
             dispatch(setTranslations(translations));
         };
         fetchTranslations();
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (typeof window !== "undefined") {

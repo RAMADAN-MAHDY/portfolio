@@ -19,7 +19,7 @@ export const getPageBackground = (index) => {
     case 7:
       return "bg-[url('https://i.ibb.co/fdXN70Th/Screenshot-2026-03-23-022816.png')]"; // Placeholder background
     default:
-      return "bg-[#222322]";
+      return [];
   }
 };
 
@@ -61,7 +61,7 @@ export const getProjectsImage = (index) => {
         "https://i.ibb.co/QvPfdpWg/image.jpg", // Placeholder image
       ];
     default:
-      return "bg-[#222322]";
+      return [];
   }
 };
 
@@ -94,7 +94,7 @@ export const getProjectsLinkes = (index) => {
       return [
         // "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
         // "https://github.com/RAMADAN-MAHDY/olive-oil-store",
-        " https://nazafaa.com",
+        "https://nazafaa.com",
       ];
     case 5:
       return [
@@ -115,6 +115,6 @@ export const getProjectsLinkes = (index) => {
         "https://warehouse-management-system-for-an-sooty.vercel.app", // Placeholder links
       ];
     default:
-      return "bg-[#222322]";
+      return [];
   }
 };

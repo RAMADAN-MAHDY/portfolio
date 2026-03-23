@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import ImageModal from "./ImageModal";
 
 export default function PageFive({
@@ -31,14 +32,18 @@ export default function PageFive({
         
         {content.id === "div4" ? (
           <div className="space-y-4 shrink-0">
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0">
-              <img
-                className="w-full h-40 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
-                src={images[0]}
-                alt="Project view"
-                onClick={() => openImage(images[0])}
-              />
-            </div>
+            {images[0] && (
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 relative h-40">
+                <Image
+                  className="object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                  src={images[0]}
+                  alt="Project view"
+                  fill
+                  sizes="100%"
+                  onClick={() => openImage(images[0])}
+                />
+              </div>
+            )}
             <div className="flex flex-wrap justify-center gap-2 shrink-0">
               {[2, 1, 0].map((i) => links[i] && (
                 <a
@@ -56,20 +61,26 @@ export default function PageFive({
         ) : (
           <div className="space-y-5 shrink-0">
             <div className="grid grid-cols-2 gap-2 shrink-0">
-              <div className="col-span-2 rounded-xl overflow-hidden border border-white/10 shadow-lg group">
-                <img
-                  className="w-full h-28 object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
-                  src={images[0]}
-                  alt="Gallery 1"
-                  onClick={() => openImage(images[0])}
-                />
-              </div>
+              {images[0] && (
+                <div className="col-span-2 rounded-xl overflow-hidden border border-white/10 shadow-lg group relative h-28">
+                  <Image
+                    className="object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
+                    src={images[0]}
+                    alt="Gallery 1"
+                    fill
+                    sizes="100%"
+                    onClick={() => openImage(images[0])}
+                  />
+                </div>
+              )}
               {[2, 4, 5].map((imgIdx, i) => images[imgIdx] && (
-                <div key={i} className={`rounded-xl overflow-hidden border border-white/10 shadow-lg group ${i === 2 ? 'col-span-2' : ''}`}>
-                  <img
-                    className={`w-full ${i === 2 ? 'h-20' : 'h-16'} object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500`}
+                <div key={i} className={`rounded-xl overflow-hidden border border-white/10 shadow-lg group relative ${i === 2 ? 'col-span-2 h-20' : 'h-16'}`}>
+                  <Image
+                    className="object-cover cursor-zoom-in group-hover:scale-105 transition-transform duration-500"
                     src={images[imgIdx]}
                     alt={`Gallery ${imgIdx}`}
+                    fill
+                    sizes="100%"
                     onClick={() => openImage(images[imgIdx])}
                   />
                 </div>

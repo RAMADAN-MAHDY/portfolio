@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { loadTranslations } from '../../utils/loadTranslations';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
-import { FaHome, FaProjectDiagram, FaLanguage, FaUser } from 'react-icons/fa';
+
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X as CloseIcon, Globe, Home, Briefcase, User } from 'lucide-react';
@@ -15,15 +15,10 @@ const Navbar = () => {
     const currentLanguage = useSelector((state) => state.language.currentLanguage);
     const { translations } = useSelector((state) => state.language);
     const pathname = usePathname();
-    const [isScrolled, setIsScrolled] = useState(false);
+
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        
         const fetchTranslations = async () => {
             const getLanguageFromLocal = localStorage.getItem('language') || 'en';
             const newLanguage = getLanguageFromLocal === 'en' ? 'en' : 'ar';
@@ -32,8 +27,6 @@ const Navbar = () => {
             dispatch(setTranslations(translations));
         };
         fetchTranslations();
-        
-        return () => window.removeEventListener('scroll', handleScroll);
     }, [dispatch]);
 
     const handleLanguageChange = async () => {
