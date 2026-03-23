@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import moment from "moment-timezone";
 
 
-const showAdminChatWithUser = ({  currentConversation ,userId , GetMessages}) => {
+const ShowAdminChatWithUser = ({ userId , GetMessages}) => {
     // const NEXT_PUBLIC_PUSHER_KEY = process.env.NEXT_PUBLIC_PUSHER_KEY;
     const adminId = process.env.NEXT_PUBLIC_adminId;
 
@@ -103,7 +103,7 @@ const HandleTimeOfMessage = (time) =>{
           throw new Error(`HTTP error! status: ${res.status}`);
         }
         
-        const data = await res.json();
+        await res.json();
         // console.log(data);
         setMessageText(""); // مسح حقل الإدخال بعد الإرسال
   
@@ -162,4 +162,4 @@ const HandleTimeOfMessage = (time) =>{
   );
 };
 
-export default showAdminChatWithUser;
+export default ShowAdminChatWithUser;

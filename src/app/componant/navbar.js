@@ -4,7 +4,7 @@ import { useState ,useEffect} from 'react';
 import {loadTranslations} from '../../utils/loadTranslations';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
-import { FaHome, FaProjectDiagram, FaEnvelope, FaLanguage ,FaUser} from 'react-icons/fa';
+import { FaHome, FaProjectDiagram, FaLanguage ,FaUser} from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
             // console.log("Navpar Home:", translations.Navpar.Home);
         };
         fetchTranslations();
-    }, []); // يتم تحميل الترجمات فقط مرة واحدة عند تحميل المكون.
+    }, [dispatch]); // يتم تحميل الترجمات فقط مرة واحدة عند تحميل المكون.
 
     const handleLanguageChange = async () => {
         const newLanguage = currentLanguage === 'en' ? 'ar' : 'en';

@@ -129,7 +129,7 @@ const ChatAdmin = () => {
             setMessages([]);
           }}> x </p>
           <h1 className="text-[#fff] rounded-lg bg-[#241111]">{userName}</h1>
-          <ShowAdminChatWithUser currentConversation={currentConversation} userId={userId} GetMessages={GetMessages} />
+          <ShowAdminChatWithUser userId={userId} GetMessages={GetMessages} />
         </div>
       )}
     </section>
