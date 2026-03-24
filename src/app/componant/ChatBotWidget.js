@@ -129,8 +129,8 @@ export default function ChatBotWidget() {
 
       mediaRecorderRef.current.start();
       setIsRecording(true);
-    } catch () {
-      alert(t("Microphone access denied.", "تم رفض الوصول للميكروفون."));
+    } catch (err) {
+      alert(t("Microphone access denied.", "تم رفض الوصول للميكروفون." , err));
     }
   };
 
