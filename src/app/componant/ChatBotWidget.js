@@ -112,8 +112,10 @@ export default function ChatBotWidget() {
   };
 
   const [isDragging, setIsDragging] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (showChat) {
       controls.start({ y: 0 });
     }
@@ -124,7 +126,7 @@ export default function ChatBotWidget() {
       drag="y"
       animate={controls}
       dragMomentum={false}
-      dragConstraints={{ top: -window.innerHeight + (showChat ? 700 : 100), bottom: 0 }}
+      dragConstraints={{ top: mounted ? -window.innerHeight + (showChat ? 700 : 100) : 0, bottom: 0 }}
       onDragStart={() => setIsDragging(true)}
       onDragEnd={() => setTimeout(() => setIsDragging(false), 50)}
       className={`fixed bottom-6 right-6 z-[3000] flex flex-col items-end font-sans ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}
