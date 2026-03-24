@@ -96,6 +96,11 @@ export default function ChatBotWidget() {
       });
       const data = await res.json();
       
+      if (data.error) {
+        setHistory(h => [...h, { from: "bot", text: data.error }]);
+        return;
+      }
+
       if (data.sessionId && !activeSessionId) {
         setActiveSessionId(data.sessionId);
         fetchSessions();
@@ -151,114 +156,139 @@ export default function ChatBotWidget() {
       onDragEnd={() => setTimeout(() => setIsDragging(false), 50)}
       className={`fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}
     >
-        <button
-          className="rounded-full shadow-2xl w-16 h-16 bg-[url('/animation/Animation-1751341569929.gif')] flex items-center bg-cover justify-center hover:scale-110 active:scale-95 transition-all text-white relative border-4 border-white/20"
+        {/* Floating Toggle Button */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="group rounded-full shadow-[0_10px_40px_rgba(59,130,246,0.5)] w-16 h-16 bg-[url('/animation/Animation-1751341569929.gif')] flex items-center bg-cover justify-center transition-all text-white relative border-4 border-white/30 backdrop-blur-sm overflow-visible"
           onClick={() => { if (!isDragging) { setShowChat(v => !v); setShowWelcome(false); } }}
-          aria-label="Open chat"
+          aria-label="Toggle chat"
         >
-          {showChat ? <span className="text-3xl">×</span> : null}
+          {showChat ? (
+            <span className="text-3xl font-light rotate-45 group-hover:rotate-0 transition-transform">×</span>
+          ) : (
+            <div className="absolute inset-0 rounded-full bg-blue-500/10 animate-ping" />
+          )}
           
           {showWelcome && !showChat && (
-            <span className="absolute right-20 top-2 bg-white text-blue-800 px-4 py-2 rounded-2xl shadow-xl text-sm font-bold whitespace-nowrap animate-bounce border border-blue-100">
-              {t("Ask me anything!", "اسألني أي شيء!")}
-            </span>
+            <motion.span 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="absolute right-20 top-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 rounded-2xl shadow-2xl text-sm font-semibold whitespace-nowrap border border-white/20 backdrop-blur-md"
+            >
+              {t("Let's chat!", "تحدث معي!")}
+              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-indigo-600 rotate-45 -z-10" />
+            </motion.span>
           )}
-        </button>
+        </motion.button>
 
         {/* Chat window */}
         {showChat && (
-          <div className="bg-[#f8fafc] shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-3xl w-[90vw] sm:w-[420px] h-[600px] border border-white/50 mt-4 overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-5 duration-300">
+          <motion.div 
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            className="bg-white/80 backdrop-blur-2xl shadow-[0_30px_90px_rgba(0,0,0,0.2)] rounded-[2.5rem] w-[90vw] sm:w-[440px] h-[640px] border border-white/40 mt-5 overflow-hidden flex flex-col relative"
+          >
             
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-4 flex items-center justify-between text-white">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center">
+            <div className="bg-gradient-to-br from-blue-600/90 via-indigo-700/90 to-blue-800/90 p-5 flex items-center justify-between text-white relative overflow-hidden">
+              <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none" />
+              <div className="flex items-center gap-4 relative z-10">
+                <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-inner">
                   <lottie-player
                     src="https://assets4.lottiefiles.com/packages/lf20_zyquagfl.json"
                     background="transparent"
                     speed="1"
-                    style={{ width: '2.5rem', height: '2.5rem' }}
+                    style={{ width: '3rem', height: '3rem' }}
                     loop
                     autoplay
                   ></lottie-player>
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg leading-tight">{t("Ramadan Assistant", "مساعد رمضان")}</h3>
-                  <p className="text-xs text-blue-100 flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    {isTyping ? t("Typing...", "يكتب الآن...") : t("Online", "متصل")}
-                  </p>
+                  <h3 className="font-bold text-xl tracking-tight leading-none mb-1">{t("Ramadan AI", "رمضان AI")}</h3>
+                  <div className="text-[10px] uppercase tracking-widest text-blue-200 flex items-center gap-1.5 font-bold">
+                    <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
+                    {isTyping ? t("Thinking...", "يفكر الآن...") : t("Ready for you", "جاهز لمساعدتك")}
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 relative z-10">
                 <button 
                   onClick={() => setShowSessions(!showSessions)} 
-                  className="p-2 hover:bg-white/10 rounded-lg transition"
+                  className="p-2.5 hover:bg-white/20 rounded-xl transition-all active:scale-90"
                   title={t("History", "تاريخ المحادثات")}
                 >
-                  📜
+                  <span className="text-xl">🕒</span>
                 </button>
-                <button onClick={() => setShowChat(false)} className="p-2 hover:bg-white/10 rounded-lg transition text-xl">×</button>
+                <button onClick={() => setShowChat(false)} className="p-2.5 hover:bg-white/20 rounded-xl transition-all active:scale-90 text-2xl leading-none">×</button>
               </div>
             </div>
 
             {/* Session Sidebar (Overlay) */}
             {showSessions && (
-              <div className="absolute inset-0 z-20 bg-white animate-in slide-in-from-left duration-200 flex flex-col">
-                <div className="p-4 border-b flex justify-between items-center bg-gray-50">
-                   <h4 className="font-bold text-gray-700">{t("Recent Chats", "المحادثات السابقة")}</h4>
-                   <button onClick={() => setShowSessions(false)} className="text-2xl text-gray-400">&times;</button>
+              <motion.div 
+                initial={{ x: currentLanguage === 'ar' ? 440 : -440 }}
+                animate={{ x: 0 }}
+                className="absolute inset-0 z-30 bg-white/95 backdrop-blur-xl flex flex-col pt-2"
+              >
+                <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+                   <h4 className="font-extrabold text-xl text-gray-800 tracking-tight">{t("Your History", "محادثاتك")}</h4>
+                   <button onClick={() => setShowSessions(false)} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-3xl text-gray-400 transition">&times;</button>
                 </div>
-                <div className="flex-1 overflow-y-auto p-2 space-y-1">
+                <div className="flex-1 overflow-y-auto p-4 space-y-2">
                   <button 
                     onClick={createNewChat}
-                    className="w-full text-left p-3 rounded-xl bg-blue-50 text-blue-700 font-bold hover:bg-blue-100 transition mb-4"
+                    className="w-full group flex items-center justify-between p-4 rounded-2xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200"
                   >
-                    + {t("New Chat", "محادثة جديدة")}
+                    <span>{t("Start New Chat", "محادثة جديدة")}</span>
+                    <span className="text-xl group-hover:rotate-90 transition-transform">+</span>
                   </button>
+                  <div className="h-4" />
                   {sessions.map(s => (
                     <button
                       key={s._id}
                       onClick={() => loadSessionMessages(s._id)}
-                      className={`w-full text-left p-3 rounded-xl transition ${activeSessionId === s._id ? 'bg-indigo-50 border-indigo-200 text-indigo-700 font-semibold' : 'hover:bg-gray-100 text-gray-600'}`}
+                      className={`w-full text-left p-4 rounded-2xl transition-all border ${activeSessionId === s._id ? 'bg-indigo-50 border-indigo-200 text-indigo-700 shadow-sm' : 'hover:bg-gray-50 border-transparent text-gray-600'}`}
                     >
-                      <p className="truncate text-sm">{s.title || t("Untitled", "بدون عنوان")}</p>
-                      <p className="text-[10px] opacity-60">{new Date(s.lastMessageAt).toLocaleDateString()}</p>
+                      <p className="truncate font-semibold mb-1 text-sm">{s.title || t("Conversation", "محادثة")}</p>
+                      <p className="text-[10px] opacity-50 font-medium italic">{new Date(s.lastMessageAt).toLocaleDateString()}</p>
                     </button>
                   ))}
-                  {sessions.length === 0 && (
-                    <div className="text-center py-10 text-gray-400 text-sm">
-                      {t("No history found.", "لا يوجد تاريخ محادثات.")}
-                    </div>
-                  )}
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* Chat Content */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[url('/grid.svg')] bg-center">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth bg-gray-50/30">
               {history.map((msg, i) => (
-                <div key={i} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm shadow-sm ${
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  key={i} 
+                  className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div className={`max-w-[85%] px-5 py-3.5 rounded-3xl text-sm leading-relaxed shadow-sm ${
                     msg.from === "user" 
-                    ? "bg-indigo-600 text-white rounded-tr-none" 
-                    : "bg-white text-gray-800 rounded-tl-none border border-gray-100"
+                    ? "bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-tr-none shadow-blue-100" 
+                    : "bg-white text-gray-800 rounded-tl-none border border-gray-100 shadow-gray-200/50"
                   }`}>
                     {msg.from === "bot" ? (
-                      <div className="prose prose-sm prose-slate dark:prose-invert max-w-none">
+                      <div className="prose prose-sm prose-slate max-w-none text-inherit">
                         <ReactMarkdown>{msg.text}</ReactMarkdown>
                       </div>
                     ) : (
-                      msg.text
+                      <span className="font-medium">{msg.text}</span>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
               
               {isTyping && (
                 <div className="flex justify-start">
-                   <div className="relative w-16 h-10">
-                      <Image src="/animation/Ripple-loading-animation.gif" alt="loading..." fill sizes="60px" unoptimized />
+                   <div className="bg-white px-4 py-2 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                      <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                      <span className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-bounce" />
                    </div>
                 </div>
               )}
@@ -266,40 +296,46 @@ export default function ChatBotWidget() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-white border-t border-gray-100">
-               <div className="flex items-center gap-2 bg-gray-50 rounded-2xl p-2 border border-gray-200 focus-within:ring-2 ring-blue-500/20 ring-offset-0 transition-all">
+            <div className="p-6 bg-white/60 backdrop-blur-md border-t border-gray-100/50">
+               <div className="flex items-center gap-3 bg-white rounded-2xl p-2.5 shadow-xl shadow-gray-200/50 border border-gray-100 transition-all focus-within:ring-2 ring-blue-500/20">
                   <button 
                     onMouseDown={startRecording}
                     onMouseUp={stopRecording}
-                    className={`p-2 rounded-xl transition ${isRecording ? 'bg-red-100 text-red-600 animate-pulse' : 'text-gray-400 hover:bg-gray-200'}`}
+                    className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all ${isRecording ? 'bg-red-500 text-white animate-pulse' : 'text-gray-400 hover:bg-gray-100'}`}
                     title={t("Hold to Record", "اضغط مطولاً للتسجيل")}
                   >
-                    🎙️
+                    <span className="text-xl">🎙️</span>
                   </button>
                   <input
-                    className="flex-1 bg-transparent border-none focus:ring-0 text-sm py-2 disabled:opacity-50 text-gray-800 placeholder:text-gray-400"
+                    className="flex-1 bg-transparent border-none focus:ring-0 text-[15px] py-1 disabled:opacity-50 text-gray-800 placeholder:text-gray-400 font-medium"
                     type="text"
-                    placeholder={t("Type something...", "اكتب شيئاً...")}
+                    placeholder={t("Ask me something...", "اسألني أي شيء...")}
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     onKeyDown={e => e.key === "Enter" && handleSend()}
                     disabled={loading || isRecording}
                   />
                   <button
-                    className={`p-2.5 rounded-xl transition shadow-md ${input.trim() ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-200 text-gray-400'}`}
+                    className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all ${input.trim() ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 hover:scale-105 active:scale-95' : 'bg-gray-100 text-gray-300 pointer-events-none'}`}
                     onClick={() => handleSend()}
                     disabled={loading || !input.trim() || isRecording}
                   >
-                    <svg className={`w-5 h-5 transform ${currentLanguage === 'ar' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M12 5l7 7-7 7" />
+                    <svg className={`w-5 h-5 fill-current transform ${currentLanguage === 'ar' ? 'rotate-180' : ''}`} viewBox="0 0 24 24">
+                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                     </svg>
                   </button>
                </div>
-               <p className="text-[10px] text-center text-gray-400 mt-2">
-                 {t("AI may make mistakes, verify information.", "قد يخطئ الذكاء الاصطناعي، يرجى التثبت من المعلومات.")}
-               </p>
+               <div className="flex justify-center gap-4 mt-4 opacity-40">
+                  <p className="text-[9px] uppercase tracking-tighter font-bold text-gray-500">
+                    {t("Protected by SecurityUtils", "محمي بنظام التشفير")}
+                  </p>
+                  <span className="text-gray-300">|</span>
+                  <p className="text-[9px] uppercase tracking-tighter font-bold text-gray-500">
+                    {t("Powered by Gemini 1.5", "مدعوم بنظام Gemini 1.5")}
+                  </p>
+               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       
       <style jsx global>{`
@@ -307,6 +343,8 @@ export default function ChatBotWidget() {
         .markdown-container p:last-child { margin-bottom: 0; }
         .rtl { direction: rtl; }
         .ltr { direction: ltr; }
+        .rtl .prose { text-align: right; }
+        .ltr .prose { text-align: left; }
       `}</style>
     </motion.div>
   );
