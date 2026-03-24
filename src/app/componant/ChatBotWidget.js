@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
