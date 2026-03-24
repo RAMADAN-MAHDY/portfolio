@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';   // uninstall
 import { useSelector } from "react-redux";
 
@@ -133,8 +135,12 @@ export default function ChatBotWidget() {
               )}
               {history.map((msg, i) => (
                 <div key={i} className={`my-2 flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`px-3 py-2 rounded-xl max-w-[80%] text-sm ${msg.from === "user" ? "bg-blue-100 text-blue-900" : "bg-blue-600 text-white"}`}>
-                    {msg.text}
+                  <div className={`px-3 py-2 rounded-xl max-w-[80%] text-sm ${msg.from === "user" ? "bg-blue-100 text-blue-900" : "bg-blue-600 text-white markdown-container"}`}>
+                    {msg.from === "bot" ? (
+                      <ReactMarkdown>{msg.text}</ReactMarkdown>
+                    ) : (
+                      msg.text
+                    )}
                   </div>
                 </div>
               ))}

@@ -26,9 +26,40 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-}
-.bg-animation {
-  will-change: transform, opacity;
-}
+  }
+  .bg-animation {
+    will-change: transform, opacity;
+  }
+  
+  /* Markdown Styling for Chat */
+  .markdown-container ul {
+    list-style-type: disc;
+    margin-left: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .markdown-container ol {
+    list-style-type: decimal;
+    margin-left: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .markdown-container li {
+    margin-bottom: 0.25rem;
+  }
+  .markdown-container a {
+    text-decoration: underline;
+    color: #93c5fd; 
+  }
+  .markdown-container p {
+    margin-bottom: 0.5rem;
+  }
+  .markdown-container p:last-child {
+    margin-bottom: 0;
+  }
+  .markdown-container code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+  }
 }
   
