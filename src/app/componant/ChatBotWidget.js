@@ -2,13 +2,14 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 // import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useSelector } from "react-redux";
 
 // API Base URL - Managed via environment variables
 const API_BASE_URL = process.env.NEXT_PUBLIC_URL ;
 
 export default function ChatBotWidget() {
+  const controls = useAnimation();
   const [showChat, setShowChat] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [input, setInput] = useState("");
@@ -18,11 +19,6 @@ export default function ChatBotWidget() {
   const [loading, setLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [showSessions, setShowSessions] = useState(false);
-  
-  // Voice recording states
-  const [isRecording, setIsRecording] = useState(false);
-  const mediaRecorderRef = useRef(null);
-  const audioChunksRef = useRef([]);
 
   const currentLanguage = useSelector((state) => state.language.currentLanguage);
   const chatEndRef = useRef(null);
@@ -115,46 +111,23 @@ export default function ChatBotWidget() {
     }
   };
 
-  // Voice logic
-  const startRecording = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorderRef.current = new MediaRecorder(stream);
-      audioChunksRef.current = [];
-
-      mediaRecorderRef.current.ondataavailable = (e) => {
-        audioChunksRef.current.push(e.data);
-      };
-
-      mediaRecorderRef.current.onstop = () => {
-         // In a real app, you'd send this blob to an STT service.
-         // For now, we'll simulate a voice-to-text or just show a fallback.
-         handleSend(t("[Voice Message Sent]", "[تم إرسال رسالة صوتية]"));
-      };
-
-      mediaRecorderRef.current.start();
-      setIsRecording(true);
-    } catch (err) {
-      alert(t("Microphone access denied.", "تم رفض الوصول للميكروفون." , err));
-    }
-  };
-
-  const stopRecording = () => {
-    if (mediaRecorderRef.current) {
-      mediaRecorderRef.current.stop();
-      setIsRecording(false);
-    }
-  };
-
   const [isDragging, setIsDragging] = useState(false);
+
+  useEffect(() => {
+    if (showChat) {
+      controls.start({ y: 0 });
+    }
+  }, [showChat, controls]);
 
   return (
     <motion.div 
       drag="y"
+      animate={controls}
       dragMomentum={false}
+      dragConstraints={{ top: -window.innerHeight + (showChat ? 700 : 100), bottom: 0 }}
       onDragStart={() => setIsDragging(true)}
       onDragEnd={() => setTimeout(() => setIsDragging(false), 50)}
-      className={`fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}
+      className={`fixed bottom-6 right-6 z-[3000] flex flex-col items-end font-sans ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}
     >
         {/* Floating Toggle Button */}
         <motion.button
@@ -187,7 +160,7 @@ export default function ChatBotWidget() {
           <motion.div 
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            className="bg-white/80 backdrop-blur-2xl shadow-[0_30px_90px_rgba(0,0,0,0.2)] rounded-[2.5rem] w-[90vw] sm:w-[440px] h-[640px] border border-white/40 mt-5 overflow-hidden flex flex-col relative"
+            className="bg-white/80 backdrop-blur-2xl shadow-[0_30px_90px_rgba(0,0,0,0.2)] rounded-[2.5rem] w-[90vw] sm:w-[440px] h-[70vh] sm:h-[640px] border border-white/40 mt-5 overflow-hidden flex flex-col relative"
           >
             
             {/* Header */}
@@ -298,27 +271,19 @@ export default function ChatBotWidget() {
             {/* Input Area */}
             <div className="p-6 bg-white/60 backdrop-blur-md border-t border-gray-100/50">
                <div className="flex items-center gap-3 bg-white rounded-2xl p-2.5 shadow-xl shadow-gray-200/50 border border-gray-100 transition-all focus-within:ring-2 ring-blue-500/20">
-                  <button 
-                    onMouseDown={startRecording}
-                    onMouseUp={stopRecording}
-                    className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all ${isRecording ? 'bg-red-500 text-white animate-pulse' : 'text-gray-400 hover:bg-gray-100'}`}
-                    title={t("Hold to Record", "اضغط مطولاً للتسجيل")}
-                  >
-                    <span className="text-xl">🎙️</span>
-                  </button>
                   <input
-                    className="flex-1 bg-transparent border-none focus:ring-0 text-[15px] py-1 disabled:opacity-50 text-gray-800 placeholder:text-gray-400 font-medium"
+                    className="flex-1 bg-transparent border-none focus:ring-0 text-[15px] py-1 disabled:opacity-50 text-gray-800 placeholder:text-gray-400 font-medium px-4"
                     type="text"
                     placeholder={t("Ask me something...", "اسألني أي شيء...")}
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     onKeyDown={e => e.key === "Enter" && handleSend()}
-                    disabled={loading || isRecording}
+                    disabled={loading}
                   />
                   <button
                     className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all ${input.trim() ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 hover:scale-105 active:scale-95' : 'bg-gray-100 text-gray-300 pointer-events-none'}`}
                     onClick={() => handleSend()}
-                    disabled={loading || !input.trim() || isRecording}
+                    disabled={loading || !input.trim()}
                   >
                     <svg className={`w-5 h-5 fill-current transform ${currentLanguage === 'ar' ? 'rotate-180' : ''}`} viewBox="0 0 24 24">
                       <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
@@ -331,7 +296,7 @@ export default function ChatBotWidget() {
                   </p>
                   <span className="text-gray-300">|</span>
                   <p className="text-[9px] uppercase tracking-tighter font-bold text-gray-500">
-                    {t("Powered by Gemini 1.5", "مدعوم بنظام Gemini 1.5")}
+                    {t("Powered by Gemini 2.5", "مدعوم بنظام Gemini 2.5")}
                   </p>
                </div>
             </div>
