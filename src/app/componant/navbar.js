@@ -7,7 +7,7 @@ import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
 
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X as CloseIcon, Globe, Home, Briefcase, User, BookOpen, LayoutDashboard } from 'lucide-react';
+import { Menu, X as CloseIcon, Globe, Home, Briefcase, User, BookOpen } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
 
 const Navbar = () => {

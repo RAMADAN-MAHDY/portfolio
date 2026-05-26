@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://portfolio-api-production-452b.up.railway.app/api';
@@ -21,23 +21,23 @@ export default function CategoriesAdmin() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  const fetchCategories = async () => {
+  const fetchCategories = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`${API_BASE_URL}/categories`);
       if (!response.ok) throw new Error('Failed to fetch categories');
       const data = await response.json();
       setCategories(data);
-    } catch (error) {
+    } catch {
       showMessage('فشل تحميل الفئات', 'error');
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
 
   const showMessage = (text: string, type: 'success' | 'error') => {
     setMessage({ text, type });
@@ -60,8 +60,9 @@ export default function CategoriesAdmin() {
       setShowAddForm(false);
       fetchCategories();
       showMessage('تمت إضافة الفئة بنجاح', 'success');
-    } catch (error: any) {
-      showMessage(error.message || 'فشل إضافة الفئة', 'error');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'فشل إضافة الفئة';
+      showMessage(errorMessage, 'error');
     }
   };
 
@@ -86,8 +87,9 @@ export default function CategoriesAdmin() {
       setEditingId(null);
       fetchCategories();
       showMessage('تم تحديث الفئة بنجاح', 'success');
-    } catch (error: any) {
-      showMessage(error.message || 'فشل تحديث الفئة', 'error');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'فشل تحديث الفئة';
+      showMessage(errorMessage, 'error');
     }
   };
 
@@ -103,8 +105,9 @@ export default function CategoriesAdmin() {
       }
       fetchCategories();
       showMessage('تم حذف الفئة بنجاح', 'success');
-    } catch (error: any) {
-      showMessage(error.message || 'فشل حذف الفئة', 'error');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'فشل حذف الفئة';
+      showMessage(errorMessage, 'error');
     }
   };
 

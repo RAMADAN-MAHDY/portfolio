@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { BookOpen, Download, ArrowLeft, Calendar, User, Folder, FileText, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -10,7 +10,8 @@ import { loadTranslations } from '../../../utils/loadTranslations';
 interface RootState {
   language: {
     currentLanguage: string;
-    translations: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    translations: Record<string, any>;
   };
 }
 
@@ -57,13 +58,7 @@ export default function BookDetailPage() {
     fetchTranslations();
   }, [dispatch]);
 
-  useEffect(() => {
-    if (id) {
-      fetchBook();
-    }
-  }, [id]);
-
-  const fetchBook = async () => {
+  const fetchBook = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`${API_BASE_URL}/pdfs/${id}`);
@@ -75,12 +70,19 @@ export default function BookDetailPage() {
       }
       const data = await response.json();
       setBook(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : translations?.BookDetail?.FailedToLoad || 'Failed to load book details';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, translations]);
+
+  useEffect(() => {
+    if (id) {
+      fetchBook();
+    }
+  }, [id, fetchBook]);
 
   const handleView = () => {
     if (book) {

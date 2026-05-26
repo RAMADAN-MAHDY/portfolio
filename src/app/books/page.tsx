@@ -1,7 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { BookOpen, Search, Filter, Download, FileText, ChevronRight, Eye, ExternalLink } from 'lucide-react';
+import { BookOpen, Search, Filter, Download, ChevronRight, Eye, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
@@ -10,7 +10,8 @@ import { loadTranslations } from '../../utils/loadTranslations';
 interface RootState {
   language: {
     currentLanguage: string;
-    translations: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    translations: Record<string, any>;
   };
 }
 
@@ -58,12 +59,7 @@ export default function BooksPage() {
     fetchTranslations();
   }, [dispatch]);
 
-  useEffect(() => {
-    fetchBooks();
-    fetchCategories();
-  }, [currentPage, searchTerm, selectedCategory]);
-
-  const fetchBooks = async () => {
+  const fetchBooks = useCallback(async () => {
     try {
       setLoading(true);
       let url = `${API_BASE_URL}/pdfs?page=${currentPage}&limit=12`;
@@ -80,9 +76,9 @@ export default function BooksPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, searchTerm, selectedCategory]);
 
-  const fetchCategories = async () => {
+  const fetchCategories = useCallback(async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/categories`);
       if (!response.ok) throw new Error('Failed to fetch categories');
@@ -91,7 +87,12 @@ export default function BooksPage() {
     } catch (error) {
       console.error('Failed to fetch categories:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchBooks();
+    fetchCategories();
+  }, [fetchBooks, fetchCategories]);
 
   const handleView = (book: Book) => {
     window.open(`${API_BASE_URL}/pdfs/download/${book._id}`, '_blank');
@@ -228,6 +229,7 @@ export default function BooksPage() {
                       <Link href={`/books/${book._id}`} className="block">
                       <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-700 cursor-pointer">
                         {book.coverImageUrl ? (
+                          // eslint-disable-next-line @next/next/no-img-element
                           <img
                             src={book.coverImageUrl}
                             alt={book.fileName}

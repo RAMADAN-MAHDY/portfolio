@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, Save, X, Upload, FileText, BookOpen } from 'lucide-react';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://portfolio-api-production-452b.up.railway.app/api';
@@ -51,12 +51,7 @@ export default function BooksAdmin() {
     coverImage: null as File | null,
   });
 
-  useEffect(() => {
-    fetchBooks();
-    fetchCategories();
-  }, [currentPage]);
-
-  const fetchBooks = async () => {
+  const fetchBooks = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`${API_BASE_URL}/pdfs?page=${currentPage}&limit=10`);
@@ -64,14 +59,14 @@ export default function BooksAdmin() {
       const data = await response.json();
       setBooks(data.files || []);
       setTotalPages(data.totalPages || 1);
-    } catch (error) {
+    } catch {
       showMessage('فشل تحميل الكتب', 'error');
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage]);
 
-  const fetchCategories = async () => {
+  const fetchCategories = useCallback(async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/categories`);
       if (!response.ok) throw new Error('Failed to fetch categories');
@@ -80,7 +75,12 @@ export default function BooksAdmin() {
     } catch (error) {
       console.error('Failed to fetch categories:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchBooks();
+    fetchCategories();
+  }, [fetchBooks, fetchCategories]);
 
   const showMessage = (text: string, type: 'success' | 'error') => {
     setMessage({ text, type });
@@ -119,8 +119,9 @@ export default function BooksAdmin() {
       setShowAddForm(false);
       fetchBooks();
       showMessage('تمت إضافة الكتاب بنجاح', 'success');
-    } catch (error: any) {
-      showMessage(error.message || 'فشل إضافة الكتاب', 'error');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'فشل إضافة الكتاب';
+      showMessage(errorMessage, 'error');
     }
   };
 
@@ -159,8 +160,9 @@ export default function BooksAdmin() {
       setEditingId(null);
       fetchBooks();
       showMessage('تم تحديث الكتاب بنجاح', 'success');
-    } catch (error: any) {
-      showMessage(error.message || 'فشل تحديث الكتاب', 'error');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'فشل تحديث الكتاب';
+      showMessage(errorMessage, 'error');
     }
   };
 
@@ -176,8 +178,9 @@ export default function BooksAdmin() {
       }
       fetchBooks();
       showMessage('تم حذف الكتاب بنجاح', 'success');
-    } catch (error: any) {
-      showMessage(error.message || 'فشل حذف الكتاب', 'error');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'فشل حذف الكتاب';
+      showMessage(errorMessage, 'error');
     }
   };
 
@@ -424,6 +427,7 @@ export default function BooksAdmin() {
                   <>
                     <div className="h-48 bg-slate-100 dark:bg-slate-700 relative overflow-hidden">
                       {book.coverImageUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                           src={book.coverImageUrl}
                           alt={book.fileName}
