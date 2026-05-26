@@ -7,7 +7,7 @@ import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
 
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X as CloseIcon, Globe, Home, Briefcase, User } from 'lucide-react';
+import { Menu, X as CloseIcon, Globe, Home, Briefcase, User, BookOpen, LayoutDashboard } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
 
 const Navbar = () => {
@@ -40,8 +40,10 @@ const Navbar = () => {
 
     const navLinks = [
         { href: '/', label: translations?.Navpar?.Home || 'Home', icon: Home },
+        { href: '/books', label: translations?.Navpar?.Books || 'Books', icon: BookOpen },
         { href: '/projects', label: translations?.Navpar?.Projects || 'Projects', icon: Briefcase },
         { href: '/about', label: translations?.Navpar?.About_me || 'About Me', icon: User },
+        // { href: '/admin', label: translations?.Navpar?.Admin || 'Admin', icon: LayoutDashboard },
     ];
 
     const isRTL = currentLanguage === 'ar';
