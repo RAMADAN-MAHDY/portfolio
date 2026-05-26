@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { BookOpen, Download, ArrowLeft, Calendar, User, Folder, FileText } from 'lucide-react';
+import { BookOpen, Download, ArrowLeft, Calendar, User, Folder, FileText, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage, setTranslations } from '../../../lib/slices/languageSlice';
@@ -82,9 +82,20 @@ export default function BookDetailPage() {
     }
   };
 
-  const handleDownload = () => {
+  const handleView = () => {
     if (book) {
       window.open(`${API_BASE_URL}/pdfs/download/${book._id}`, '_blank');
+    }
+  };
+
+  const handleDownload = () => {
+    if (book) {
+      const downloadLink = document.createElement('a');
+      downloadLink.href = `${API_BASE_URL}/pdfs/direct-download/${book._id}`;
+      downloadLink.download = book.fileName;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
     }
   };
 
@@ -130,7 +141,7 @@ export default function BookDetailPage() {
         <div className="absolute top-[-20%] left-[-10%] w-[40%] h-[40%] bg-blue-400/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-[-20%] right-[-10%] w-[40%] h-[40%] bg-cyan-400/10 blur-[120px] rounded-full pointer-events-none" />
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-0 md:px-6 relative z-10">
           <motion.button
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -173,7 +184,7 @@ export default function BookDetailPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-2 p-8 lg:p-12">
+              <div className="lg:col-span-2 p-3 md:p-8 lg:p-12">
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -226,7 +237,7 @@ export default function BookDetailPage() {
                       <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
                         {translations?.BookDetail?.AboutBook || 'About the Book'}
                       </h2>
-                      <div className="bg-slate-50 dark:bg-slate-700/50 rounded-2xl p-6">
+                      <div className="bg-slate-50 dark:bg-slate-700/50 rounded-2xl md:p-6 p-2">
                         <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
                           {book.description}
                         </p>
@@ -238,12 +249,20 @@ export default function BookDetailPage() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
+                    className="flex gap-2 flex-wrap"
                   >
                     <button
-                      onClick={handleDownload}
-                      className="w-full lg:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 transition-all hover:-translate-y-1"
+                      onClick={handleView}
+                      className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white px-4 py-2.5 rounded-lg font-medium shadow-lg shadow-green-900/20 hover:shadow-xl hover:shadow-green-900/30 transition-all"
                     >
-                      <Download size={24} />
+                      <ExternalLink size={16} />
+                      {translations?.BookDetail?.ViewInBrowser || 'View in Browser'}
+                    </button>
+                    <button
+                      onClick={handleDownload}
+                      className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white px-4 py-2.5 rounded-lg font-medium shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 transition-all"
+                    >
+                      <Download size={16} />
                       {translations?.BookDetail?.DownloadNow || 'Download Now'}
                     </button>
                   </motion.div>

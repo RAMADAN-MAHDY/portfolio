@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { BookOpen, Search, Filter, Download, FileText, ChevronRight, Eye } from 'lucide-react';
+import { BookOpen, Search, Filter, Download, FileText, ChevronRight, Eye, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage, setTranslations } from '../../lib/slices/languageSlice';
@@ -93,8 +93,17 @@ export default function BooksPage() {
     }
   };
 
-  const handleDownload = (book: Book) => {
+  const handleView = (book: Book) => {
     window.open(`${API_BASE_URL}/pdfs/download/${book._id}`, '_blank');
+  };
+
+  const handleDownload = (book: Book) => {
+    const downloadLink = document.createElement('a');
+    downloadLink.href = `${API_BASE_URL}/pdfs/direct-download/${book._id}`;
+    downloadLink.download = book.fileName;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
   };
 
   const containerVariants = {
@@ -261,19 +270,26 @@ export default function BooksPage() {
                               })}
                             </span>
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex gap-1.5">
                             <Link
                               href={`/books/${book._id}`}
-                              className="flex-1 flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                              className="flex-1 flex items-center justify-center gap-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-white px-2 py-1.5 rounded-md text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
                             >
-                              <Eye size={16} />
-                              {translations?.Books?.ViewDetails || 'View Details'}
+                              <Eye size={12} />
+                              {translations?.Books?.ViewDetails || 'Details'}
                             </Link>
                             <button
-                              onClick={() => handleDownload(book)}
-                              className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+                              onClick={() => handleView(book)}
+                              className="flex-1 flex items-center justify-center gap-1 bg-green-600 text-white px-2 py-1.5 rounded-md text-xs font-medium hover:bg-green-700 transition-colors"
                             >
-                              <Download size={16} />
+                              <ExternalLink size={12} />
+                              {translations?.Books?.View || 'View'}
+                            </button>
+                            <button
+                              onClick={() => handleDownload(book)}
+                              className="flex-1 flex items-center justify-center gap-1 bg-blue-600 text-white px-2 py-1.5 rounded-md text-xs font-medium hover:bg-blue-700 transition-colors"
+                            >
+                              <Download size={12} />
                               {translations?.Books?.Download || 'Download'}
                             </button>
                           </div>
