@@ -51,7 +51,7 @@ export default function PageOne({ content, isRTL }) {
                 <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.GalleryCarousel}</li>
               </>
             )}
-            {content.id === "div7" && (
+            {(content.id === "div7" || content.id === "div9") && (
               <>
                 <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.MultiChannelAuth}</li>
                 <li className="text-[12px] font-bold text-white/80 leading-snug list-disc marker:text-[#e69999]">{content?.ImportantPoints?.CoreModules}</li>

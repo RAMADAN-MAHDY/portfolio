@@ -18,6 +18,8 @@ export const getPageBackground = (index) => {
       return "bg-[url('https://i.ibb.co/yFyvNxx8/Screenshot-2026-01-25-150958.png')]";
     case 7:
       return "bg-[url('https://i.ibb.co/fdXN70Th/Screenshot-2026-03-23-022816.png')]"; // Placeholder background
+    case 8:
+      return "bg-[url('https://i.ibb.co/k2xgCJrn/image.png')]";
     default:
       return [];
   }
@@ -59,6 +61,11 @@ export const getProjectsImage = (index) => {
     case 7:
       return [
         "https://i.ibb.co/QvPfdpWg/image.jpg", // Placeholder image
+      ];
+    case 8:
+      return [
+        "https://i.ibb.co/5gJWqtfw/Portfolio-UI-Screenshots-Grid.png",
+        "https://i.ibb.co/k2xgCJrn/image.png",
       ];
     default:
       return [];
@@ -113,6 +120,10 @@ export const getProjectsLinkes = (index) => {
     case 7:
       return [
         "https://warehouse-management-system-for-an-sooty.vercel.app", // Placeholder links
+      ];
+    case 8:
+      return [
+        "https://e-commece-vitrine-jm7x.vercel.app/",
       ];
     default:
       return [];

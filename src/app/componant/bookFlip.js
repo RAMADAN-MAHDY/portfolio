@@ -24,6 +24,7 @@ const BookFlip = () => {
         div6: 0,
         div7: 0,
         div8: 0,
+        div9: 0,
     });
 
     const isRTL = currentLanguage !== "en";
@@ -426,6 +427,53 @@ const BookFlip = () => {
                     Link1: translations?.Project_8_ProStockManager?.ProjectImages?.Link1 || "Default Link1",
                     Link2: translations?.Project_8_ProStockManager?.ProjectImages?.Link2 || "Default Link2",
                     Link3: translations?.Project_8_ProStockManager?.ProjectImages?.Link3 || "Default Link3",
+                },
+            },
+        },
+        {
+            countPage: [1, 2, 3, 4, 5],
+            id: "div9",
+            SiteDefinition: {
+                Title: translations?.Project_9_EcommerceVitrineAPI?.Title || "Default Title",
+                Description: translations?.Project_9_EcommerceVitrineAPI?.Description || "Default Description",
+            },
+            ImportantPoints: {
+                Title: translations?.Project_9_EcommerceVitrineAPI?.MainFeatures?.Title || "",
+                MultiChannelAuth: translations?.Project_9_EcommerceVitrineAPI?.MainFeatures?.AuthAndPermissions || "",
+                CoreModules: translations?.Project_9_EcommerceVitrineAPI?.MainFeatures?.ProductManagement || "",
+                AdvancedReviews: translations?.Project_9_EcommerceVitrineAPI?.MainFeatures?.MultiPayment || "",
+                Notifications: translations?.Project_9_EcommerceVitrineAPI?.MainFeatures?.Security || "",
+                ImageUploads: translations?.Project_9_EcommerceVitrineAPI?.MainFeatures?.Performance || "",
+            },
+            ProjectDetails: {
+                Title: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Title || "Default Title",
+                Technologies: {
+                    Backend: {
+                        _1: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Backend?._1 || "",
+                        _2: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Backend?._2 || "",
+                        _3: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Backend?._3 || "",
+                        _4: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Integrations?._1 || "",
+                        _5: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Integrations?._2 || "",
+                    },
+                    Services: {
+                        _1: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Integrations?._3 || "",
+                        _2: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Security?._1 || "",
+                        _3: translations?.Project_9_EcommerceVitrineAPI?.TechnologiesUsed?.Security?._2 || "",
+                    },
+                },
+                ProjectGoal: {
+                    Title: translations?.Project_9_EcommerceVitrineAPI?.ProjectGoal?.Title || "Default Title",
+                    Description: translations?.Project_9_EcommerceVitrineAPI?.ProjectGoal?.Description || "Default Description",
+                },
+                Integration: {
+                    Title: translations?.Project_9_EcommerceVitrineAPI?.Integration?.Title || "Default Title",
+                    Description: translations?.Project_9_EcommerceVitrineAPI?.Integration?.Description || "Default Description",
+                },
+                ProjectImages: {
+                    Title1: translations?.Project_9_EcommerceVitrineAPI?.ProjectImages?.Title1 || "Default Title",
+                    Link1: translations?.Project_9_EcommerceVitrineAPI?.ProjectImages?.Link1 || "Default Link1",
+                    Link2: translations?.Project_9_EcommerceVitrineAPI?.ProjectImages?.Link2 || "Default Link2",
+                    Link3: translations?.Project_9_EcommerceVitrineAPI?.ProjectImages?.Link3 || "Default Link3",
                 },
             },
         },

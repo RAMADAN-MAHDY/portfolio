@@ -464,5 +464,50 @@
             "Link2": "Frontend Code",
             "Link3": "Backend Code"
         }
+    },
+    "Project_9_EcommerceVitrineAPI": {
+        "Title": "E-commerce Vitrine API",
+        "Description": "This project is a comprehensive API for an e-commerce platform, designed to provide a seamless and secure shopping experience with robust management tools for admins.",
+        "MainFeatures": {
+            "Title": "Key Features",
+            "MultiPayment": "Multi-channel Payment System: Integrated with Stripe for global payments, Paymob for local payments, and Cash on Delivery (COD) options.",
+            "ProductManagement": "Full Product Management: Advanced CRUD system allowing admins to add/edit products, with ImgBB API image upload support and dynamic offers/discounts management.",
+            "AuthAndPermissions": "Authentication & Authorization: Secure access using JWT and Bcrypt encryption, implementing Role-based Access Control (RBAC) between users and admins.",
+            "MessagingSystem": "Notifications & Communication: A dashboard for admins to send private or public messages, and a 'Contact Us' system for customer inquiries.",
+            "Security": "Security & Protection: Best security practices using Helmet, Rate Limiting, and protection against XSS and NoSQL Injection.",
+            "Performance": "Performance Optimization: Using Compression techniques to reduce data size and speed up API response times."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Backend": {
+                "_1": "Node.js and Express.js.",
+                "_2": "MongoDB with Mongoose.",
+                "_3": "JWT Authentication for security."
+            },
+            "Integrations": {
+                "_1": "Stripe API for global payments.",
+                "_2": "Paymob API for local payments.",
+                "_3": "ImgBB API for image upload."
+            },
+            "Security": {
+                "_1": "Helmet for securing HTTP headers.",
+                "_2": "Rate Limiting to prevent Brute Force attacks.",
+                "_3": "Mongo-sanitize to prevent NoSQL Injection."
+            }
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "Delivering a production-ready, integrated e-commerce system focusing on security, performance, and user experience, with a clean architecture for easy maintenance."
+        },
+        "Integration": {
+            "Title": "System Integration",
+            "Description": "Full integration between frontend and backend via a unified REST API, featuring professional error handling and scalability for future feature additions."
+        },
+        "ProjectImages": {
+            "Title1": "Images from Admin Dashboard and API",
+            "Link1": "Visit Site",
+            "Link2": "Frontend Code",
+            "Link3": "Backend Code"
+        }
     }
 }

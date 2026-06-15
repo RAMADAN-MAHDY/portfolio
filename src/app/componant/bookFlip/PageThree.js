@@ -215,7 +215,7 @@ export default function PageThree({ content, isRTL, index, getProjectsLinkes }) 
 
                 </div>
             )}
-            {content.id === "div7" && (
+            {(content.id === "div7" || content.id === "div9") && (
                 <div className="text-[4px] bg-[#23252bcb] py-6 whitespace-break-spaces"
                     // data-aos="fade-top" 
                     dir={isRTL ? "rtl" : "ltr"}>

@@ -128,7 +128,7 @@ export default function PageFour({
                 />
             )}
 
-            {(content.id === "div5" || content.id === "div8") && (
+            {(content.id === "div5" || content.id === "div8" || content.id === "div9") && (
                 <ImageGallery 
                     title={content.id === "div8" ? (isRTL ? "عرض تفصيلي للمشروع" : "Project Detailed View") : content?.ProjectDetails?.ProjectImages?.Title1}
                     images={getProjectsImage(index)}
