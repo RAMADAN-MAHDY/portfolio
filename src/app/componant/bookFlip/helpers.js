@@ -20,6 +20,8 @@ export const getPageBackground = (index) => {
       return "bg-[url('https://i.ibb.co/fdXN70Th/Screenshot-2026-03-23-022816.png')]"; // Placeholder background
     case 8:
       return "bg-[url('https://i.ibb.co/k2xgCJrn/image.png')]";
+    case 9:
+      return "bg-[url('https://i.ibb.co/BHvtNPXY/3-D.png')]";
     default:
       return [];
   }
@@ -66,6 +68,12 @@ export const getProjectsImage = (index) => {
       return [
         "https://i.ibb.co/5gJWqtfw/Portfolio-UI-Screenshots-Grid.png",
         "https://i.ibb.co/k2xgCJrn/image.png",
+      ];
+    case 9:
+      return [
+        "https://i.ibb.co/9kd21Hj4/imgpublish1.webp",
+        "https://i.ibb.co/hF5H1B5K/imgpublish2.webp",
+        "https://i.ibb.co/BHvtNPXY/3-D.png",
       ];
     default:
       return [];
@@ -124,6 +132,12 @@ export const getProjectsLinkes = (index) => {
     case 8:
       return [
         "https://e-commece-vitrine-jm7x.vercel.app/",
+        "https://portofilio-l9ls.vercel.app/",
+      ];
+    case 9:
+      return [
+        "https://aldawlia-publishing.vercel.app/",
+        "https://portofilio-l9ls.vercel.app/",
       ];
     default:
       return [];

@@ -93,17 +93,42 @@ export default function PageFour({
 
             <div className="flex flex-col gap-3 mt-4">
                 <div className="flex flex-wrap justify-center gap-2">
-                    {links?.slice(0, 3).map((link, i) => link && (
-                        <a
-                            key={i}
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-[#26458a] px-4 py-2 rounded-xl text-[11px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10 shadow-lg active:scale-95"
-                        >
-                            {content?.ProjectDetails?.ProjectImages?.[`Link${i+1}`] || (isRTL ? "رابط" : "Link")}
-                        </a>
-                    ))}
+                    {(content?.id === "div9" || content?.id === "div10") ? (
+                        <>
+                            {links?.[0] && (
+                                <a
+                                    href={links[0]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-[#26458a] px-4 py-2 rounded-xl text-[11px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10 shadow-lg active:scale-95"
+                                >
+                                    {content?.ProjectDetails?.ProjectImages?.Link1 || (isRTL ? "رابط" : "Link")}
+                                </a>
+                            )}
+                            {links?.[1] && (
+                                <a
+                                    href={links[1]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-[#26458a] px-4 py-2 rounded-xl text-[11px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10 shadow-lg active:scale-95"
+                                >
+                                    {content?.ProjectDetails?.ProjectImages?.Link4 || (isRTL ? "مطور الواجهة الأمامية" : "Frontend developer")}
+                                </a>
+                            )}
+                        </>
+                    ) : (
+                        links?.slice(0, 3).map((link, i) => link && (
+                            <a
+                                key={i}
+                                href={link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-[#26458a] px-4 py-2 rounded-xl text-[11px] font-black text-white hover:bg-[#2669f8] transition-all border border-white/10 shadow-lg active:scale-95"
+                            >
+                                {content?.ProjectDetails?.ProjectImages?.[`Link${i+1}`] || (isRTL ? "رابط" : "Link")}
+                            </a>
+                        ))
+                    )}
                 </div>
                 
                 {showCodeWarning && (
@@ -128,7 +153,7 @@ export default function PageFour({
                 />
             )}
 
-            {(content.id === "div5" || content.id === "div8" || content.id === "div9") && (
+            {(content.id === "div5" || content.id === "div8" || content.id === "div9" || content.id === "div10") && (
                 <ImageGallery 
                     title={content.id === "div8" ? (isRTL ? "عرض تفصيلي للمشروع" : "Project Detailed View") : content?.ProjectDetails?.ProjectImages?.Title1}
                     images={getProjectsImage(index)}

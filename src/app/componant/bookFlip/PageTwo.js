@@ -95,7 +95,7 @@ export default function PageTwo({ content, isRTL }) {
         </div>
       )}
 
-      {(content.id === "div7" || content.id === "div9") && (
+      {(content.id === "div7" || content.id === "div9" || content.id === "div10") && (
         <div className="space-y-4 flex-1">
           <div className="space-y-3 shrink-0">
             <ul className="grid grid-cols-1 gap-2 pl-4 pr-4">
