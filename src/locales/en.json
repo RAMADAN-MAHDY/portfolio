@@ -504,10 +504,57 @@
             "Description": "Full integration between frontend and backend via a unified REST API, featuring professional error handling and scalability for future feature additions."
         },
         "ProjectImages": {
-            "Title1": "Images from Admin Dashboard and API",
+            "Title1": "Images and links",
             "Link1": "Visit Site",
             "Link2": "Frontend Code",
-            "Link3": "Backend Code"
+            "Link3": "Backend Code",
+            "Link4": "Frontend developer"
+        }
+    },
+    "Project_10_ELipraryBackend": {
+        "Title": "E-liprary Backend",
+        "Description": "A robust backend built with Node.js and Express to power an e-library platform (E-liprary). It provides a complete set of APIs for user management, digital content/books, cart and orders, payments, and file uploads, with a focus on security and scalability.",
+        "MainFeatures": {
+            "Title": "Key Features",
+            "AuthAndPermissions": "User Management & Authentication: Sign up/login, password hashing with bcryptjs, JWT-based sessions, plus Google OAuth2.0 and role-based access control.",
+            "ProductManagement": "Content & Categories Management: CRUD APIs for books/digital items with category organization for easier browsing and search.",
+            "ShoppingCartOrders": "Cart & Orders: Add/remove items, create orders, and track order status from creation to completion.",
+            "MultiPayment": "Payment Processing: Stripe integration for secure online payments, with the ability to support additional gateways such as Paymob.",
+            "FileUpload": "File Upload & Storage: Upload handling via multer and object storage via S3-compatible services (e.g., AWS S3 or Cloudflare R2).",
+            "Security": "Security & Reliability: CORS support, security headers via helmet, rate limiting via express-rate-limit, and request validation with Joi."
+        },
+        "TechnologiesUsed": {
+            "Title": "Technologies Used",
+            "Backend": {
+                "_1": "Node.js and Express.js for building REST APIs.",
+                "_2": "MongoDB with Mongoose for data modeling and storage.",
+                "_3": "JWT and bcryptjs for authentication and password hashing."
+            },
+            "Integrations": {
+                "_1": "Passport.js with Google OAuth2.0 for Google sign-in.",
+                "_2": "Stripe for payment processing.",
+                "_3": "Cloudflare R2 for file storage and images."
+            },
+            "SecurityAndTools": {
+                "_1": "helmet, express-rate-limit, and cors for security hardening.",
+                "_2": "Joi for input validation.",
+                "_3": "multer for file uploads and morgan for request logging."
+            }
+        },
+        "ProjectGoal": {
+            "Title": "Project Goal",
+            "Description": "Deliver a secure, scalable backend for an e-library platform with a modular architecture that is easy to maintain and extend with new features."
+        },
+        "Integration": {
+            "Title": "System Integration",
+            "Description": "End-to-end integration via REST APIs covering users, content, orders, payments, and uploads, with structured error handling and strong extensibility."
+        },
+        "ProjectImages": {
+            "Title1": "Images and links",
+            "Link1": "Visit Site",
+            "Link2": "Frontend Code",
+            "Link3": "Backend Code",
+            "Link4": "Frontend developer"
         }
     }
 }
