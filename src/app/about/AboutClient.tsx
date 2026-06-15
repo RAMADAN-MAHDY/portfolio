@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Footer from '../componant/footer';
 import { motion, useInView, useAnimation, AnimationControls } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 export default function AboutPage() {
   const currentLanguage = useSelector((state: { language: { currentLanguage: string } }) => state.language.currentLanguage);
@@ -288,15 +289,12 @@ export default function AboutPage() {
                   'مجموعة مختارة من المشاريع التي توضح مهاراتي وخبرتي. للحصول على عرض تفصيلي، يرجى زيارة قسم معرض الأعمال.'
                 }
               </motion.p>
-              <motion.a 
+              <Link
                 href="/projects" 
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 className="inline-block bg-[#e69999] text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-opacity-90 transition-all"
               >
                 {isEnglish ? 'View Portfolio' : 'عرض معرض الأعمال'}
-              </motion.a>
+              </Link>
             </motion.div>
 
             {/* Education */}
