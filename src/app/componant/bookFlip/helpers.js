@@ -109,7 +109,8 @@ export const getProjectsLinkes = (index) => {
       return [
         // "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
         // "https://github.com/RAMADAN-MAHDY/olive-oil-store",
-        "https://nazafaa.com",
+        // "https://nazafaa.com",
+        "https://al-kharj-clean-git-main-ramadans-projects-777f5ec4.vercel.app",
       ];
     case 5:
       return [
