@@ -103,7 +103,7 @@ export const getProjectsLinkes = (index) => {
       return [
         // "https://github.com/RAMADAN-MAHDY/olive-oil-store-api",
         // "https://github.com/RAMADAN-MAHDY/olive-oil-store",
-        "https://spontaneous-valkyrie-aae13b.netlify.app",
+        "https://olive-oil-store-tau.vercel.app",
       ];
     case 4:
       return [
